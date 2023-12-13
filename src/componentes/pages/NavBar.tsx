@@ -2,12 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../visual/navbarEstilo.css';
 import { FaFacebook, FaInstagram, FaTiktok } from 'react-icons/fa';
-import { LuBookOpen, LuBookOpenCheck, LuStore, LuUsers2 } from "react-icons/lu";
+import { LuHome, LuBookOpenCheck, LuStore, LuUsers2 } from "react-icons/lu";
 
 
 
 const Navbar: React.FC = () => {
-  const mediaSocialAtributos = [20, '414141'];
+  const mediaSocialAtributos = [20, 'fff'];
   const visualIcone = { margin: '5px' };
   return (
     <header>
@@ -35,7 +35,7 @@ const Navbar: React.FC = () => {
         <ul>
           <li>
             <Link to="/">
-              <LuBookOpen />
+              <LuHome />
               <strong>Inicio</strong>
             </Link>
           </li>

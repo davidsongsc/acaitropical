@@ -1,5 +1,6 @@
 import React from 'react';
 import '../visual/cardapioEstilo.css';
+import GaleriaDeProdutos from './GaleriaProdutos';
 
 const CardapioPrincipal: React.FC = () => {
     const listaItensCardapio = [
@@ -21,10 +22,10 @@ const CardapioPrincipal: React.FC = () => {
                             {item[0]}
                         </h3>
 
-
                     </li>
                 ))}
             </ul>
+            <GaleriaDeProdutos/>
         </div>
     );
 };

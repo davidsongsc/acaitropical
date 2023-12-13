@@ -8,6 +8,9 @@ header {
   justify-content: space-around;
   align-items: center;
   padding: 10px;
+  background-image: url("https://img.freepik.com/fotos-premium/paisagem-de-praia-com-coqueiro_114889-20.jpg");
+  background-size: cover;
+  filter: contrast(1.5);
 }
 header .medias-sociais-container {
   position: absolute;
@@ -16,6 +19,7 @@ header .medias-sociais-container {
   box-shadow: 1px 1px 3px #414141, -1px -1px 3px #414141;
   border-radius: 5px;
   display: flex;
+  color: var(--texto-color-principal);
 }
 header .medias-sociais-container h1 {
   font-size: 10px;
@@ -48,7 +52,6 @@ header .tituli-principal-container h1 {
 header .tituli-principal-container h1:hover {
   box-shadow: var(--page-itens-box-shadow-valores-01-hover);
   text-shadow: 1px 1px black, -1px -1px var(--page-color-principal-bg-02);
-
   transition: 0.9s;
 }
 
@@ -61,12 +64,11 @@ header .tituli-principal-container {
 header nav {
   position: absolute;
   background-color: var(--page-color-principal-bg-02);
-  padding: 2x;
-  width: 400px;
-
-  border-radius: var(--page-itens-nav-border-radios);
+  padding: 2x 0;
+  left: 0;
+  right: 0;
   box-shadow: var(--page-itens-box-shadow-valores-02);
-  top: 175px;
+  top: 170px;
 }
 
 header ul {
@@ -97,7 +99,7 @@ header li a {
   text-decoration: none;
   color: white;
   font-weight: bold;
-  width: 100px;
+  width: 87px;
   display: flex;
   justify-content: space-around;
 }
