@@ -1,0 +1,107 @@
+h1 {
+  font-family: var(--font-principal);
+}
+header {
+  background-color: var(--page-color-principal-contraste);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+}
+header .medias-sociais-container {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  box-shadow: 1px 1px 3px #414141, -1px -1px 3px #414141;
+  border-radius: 5px;
+  display: flex;
+}
+header .medias-sociais-container h1 {
+  font-size: 10px;
+  padding: 3px;
+}
+header .tituli-principal-container div {
+  display: flex;
+  align-items: center;
+}
+
+header .tituli-principal-container div img {
+  position: relative;
+  z-index: 999;
+}
+
+header .tituli-principal-container h1 {
+  position: absolute;
+  background-color: var(--page-color-principal-bg-01);
+  box-shadow: var(--page-itens-box-shadow-valores-01);
+  border-radius: var(--page-itens-nav-border-radios);
+  color: #ebfce0;
+  padding: 10px 25px;
+  text-align: right;
+  transition: 0.9s;
+  text-shadow: 1px 1px black;
+  left: 5px;
+  right: 5px;
+}
+
+header .tituli-principal-container h1:hover {
+  box-shadow: var(--page-itens-box-shadow-valores-01-hover);
+  text-shadow: 1px 1px black, -1px -1px var(--page-color-principal-bg-02);
+
+  transition: 0.9s;
+}
+
+header .tituli-principal-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header nav {
+  position: absolute;
+  background-color: var(--page-color-principal-bg-02);
+  padding: 2x;
+  width: 400px;
+
+  border-radius: var(--page-itens-nav-border-radios);
+  box-shadow: var(--page-itens-box-shadow-valores-02);
+  top: 175px;
+}
+
+header ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+header li {
+  margin: 0;
+  padding: 5px;
+  border-radius: 8px;
+  transition: 0.9s;
+  text-decoration: underline 0px var(--page-color-principal-bg-02);
+}
+
+header li:hover,
+header li:active {
+  background-color: var(--page-color-principal-bg-03);
+  text-decoration: underline 3px var(--page-color-principal-contraste);
+  transition: 0.9s;
+}
+
+header li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  width: 100px;
+  display: flex;
+  justify-content: space-around;
+}
+
+header a:hover {
+  color: #ffcc00;
+}
