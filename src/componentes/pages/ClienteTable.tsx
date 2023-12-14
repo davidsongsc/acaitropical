@@ -24,7 +24,7 @@ const ClienteTable: React.FC = () => {
           <li>Contato: {clienteFiltrado.contato}</li>
           <li>Pedido: {clienteFiltrado.pedido.id}</li>
         </ul>
-        <PedidoTable pedido={clienteFiltrado.pedido} />
+        <PedidoTable />
       </div>
     </div>
   );

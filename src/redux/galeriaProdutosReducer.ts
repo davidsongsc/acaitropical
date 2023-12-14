@@ -28,7 +28,7 @@ export const dadosProdutosTeste: Produto[] = [
         descricao: 'Açai especial, batido com banana.',
         img: 'https://st2.depositphotos.com/17524768/45085/i/450/depositphotos_450859886-stock-photo-brazilian-frozen-plastic-cup-condensed.jpg',
         valor: 7.95,
-        quantidade: 2,
+        quantidade: 10,
         tipo: [tipoProdutosTeste[0]],
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',

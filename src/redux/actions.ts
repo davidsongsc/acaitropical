@@ -26,3 +26,4 @@ export const setClientes = (clientes: Cliente) => ({
   type: SET_CLIENTES,
   payload: clientes,
 });
+

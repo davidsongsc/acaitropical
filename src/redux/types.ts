@@ -23,10 +23,12 @@ export interface CarrinhoComprar {
     id: number;
 }
 
+
 export interface Carrinho {
     id: number;
-    produtos: Produto[];
-  }
+    produtos: [Produto, number][];
+
+}
 
 export interface Produto {
     id: number;
