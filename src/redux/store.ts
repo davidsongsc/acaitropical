@@ -1,6 +1,14 @@
-import { createStore } from 'redux';
+import { combineReducers, createStore } from 'redux';
 import counterReducer from './reducers';
+import galeriaReducer from './galeriaProdutosReducer';
+import tipoDesejadoReducer from './tipoDesejadoReducer';
 
-const store = createStore(counterReducer);
+const rootReducer = combineReducers({
+    contador: counterReducer,
+    galeriaProdutos: galeriaReducer,
+    tipoDesejado: tipoDesejadoReducer,
+});
 
-export default store;
+export const store = createStore(rootReducer);
+
+export type RootState = ReturnType<typeof rootReducer>;

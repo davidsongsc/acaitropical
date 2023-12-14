@@ -5,11 +5,9 @@
   padding: 1px 0;
   text-align: center;
   height: 90vh;
-  filter: contrast(1.5);
 }
 .cardapio-container h2,
-.cardapio-container h4
- {
+.cardapio-container h4 {
   background-color: #000080;
   color: #fff;
   padding: 10px;
@@ -17,9 +15,8 @@
   z-index: 999;
   top: -23px;
 }
-.cardapio-container h4{
-    padding: 40px 0;
-
+.cardapio-container h4 {
+  padding: 40px 0;
 }
 .cardapio-container ul {
   position: relative;
@@ -56,6 +53,12 @@
 }
 
 .cardapio-container li:hover {
+  box-shadow: -3px -3px, 3px 3px;
+  background-color: var(--page-color-principal-contraste-cardapio-li-hover);
+  color: var(--texto-color-principal-hover);
+  transition: var(--time-transition-padrao);
+}
+.cardapio-container .item-selecionado-grupos {
   box-shadow: -3px -3px, 3px 3px;
   background-color: var(--page-color-principal-contraste-cardapio-li-hover);
   color: var(--texto-color-principal-hover);

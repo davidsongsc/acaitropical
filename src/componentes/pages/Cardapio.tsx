@@ -1,6 +1,9 @@
 import React from 'react';
 import '../visual/cardapioEstilo.css';
 import GaleriaDeProdutos from './GaleriaProdutos';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import { setTipoDesejado } from '../../redux/actions';
 
 const CardapioPrincipal: React.FC = () => {
     const listaItensCardapio = [
@@ -10,14 +13,20 @@ const CardapioPrincipal: React.FC = () => {
         ['Salgados', 'https://i.pinimg.com/originals/55/a9/4e/55a94e824b3cebe89496ad64dd2b2f01.png'],
         ['Bebidas', 'https://images.vexels.com/media/users/3/266647/isolated/preview/798cbd189f4c2fd5fe83e6f6eb6b46ff-lata-de-refrigerante-vermelha.png']
 
-    ]
+    ];
+    const tipoSelecionado = useSelector((state: RootState) => state.tipoDesejado);
+    const dispatch = useDispatch();
+
+    const handleMudarTipoDesejado = (novoTipo: string) => {
+        // Dispatch da ação para definir o tipo desejado
+        dispatch(setTipoDesejado(novoTipo));
+    };
     return (
         <div className='cardapio-container'>
             <h2>Cardápio</h2>
             <ul>
                 {listaItensCardapio.map((item, index) => (
-                    <li key={index} style={{backgroundImage: `url(${item[1]})`}}>
-
+                    <li key={index} onClick={() => handleMudarTipoDesejado(item[0])} className={item[0] === tipoSelecionado ? 'item-selecionado-grupos' : ''} style={{ backgroundImage: `url(${item[1]})` }}>
                         <h3 >
                             {item[0]}
                         </h3>
@@ -25,7 +34,7 @@ const CardapioPrincipal: React.FC = () => {
                     </li>
                 ))}
             </ul>
-            <GaleriaDeProdutos/>
+            <GaleriaDeProdutos />
         </div>
     );
 };

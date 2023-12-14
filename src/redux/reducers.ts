@@ -8,6 +8,7 @@ const initialState: AppState = {
   count: 0,
 };
 
+
 const counterReducer = (state = initialState, action: any): AppState => {
   switch (action.type) {
     case INCREMENT:

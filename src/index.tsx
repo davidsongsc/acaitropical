@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import store from './redux/store';
 import App from './App';
 import 'normalize.css';
 import './componentes/visual/baseFonts.css'
+import { store } from './redux/store';
 ReactDOM.render(
   <Provider store={store}>
     <App />
