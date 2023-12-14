@@ -1,3 +1,5 @@
+import { Cliente, SET_CLIENTES } from "./types";
+
 export const INCREMENT = 'INCREMENT';
 export const DECREMENT = 'DECREMENT';
 
@@ -18,3 +20,9 @@ export type TipoDesejadoAction = {
     payload: string;
 };
 
+
+
+export const setClientes = (clientes: Cliente) => ({
+  type: SET_CLIENTES,
+  payload: clientes,
+});

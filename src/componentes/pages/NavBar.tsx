@@ -4,8 +4,6 @@ import '../visual/navbarEstilo.css';
 import { FaFacebook, FaInstagram, FaTiktok } from 'react-icons/fa';
 import { LuHome, LuBookOpenCheck, LuStore, LuUsers2 } from "react-icons/lu";
 
-
-
 const Navbar: React.FC = () => {
   const mediaSocialAtributos = [20, 'fff'];
   const visualIcone = { margin: '5px' };

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './componentes/pages/NavBar';
 import Home from './componentes/pages/Home';
 import CardapioPrincipal from './componentes/pages/Cardapio';
+import CarrinhoComprasLista from './componentes/pages/CarrinhoComprars';
 
 const App: React.FC = () => {
   return (
@@ -19,6 +20,7 @@ const App: React.FC = () => {
           element={<CardapioPrincipal />}
         />
       </Routes>
+      <CarrinhoComprasLista />
     </Router>
   );
 };

@@ -1,5 +1,5 @@
 .galeria-produtos {
-  margin-top: -70px;
+  margin-top: -169px;
   background-color: aliceblue;
   display: flex;
   flex-wrap: wrap;
@@ -28,8 +28,8 @@
   width: 150px;
   height: 200px;
   position: relative;
-  top: -10px;
-  left: 8px;
+  top: -7px;
+  left: 6px;
   border-top-left-radius: 5px;
 }
 .galeria-produtos .produtosCatalogo div h5 {

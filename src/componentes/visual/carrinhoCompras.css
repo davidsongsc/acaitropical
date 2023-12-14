@@ -1,0 +1,98 @@
+.carrinho-pedidos-container .carrinho {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+  background-color: var(--page-color-principal-contraste-cardapio-li);
+  padding: 15px;
+  border-radius: 50%;
+  color: var(--texto-color-principal);
+  box-shadow: 1px 1px 2px black;
+  font-size: 25px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  z-index: 90;
+}
+
+.carrinho-pedidos-container .painel-carrinho {
+  width: 350px;
+  border: var(--page-color-principal-bg-01) 5px groove;
+  position: fixed;
+  bottom: 0;
+  top: 0;
+  right: 0;
+  background-color: var(--texto-color-principal);
+  z-index: 999;
+  transition: 1.4s;
+}
+
+.carrinho-pedidos-container .painel-carrinho ul {
+  position: relative;
+  width: 100%;
+  left: -40px;
+  border-collapse: collapse;
+  list-style: none;
+}
+
+.carrinho-pedidos-container .painel-carrinho li {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.carrinho-pedidos-container .painel-carrinho li:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.carrinho-pedidos-container .painel-carrinho li:hover {
+  background-color: #f0f0f0;
+}
+
+
+.carrinho-pedidos-container .painel-carrinho table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.carrinho-pedidos-container .painel-carrinho th, 
+.carrinho-pedidos-container .painel-carrinho td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+.carrinho-pedidos-container .painel-carrinho td img{
+  width: 50px;
+}
+.carrinho-pedidos-container .painel-carrinho th {
+  background-color: #f2f2f2;
+}
+
+.carrinho-pedidos-container .painel-carrinho tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.carrinho-pedidos-container .painel-carrinho tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.carrinho-pedidos-container .carrinho-ativo-sqn{
+  right: -454px;
+  transition: .9s;
+  animation-delay: .3s;
+}
+
+.carrinho-pedidos-container .botao-fechar-carrinho{
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+}
+.carrinho-pedidos-container button{
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  color: #ddd;
+  text-shadow: 1px 1px black;
+  font-size: 30px;
+  background-color: var(--page-color-principal-bg-03);
+}

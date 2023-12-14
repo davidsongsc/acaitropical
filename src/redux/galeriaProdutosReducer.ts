@@ -1,13 +1,7 @@
-import { Produto, TipoProduto } from "./types";
+import { Produto, TipoProduto, listaTodosProdutos } from "./types";
 
 
-interface listaTodosProdutos {
-    todosProdutos: Produto[]
-}
-
-
-
-const tipoProdutosTeste: TipoProduto[] = [
+export const tipoProdutosTeste: TipoProduto[] = [
     {
         id: 0,
         nome: 'Açai'
@@ -27,7 +21,7 @@ const tipoProdutosTeste: TipoProduto[] = [
     },
 ]
 
-const dadosProdutosTeste: Produto[] = [
+export const dadosProdutosTeste: Produto[] = [
     {
         id: 0,
         nome: 'Açai B. 300ml',
@@ -334,7 +328,7 @@ const dadosProdutosTeste: Produto[] = [
 ]
 
 
-const initialState: listaTodosProdutos = {
+export const initialState: listaTodosProdutos = {
     todosProdutos: dadosProdutosTeste,
 };
 

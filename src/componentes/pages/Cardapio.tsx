@@ -18,7 +18,6 @@ const CardapioPrincipal: React.FC = () => {
     const dispatch = useDispatch();
 
     const handleMudarTipoDesejado = (novoTipo: string) => {
-        // Dispatch da ação para definir o tipo desejado
         dispatch(setTipoDesejado(novoTipo));
     };
     return (

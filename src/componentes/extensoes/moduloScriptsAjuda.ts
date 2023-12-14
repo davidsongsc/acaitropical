@@ -10,3 +10,10 @@ export const retornarValorString = (valor: number) => {
     }
 
 }
+
+export const retornaPrimeiroUltimoNome = (valor: string) => {
+    let novoValor = valor.toLocaleString().split(' ')
+    return `${novoValor[0]} ${novoValor[novoValor.length -1]}`;
+
+}
+

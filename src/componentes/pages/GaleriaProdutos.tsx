@@ -31,6 +31,7 @@ const GaleriaDeProdutos: React.FC = () => {
                     <div>
                         <h5>{produto.nome}</h5>
                         <p>
+                            <strong className='ValorRealMoeda'>R$</strong>
                             <strong>
                                 {retornarValorString(produto.valor)[0]}
                                 {retornarValorString(produto.valor)[1]}
