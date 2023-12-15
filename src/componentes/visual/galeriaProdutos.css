@@ -52,14 +52,14 @@
   top: -87px;
   left: -10px;
 }
-.galeria-produtos .produtosCatalogo div input{
-    width: 25px;
-    text-align: center;
-    height: 20px;
-    margin: 0 1px;
+.galeria-produtos .produtosCatalogo div input {
+  width: 25px;
+  text-align: center;
+  height: 20px;
+  margin: 0 1px;
 }
 .galeria-produtos .produtosCatalogo div p strong {
-    letter-spacing: 6px;
+  letter-spacing: 6px;
 }
 .galeria-produtos .produtosCatalogo div p:last-child {
   height: 118.5px;
@@ -68,14 +68,22 @@
   overflow-y: auto;
 }
 
-.galeria-produtos .produtosCatalogo div p strong:last-child{
-    color: rgba(0, 0, 0, 0.531);
+.galeria-produtos .produtosCatalogo div p strong:last-child {
+  color: rgba(0, 0, 0, 0.531);
 }
-.galeria-produtos .produtosCatalogo .butoes{
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    position: relative;
-    top: -16px;
-    left: 10px;
+.galeria-produtos .produtosCatalogo .butoes {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+  top: -16px;
+  left: 10px;
+}
+.galeria-produtos .produtosCatalogo .butoes button {
+  border-radius: 5px;
+  box-shadow: 1px 1px black, -1px -1px black;
+  background-color: #fff;
+  width: 25px;
+  height: 25px;
+  color: black;
 }

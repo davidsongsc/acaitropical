@@ -38,7 +38,7 @@ header .tituli-principal-container div img {
 header .tituli-principal-container h1 {
   position: absolute;
   background-color: var(--page-color-principal-bg-01);
-  box-shadow: var(--page-itens-box-shadow-valores-01);
+  /*box-shadow: var(--page-itens-box-shadow-valores-01);*/
   border-radius: var(--page-itens-nav-border-radios);
   color: #ebfce0;
   padding: 10px 25px;
@@ -91,7 +91,7 @@ header li {
 header li:hover,
 header li:active {
   background-color: var(--page-color-principal-bg-03);
-  text-decoration: underline 3px var(--page-color-principal-contraste);
+  text-decoration: underline 1.5px var(--page-color-principal-contraste);
   transition: 0.9s;
 }
 

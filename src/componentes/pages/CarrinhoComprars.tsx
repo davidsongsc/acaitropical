@@ -16,7 +16,9 @@ const CarrinhoComprasLista: React.FC = () => {
             </div>
             <div className={`painel-carrinho ${showCarrinhoCompras ? 'carrinho-ativo' : 'carrinho-ativo-sqn'}`} >
 
-                <FiShoppingBag />
+
+                <h3>
+                    <FiShoppingBag size={25} /> Conferência</h3>
                 <ClienteTable />
                 <button className='botao-fechar-carrinho' onClick={handleCarrinhoClick} style={{ display: showCarrinhoCompras ? 'block' : 'none' }}>X</button>
             </div>
