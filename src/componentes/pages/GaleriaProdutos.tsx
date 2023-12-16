@@ -50,27 +50,30 @@ const GaleriaDeProdutos: React.FC = () => {
             dispatch(removerProdutoCarrinho(1, produtoId));
         }
     };
-
     return (
         <div className='galeria-produtos'>
             {produtosFiltrados.map((produto) => (
                 <div key={produto.id} className='produtosCatalogo'>
-                    <div>
-                        <img src={produto.img} alt={produto.descricao} />
-                        <div className='butoes'>
-                            <button onClick={() => handleRemoverProduto(produto?.id)} disabled={getQuantidadeNoCarrinho(produto?.id) === 0}>
-                                <LuBadgeMinus size={tamanhoIcone} style={{ position: 'relative', left: '-5.5px' }} />
-                            </button>
-                            <input type='text' value={getQuantidadeNoCarrinho(produto?.id)} readOnly />
-                            <button onClick={() => handleAdicionarProduto(produto)}>
-                                <LuBadgePlus size={tamanhoIcone} style={{ position: 'relative', left: '-5.5px' }} />
-                            </button>
+                    <div className='container-img-qtd'>
+                        <button onClick={() => handleRemoverProduto(produto?.id)} className={getQuantidadeNoCarrinho(produto?.id) === 0 ? 'botaoMenosL' : 'botaoMenosLA'} disabled={getQuantidadeNoCarrinho(produto?.id) === 0}>
+                            <LuBadgeMinus size={tamanhoIcone} style={{ position: 'relative', left: '0px' }} />
+                        </button>
+                        <div className='bgImgProdutoNeutro'>
+                            <img className={getQuantidadeNoCarrinho(produto?.id) === 0 ? 'imgSelecionadoQtd' : ''} src={produto.img} alt={produto.descricao} />
                         </div>
+                        <input type='text' className={getQuantidadeNoCarrinho(produto?.id) === 0 ? 'inputQtdProduto' : 'inputQtdProdutoLA'} value={getQuantidadeNoCarrinho(produto?.id)} readOnly />
+                        <button onClick={() => handleAdicionarProduto(produto)} className={getQuantidadeNoCarrinho(produto?.id) === 0 ? 'botaoMenosR' : 'botaoMenosRA'} >
+                            <LuBadgePlus size={tamanhoIcone} style={{ position: 'relative', left: '0px' }} />
+                        </button>
+
                     </div>
-                    <div>
+                    <div className='bgNomeValoresDescricao'>
                         <h5>{produto.nome}</h5>
-                        <p>
-                            <strong className='ValorRealMoeda'>R$</strong>
+                        <p className='valor-produto-catalogo'>
+                            {(getQuantidadeNoCarrinho(produto?.id) * produto.valor) === 0 ?
+                                <strong className='ValorRealMoeda'>R$</strong> :
+                                <strong className='ValorRealMoeda'>{getQuantidadeNoCarrinho(produto?.id)}X</strong>}
+
                             <strong>
                                 {retornarValorString(produto.valor)[0]}
                                 {retornarValorString(produto.valor)[1]}
@@ -80,8 +83,12 @@ const GaleriaDeProdutos: React.FC = () => {
                                 {retornarValorString(produto.valor)[3]}
                                 {retornarValorString(produto.valor)[4]}
                             </strong>
+                            {getQuantidadeNoCarrinho(produto?.id) < 2 ?
+                                '' :
+                                <strong className='ValorRealMoeda' style={{color: '#cc7722', fontSize: '16px', letterSpacing: '3px'}}><br /><br />{(getQuantidadeNoCarrinho(produto?.id) * produto.valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong>}
+
                         </p>
-                        <p>{produto.descricao}</p>
+                        <p className='bgDescricao'>{produto.descricao}</p>
                     </div>
                 </div>
             ))}

@@ -22,10 +22,9 @@ const CardapioPrincipal: React.FC = () => {
     };
     return (
         <div className='cardapio-container'>
-            <h2>Cardápio</h2>
             <ul>
                 {listaItensCardapio.map((item, index) => (
-                    <li key={index} onClick={() => handleMudarTipoDesejado(item[0])} className={item[0] === tipoSelecionado ? 'item-selecionado-grupos' : ''} style={{ backgroundImage: `url(${item[1]})` }}>
+                    <li key={index} onClick={() => handleMudarTipoDesejado(item[0])} className={item[0] === tipoSelecionado ? 'item-selecionado-grupos' : 'item-selecionado-grupos-sqn'} style={{ backgroundImage: `url(${item[1]})`}}>
                         <h3 >
                             {item[0]}
                         </h3>
@@ -33,7 +32,12 @@ const CardapioPrincipal: React.FC = () => {
                     </li>
                 ))}
             </ul>
-            <GaleriaDeProdutos />
+            <div className='conteudo-cardapio'>
+                <h4>Cardápio de {tipoSelecionado}</h4>
+                <GaleriaDeProdutos />
+
+            </div>
+
         </div>
     );
 };

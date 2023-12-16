@@ -1,109 +1,81 @@
-h1 {
-  font-family: var(--font-principal);
-}
-header {
-  background-color: var(--page-color-principal-contraste);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
+.geral-container-pagina h1 {
+  font-size: 56px;
+  font-family: "Rubik Doodle Triangles";
+  letter-spacing: 8px;
+  text-align: center;
+  font-weight: 100;
+  color: black;
+  background-color: #75d41d3c;
   padding: 10px;
-  background-image: url("https://img.freepik.com/fotos-premium/paisagem-de-praia-com-coqueiro_114889-20.jpg");
-  background-size: cover;
-  filter: contrast(1.5);
-}
-header .medias-sociais-container {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  box-shadow: 1px 1px 3px #414141, -1px -1px 3px #414141;
-  border-radius: 5px;
-  display: flex;
-  color: var(--texto-color-principal);
-}
-header .medias-sociais-container h1 {
-  font-size: 10px;
-  padding: 3px;
-}
-header .tituli-principal-container div {
-  display: flex;
-  align-items: center;
-}
-
-header .tituli-principal-container div img {
+  margin-top: 95px;
+  border-radius: 10px;
   position: relative;
   z-index: 999;
+  box-shadow: 1px 1px;
 }
 
-header .tituli-principal-container h1 {
-  position: absolute;
-  background-color: var(--page-color-principal-bg-01);
-  /*box-shadow: var(--page-itens-box-shadow-valores-01);*/
-  border-radius: var(--page-itens-nav-border-radios);
-  color: #ebfce0;
-  padding: 10px 25px;
-  text-align: right;
-  transition: 0.9s;
-  text-shadow: 1px 1px black;
-  left: 5px;
-  right: 5px;
-}
-
-header .tituli-principal-container h1:hover {
-  box-shadow: var(--page-itens-box-shadow-valores-01-hover);
-  text-shadow: 1px 1px black, -1px -1px var(--page-color-principal-bg-02);
-  transition: 0.9s;
-}
-
-header .tituli-principal-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-header nav {
-  position: absolute;
-  background-color: var(--page-color-principal-bg-02);
-  padding: 2x 0;
-  left: 0;
-  right: 0;
-  box-shadow: var(--page-itens-box-shadow-valores-02);
-  top: 170px;
-}
-
-header ul {
-  list-style: none;
-  display: flex;
-  justify-content: space-around;
-  padding: 0;
+.tituli-principal-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  background-color: white;
+  background-image: url("https://www.riodejaneiro.com/media/uploads/riodejaneiro.com/2016/01/Rio%20de%20Janeiro.jpg");
+  background-size: cover;
+  box-shadow: 1px 1px;
 }
-
-header li {
-  margin: 0;
-  padding: 5px;
-  border-radius: 8px;
-  transition: 0.9s;
-  text-decoration: underline 0px var(--page-color-principal-bg-02);
-}
-
-header li:hover,
-header li:active {
-  background-color: var(--page-color-principal-bg-03);
-  text-decoration: underline 1.5px var(--page-color-principal-contraste);
-  transition: 0.9s;
-}
-
-header li a {
-  text-decoration: none;
-  color: white;
-  font-weight: bold;
-  width: 87px;
+.tituli-principal-container div {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.medias-sociais-container {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background-color: blueviolet;
+  box-shadow: 1px 1px;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
+  align-items: center;
+  font-size: 10px;
+}
+nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: left;
+  overflow: auto;
+}
+nav ul a {
+  text-decoration: none;
+  font-family: "Rubik Maps";
+  color: black;
+  letter-spacing: 8px;
+
+}
+nav ul li svg {
+  position: relative;
+  color: #fff;
+  padding: 25px;
+  border-radius: 25px;
+  background-color: blueviolet;
+}
+nav ul li {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 30px;
+  margin: 10px;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  background-color: var(--texto-color-principal);
+  border-radius: 8px;
+  box-shadow: 1px 1px;
 }
 
-header a:hover {
-  color: #ffcc00;
+nav ul li strong {
+  font-size: large;
 }

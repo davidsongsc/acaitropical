@@ -1,20 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Serif:ital,opsz,wght@0,8..144,100;0,8..144,200;0,8..144,300;0,8..144,400;0,8..144,500;0,8..144,600;0,8..144,700;0,8..144,800;0,8..144,900;1,8..144,100;1,8..144,200;1,8..144,300;1,8..144,400;1,8..144,500;1,8..144,600;1,8..144,700;1,8..144,800;1,8..144,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik+Bubbles&family=Rubik+Doodle+Shadow&family=Rubik+Doodle+Triangles&family=Rubik+Maps&display=swap');
 
 :root {
-    --font-principal: "Roboto", sans-serif;
-    --page-color-principal-bg-01: #a07fe100;
-    --page-color-principal-bg-02: #4c008286;
-    --page-color-principal-bg-03: #9370db;
-    --page-itens-nav-border-radios: 10px;
-    --page-itens-box-shadow-valores-01: 1px 1px 3px #9400d3;
-    --page-itens-box-shadow-valores-02: 1px 1px 1px #9400d3;
-    --page-itens-box-shadow-valores-03: 3px 3px 4px #000000, -3px -1px 4px #000000;
-    --page-itens-box-shadow-valores-01-hover: 1px 1px 1px #00ff00;
-    --page-color-principal-contraste: #b4ff7d;
-    --page-color-principal-contraste-cardapio-li: #191970;
-    --page-color-principal-contraste-cardapio-li-hover: #bebebe;
-    --texto-color-principal: #fff;
-    --texto-color-principal-hover: #82001b;
-    --time-transition-padrao: .8s;
-  }
-  
+  --font-principal: "Roboto", sans-serif;
+  --page-color-principal-bg-01: #8041ff;
+  --page-color-principal-bg-02: #a0a0a0;
+  --page-color-principal-bg-03: #9370db;
+  --page-itens-nav-border-radios: 10px;
+  --page-itens-box-shadow-valores-01: 1px 1px 3px #9400d3;
+  --page-itens-box-shadow-valores-02: 1px 1px 1px #9400d3;
+  --page-itens-box-shadow-valores-03: 3px 3px 4px #000000, -3px -1px 4px #000000;
+  --page-itens-box-shadow-valores-01-hover: 1px 1px 1px #00ff00;
+  --page-color-principal-contraste: #b4ff7d;
+  --page-color-principal-contraste-cardapio-li: #191970;
+  --page-color-principal-contraste-cardapio-li-hover: #bebebe;
+  --texto-color-principal: #fff;
+  --texto-color-principal-hover: #82001b;
+  --time-transition-padrao: 0.8s;
+}
+
+.geral-container-pagina {
+  background-color: var(--page-color-principal-bg-01);
+}
