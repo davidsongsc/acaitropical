@@ -4,77 +4,91 @@
   flex-wrap: wrap;
   justify-content: center;
   align-content: flex-start;
+  
 }
 .galeria-produtos .produtosCatalogo {
-  width: 277px;
+  width: 293px;
   background-color: #8f8fbe;
   border: #707041 groove 1px;
+  border-top-left-radius: 0px;
   box-shadow: 1px 1px;
-  padding: 20px;
+  padding: 5px;
   border-radius: 25px;
-  margin: -30px 0;
-  transform: scale(0.8);
+  margin: -85px -39px;
+  transform: scale(0.7);
 }
 .galeria-produtos .bgNomeValoresDescricao {
-  margin-top: -30px;
+  margin-top: -20px;
 }
+
 .galeria-produtos .produtosCatalogo .bgImgProdutoNeutro img {
-  width: 140px;
-  height: 190px;
-  border-top-left-radius: 10px;
-  box-shadow: 1px 1px, -5px -3px;
+  width: 250px;
+  height: 280px;
+  border-top-left-radius: 25px;
   position: relative;
   z-index: 999;
-  left: 10px;
+  top: 12px;
+  left: 4px;
   transition: 0.9s;
 }
 .galeria-produtos .produtosCatalogo .bgImgProdutoNeutro .imgSelecionadoQtd {
-  width: 230px;
+  width: 250px;
   height: 280px;
-  box-shadow: 0px 0px, 1px 1px 6px;
 }
 .galeria-produtos .produtosCatalogo .bgImgProdutoNeutro {
-  background-color: #878787;
   position: relative;
   border-top-left-radius: 35px;
-  z-index: 999;
+  z-index: 109;
   border-radius: 6px;
 }
 .container-img-qtd {
   display: flex;
   justify-content: space-around;
   width: 80px;
-  margin: -15px 0;
+  margin: -14px 0;
+  position: relative;
 }
 .container-img-qtd input {
   width: 34px;
-  height: 75px;
+  height: 70px;
   position: relative;
-  border-radius: 0px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
   background-color: #fff;
-  font-size: 30px;
+  font-size: 27px;
   text-align: center;
+  font-family: 'Courier New', Courier, monospace;
   transition: 0.9s;
+  top: 17px;
+}
+.inputopc{
+  opacity: 0;
 }
 .container-img-qtd button {
   box-shadow: 1px 1px;
 }
 .botaoMenosL {
   position: relative;
-  left: 55px;
+  left: 255px;
+  top: 118px;
+  height: 75px;
   transition: 0.9s;
-  opacity: 1;
+  opacity: 0;
   background-color: #accd79;
+  z-index: 10;
 }
 
 .botaoMenosLA {
   position: relative;
-  left: 4px;
+  left: 289px;
   transition: 0.9s;
   background-color: #00bcd4;
-  border-top-left-radius: 25px;
-  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  border-top-right-radius: 25px;
   height: 75px;
+  z-index: 10;
+  top: 118px;
+  opacity: 1;
 }
 
 .inputQtdProduto {
@@ -88,9 +102,10 @@
 
 .botaoMenosR {
   position: relative;
-  left: -40px;
-  height: 180px;
+  left: -42px;
+  height: 278px;
   transition: 0.9s;
+  top: 12px;
   opacity: 1;
   background-color: #ffd700;
   border-top-right-radius: 20px;
@@ -99,10 +114,12 @@
 
 .botaoMenosRA {
   position: relative;
-  left: 0px;
+  left: -38px;
   transition: 0.9s;
-  border-top-right-radius: 25px;
   border-bottom-right-radius: 25px;
+  border-top-right-radius: 25px;
+  z-index: 100;
+  top: 210px;
   background-color: #ffeb3b;
   height: 75px;
 }
@@ -111,7 +128,7 @@
   font-size: x-large;
   text-align: center;
   color: #fff;
-  text-decoration:  #ff9800;
+  text-decoration: #ff9800;
   text-shadow: 0.5px 0.5px 0.5px #ff9800;
   letter-spacing: 20px;
   background-color: #140d1f;
@@ -126,29 +143,17 @@
   font-size: large;
   font-weight: 600;
   font-family: "Roboto Serif";
-  transition: .9s;
+  transition: 0.9s;
   letter-spacing: 1px;
   line-height: 35px;
   overflow-y: auto;
   margin-top: -25px;
 }
 @keyframes movimentoGradiente {
-    0% {
-        background-image: radial-gradient(
-            circle at center,
-            #020,
-            #030,
-            #040,
-            #050
-          );
-    }
-    100% {
-        background-image: radial-gradient(
-            circle at center,
-            #060,
-            #070,
-            #080,
-            #090
-          );
-    }
+  0% {
+    background-image: radial-gradient(circle at center, #020, #030, #040, #050);
   }
+  100% {
+    background-image: radial-gradient(circle at center, #060, #070, #080, #090);
+  }
+}

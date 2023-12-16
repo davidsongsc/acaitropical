@@ -61,7 +61,7 @@ const GaleriaDeProdutos: React.FC = () => {
                         <div className='bgImgProdutoNeutro'>
                             <img className={getQuantidadeNoCarrinho(produto?.id) === 0 ? 'imgSelecionadoQtd' : ''} src={produto.img} alt={produto.descricao} />
                         </div>
-                        <input type='text' className={getQuantidadeNoCarrinho(produto?.id) === 0 ? 'inputQtdProduto' : 'inputQtdProdutoLA'} value={getQuantidadeNoCarrinho(produto?.id)} readOnly />
+                        <input type='text' className={getQuantidadeNoCarrinho(produto?.id) === 0 ? 'inputQtdProduto inputopc' : 'inputQtdProdutoLA'} value={getQuantidadeNoCarrinho(produto?.id)} readOnly />
                         <button onClick={() => handleAdicionarProduto(produto)} className={getQuantidadeNoCarrinho(produto?.id) === 0 ? 'botaoMenosR' : 'botaoMenosRA'} >
                             <LuBadgePlus size={tamanhoIcone} style={{ position: 'relative', left: '0px' }} />
                         </button>
@@ -70,7 +70,7 @@ const GaleriaDeProdutos: React.FC = () => {
                     <div className='bgNomeValoresDescricao'>
                         <h5>{produto.nome}</h5>
                         <p className='valor-produto-catalogo'>
-                            {(getQuantidadeNoCarrinho(produto?.id) * produto.valor) === 0 ?
+                            {(getQuantidadeNoCarrinho(produto?.id)) < 3 ?
                                 <strong className='ValorRealMoeda'>R$</strong> :
                                 <strong className='ValorRealMoeda'>{getQuantidadeNoCarrinho(produto?.id)}X</strong>}
 
@@ -83,9 +83,9 @@ const GaleriaDeProdutos: React.FC = () => {
                                 {retornarValorString(produto.valor)[3]}
                                 {retornarValorString(produto.valor)[4]}
                             </strong>
-                            {getQuantidadeNoCarrinho(produto?.id) < 2 ?
+                            {getQuantidadeNoCarrinho(produto?.id) < 3 ?
                                 '' :
-                                <strong className='ValorRealMoeda' style={{color: '#cc7722', fontSize: '16px', letterSpacing: '3px'}}><br /><br />{(getQuantidadeNoCarrinho(produto?.id) * produto.valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong>}
+                                <strong className='ValorRealMoeda' style={{color: '#cc7722', fontSize: '16px', letterSpacing: '3px', textDecoration: 'overline #ffd700 1px'}}><br /><br />Total: {(getQuantidadeNoCarrinho(produto?.id) * produto.valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong>}
 
                         </p>
                         <p className='bgDescricao'>{produto.descricao}</p>
