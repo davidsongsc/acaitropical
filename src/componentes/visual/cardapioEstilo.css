@@ -1,6 +1,6 @@
 .cardapio-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .cardapio-container ul {
