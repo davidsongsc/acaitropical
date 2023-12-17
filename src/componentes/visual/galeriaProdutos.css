@@ -2,19 +2,18 @@
 .galeria-produtos .produtosCatalogo {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
   align-content: flex-start;
 }
 .galeria-produtos .produtosCatalogo {
-  width: 290px;
+  width: 220px;
   background-color: #8f8fbe;
   border: #707041 groove 1px;
   border-top-left-radius: 0px;
   box-shadow: 1px 1px;
   padding: 5px;
   border-radius: 25px;
-  /* margin: -45px -39px; */
-  transform: scale(0.8);
+  /* margin: -45px -39px;*/
 }
 .galeria-produtos .bgNomeValoresDescricao {
   margin-top: -20px;
@@ -24,18 +23,25 @@
 }
 
 .galeria-produtos .produtosCatalogo .bgImgProdutoNeutro img {
-  width: 250px;
-  height: 280px;
-  border-top-left-radius: 25px;
+  width: 98px;
+  height: 95px;
+  /* border-top-left-radius: 25px; */
+  /* border-top-right-radius: 25px; */
   position: relative;
   z-index: 999;
-  top: 12px;
-  left: 44px;
+  /* top: -4px; */
+  /* left: 44px; */
   transition: 0.9s;
+  border-radius: 50%;
+
+  border-bottom: transparent groove;
 }
 .galeria-produtos .produtosCatalogo .bgImgProdutoNeutro .imgSelecionadoQtd {
-  width: 250px;
-  height: 280px;
+  width: 198px;
+  height: 225px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border-bottom: red groove;
 }
 .galeria-produtos .produtosCatalogo .bgImgProdutoNeutro {
   border-top-left-radius: 35px;
@@ -45,89 +51,90 @@
 .container-img-qtd {
   display: flex;
   justify-content: space-around;
-  width: 80px;
-  margin: -14px 0;
+  width: 180px;
   position: relative;
 }
 .container-img-qtd input {
-  width: 28px;
-  height: 48px;
+  width: 40px;
   padding: 5px;
   position: relative;
   border-top-right-radius: 25px;
   /* border-bottom-right-radius: 25px; */
   background-color: #fff;
   font-weight: 900;
-  font-size: 30px;
+  font-size: 27px;
   text-align: center;
   font-family: "Courier New", Courier, monospace;
   transition: 0.9s;
-  left: 42px;
-  top: 12px;
 }
 .inputopc {
   opacity: 0;
 }
 .bgImgProduto {
   display: flex;
-  align-items: flex-start;
+  align-items: flex-end;
+  justify-content: flex-start;
   flex-direction: row;
-  justify-content: center;
-}
-.botaoMenosL {
   position: relative;
 
-  top: 118px;
-  height: 75px;
+}
+.bgImgProduto input{
+  width: 50px;
+  height: 39px;
+  text-align: center;
+}
+
+.botaoMenosL {
+  position: relative;
+  height: 45px;
+  width: 45px;
   transition: 0.9s;
   opacity: 0;
   background-color: #accd79;
-  z-index: 10;
+  z-index: 999;
 }
 
 .botaoMenosLA {
   position: relative;
-
+  height: 45px;
+  width: 45px;
   transition: 0.9s;
   background-color: #00bcd4;
-  height: 101px;
   z-index: 10;
-  top: 72px;
   opacity: 1;
+  transition: 0.9s;
+  z-index: 999;
+
 }
 
 .inputQtdProduto {
   left: -55px;
   transition: 0.9s;
+
 }
 
-.inputQtdProdutoLA {
-  left: 1px;
-  transition: 0.9s;
-}
+
 
 .botaoMenosR {
   position: relative;
-  left: -45px;
-  height: 281px;
   transition: 0.9s;
-  top: 12px;
-  opacity: 1;
+  height: 45px;
+  width: 45px;
+  opacity: 0.5;
   background-color: #ffd700;
-  border-top-right-radius: 20px;
   /* border-bottom-right-radius: 20px;*/
+  
 }
 
 .botaoMenosRA {
   position: relative;
-  left: -43px;
   transition: 0.9s;
+  height: 45px;
+  width: 45px;
   /* border-bottom-right-radius: 25px; */
   /* border-top-right-radius: 25px; */
-  z-index: 100;
-  top: 172px;
+  z-index: 999;
   background-color: #ffeb3b;
-  height: 120px;
 }
 
 .valor-produto-catalogo {

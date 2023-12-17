@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './componentes/pages/NavBar';
-import Home from './componentes/pages/Home';
+//import Home from './componentes/pages/Home';
 import CardapioPrincipal from './componentes/pages/Cardapio';
 import CarrinhoComprasLista from './componentes/pages/CarrinhoComprars';
 import './componentes/visual/baseFonts.css'
@@ -14,7 +14,7 @@ const App: React.FC = () => {
       <Routes>
           <Route
             path="/cardapio"
-            element={<Home />}
+            element={<CardapioPrincipal />}
           />
           <Route
             path="/"

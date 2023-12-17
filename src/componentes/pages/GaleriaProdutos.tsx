@@ -7,7 +7,7 @@ import { LuBadgeMinus, LuBadgePlus } from 'react-icons/lu';
 import { Cliente, Produto } from '../../redux/types';
 import { adicionarProdutoCarrinho, removerProdutoCarrinho } from '../../redux/clienteReducer';
 
-let tamanhoIcone = 26;
+let tamanhoIcone = 16;
 
 const GaleriaDeProdutos: React.FC = () => {
     const dispatch = useDispatch();
@@ -26,6 +26,7 @@ const GaleriaDeProdutos: React.FC = () => {
     };
 
     const handleAdicionarProduto = (produto: Produto) => {
+        console.log(produto);
         // Verificar se o cliente existe
         if (clienteZero) {
             const carrinhoDoClienteZero = clienteZero.pedido?.carrinho?.[carrinhoID]; // Supondo que o cliente Zero só tem um carrinho
@@ -57,19 +58,20 @@ const GaleriaDeProdutos: React.FC = () => {
                     <div className='container-img-qtd'>
 
                         <div className='bgImgProdutoNeutro'>
-                            <img className={getQuantidadeNoCarrinho(produto?.id) === 0 ? 'imgSelecionadoQtd' : ''} src={produto.img} alt={produto.descricao} />
-                        </div>
-                        <div className='bgImgProduto'>
-                            <input type='text' className={getQuantidadeNoCarrinho(produto?.id) === 0 ? 'inputQtdProduto inputopc' : 'inputQtdProdutoLA'} value={getQuantidadeNoCarrinho(produto?.id)} readOnly />
-                            <button onClick={() => handleRemoverProduto(produto?.id)} className={getQuantidadeNoCarrinho(produto?.id) === 0 ? 'botaoMenosL' : 'botaoMenosLA'} disabled={getQuantidadeNoCarrinho(produto?.id) === 0}>
-                                <LuBadgeMinus size={tamanhoIcone} style={{ position: 'relative', left: '0px' }} />
-                            </button>
-                            <button onClick={() => handleAdicionarProduto(produto)} className={getQuantidadeNoCarrinho(produto?.id) === 0 ? 'botaoMenosR' : 'botaoMenosRA'} >
-                                <LuBadgePlus size={tamanhoIcone} style={{ position: 'relative', left: '0px' }} />
-                            </button>
+                            <img onClick={() => handleAdicionarProduto(produto)} className={getQuantidadeNoCarrinho(produto?.id) === 0 ? 'imgSelecionadoQtd' : ''} src={produto.img} alt={produto.descricao} />
                         </div>
 
 
+
+                    </div>
+                    <div className='bgImgProduto'>
+                        <input type='text' className={getQuantidadeNoCarrinho(produto?.id) === 0 ? 'inputQtdProduto inputopc' : 'inputQtdProdutoLA'} value={getQuantidadeNoCarrinho(produto?.id)} readOnly />
+                        <button onClick={() => handleRemoverProduto(produto?.id)} className={getQuantidadeNoCarrinho(produto?.id) === 0 ? 'botaoMenosL' : 'botaoMenosLA'} disabled={getQuantidadeNoCarrinho(produto?.id) === 0}>
+                            <LuBadgeMinus size={tamanhoIcone} style={{ position: 'relative', left: '0px' }} />
+                        </button>
+                        <button onClick={() => handleAdicionarProduto(produto)} className={getQuantidadeNoCarrinho(produto?.id) === 0 ? 'botaoMenosR' : 'botaoMenosRA'} >
+                            <LuBadgePlus size={tamanhoIcone} style={{ position: 'relative', left: '0px' }} />
+                        </button>
                     </div>
                     <div className='bgNomeValoresDescricao'>
                         <h5>{produto.nome}</h5>

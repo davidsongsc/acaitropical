@@ -2,7 +2,7 @@
 
 :root {
   --font-principal: "Roboto", sans-serif;
-  --page-color-principal-bg-01: #eeeeee;
+  --page-color-principal-bg-01: #8f8fbe;
   --page-color-principal-bg-02: #a0a0a0;
   --page-color-principal-bg-03: #9370db;
   --page-itens-nav-border-radios: 10px;
@@ -22,4 +22,5 @@ html{
 }
 .geral-container-pagina {
   background-color: var(--page-color-principal-bg-01);
+
 }
