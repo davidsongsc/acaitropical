@@ -13,11 +13,11 @@ const App: React.FC = () => {
 
       <Routes>
           <Route
-            path="/"
+            path="/cardapio"
             element={<Home />}
           />
           <Route
-            path="/cardapio"
+            path="/"
             element={<CardapioPrincipal />}
           />
       </Routes>

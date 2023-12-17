@@ -10,11 +10,11 @@ const Navbar: React.FC = () => {
   const tamanhoIcone = 40;
   return (
     <div className='geral-container-pagina'>
-
+      {/* 
       <div className='tituli-principal-container'>
         <div>
           <h1> Carioca Tropical</h1>
-          
+
         </div>
 
 
@@ -29,8 +29,10 @@ const Navbar: React.FC = () => {
         <FaTiktok size={mediaSocialAtributos[0]} color={mediaSocialAtributos[1] as string} style={visualIcone} />
 
       </div>
-
+      */}
+      {/* 
       <nav>
+    
         <ul>
           <Link to="/">
             <li style={{backgroundImage: 'url()'}}>
@@ -65,7 +67,9 @@ const Navbar: React.FC = () => {
             </li>
           </Link>
         </ul>
+       
       </nav>
+       */}
     </div>
   );
 };

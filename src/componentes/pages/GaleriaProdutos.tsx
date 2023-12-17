@@ -7,7 +7,7 @@ import { LuBadgeMinus, LuBadgePlus } from 'react-icons/lu';
 import { Cliente, Produto } from '../../redux/types';
 import { adicionarProdutoCarrinho, removerProdutoCarrinho } from '../../redux/clienteReducer';
 
-let tamanhoIcone = 20;
+let tamanhoIcone = 26;
 
 const GaleriaDeProdutos: React.FC = () => {
     const dispatch = useDispatch();
@@ -55,16 +55,20 @@ const GaleriaDeProdutos: React.FC = () => {
             {produtosFiltrados.map((produto) => (
                 <div key={produto.id} className='produtosCatalogo'>
                     <div className='container-img-qtd'>
-                        <button onClick={() => handleRemoverProduto(produto?.id)} className={getQuantidadeNoCarrinho(produto?.id) === 0 ? 'botaoMenosL' : 'botaoMenosLA'} disabled={getQuantidadeNoCarrinho(produto?.id) === 0}>
-                            <LuBadgeMinus size={tamanhoIcone} style={{ position: 'relative', left: '0px' }} />
-                        </button>
+
                         <div className='bgImgProdutoNeutro'>
                             <img className={getQuantidadeNoCarrinho(produto?.id) === 0 ? 'imgSelecionadoQtd' : ''} src={produto.img} alt={produto.descricao} />
                         </div>
-                        <input type='text' className={getQuantidadeNoCarrinho(produto?.id) === 0 ? 'inputQtdProduto inputopc' : 'inputQtdProdutoLA'} value={getQuantidadeNoCarrinho(produto?.id)} readOnly />
-                        <button onClick={() => handleAdicionarProduto(produto)} className={getQuantidadeNoCarrinho(produto?.id) === 0 ? 'botaoMenosR' : 'botaoMenosRA'} >
-                            <LuBadgePlus size={tamanhoIcone} style={{ position: 'relative', left: '0px' }} />
-                        </button>
+                        <div className='bgImgProduto'>
+                            <input type='text' className={getQuantidadeNoCarrinho(produto?.id) === 0 ? 'inputQtdProduto inputopc' : 'inputQtdProdutoLA'} value={getQuantidadeNoCarrinho(produto?.id)} readOnly />
+                            <button onClick={() => handleRemoverProduto(produto?.id)} className={getQuantidadeNoCarrinho(produto?.id) === 0 ? 'botaoMenosL' : 'botaoMenosLA'} disabled={getQuantidadeNoCarrinho(produto?.id) === 0}>
+                                <LuBadgeMinus size={tamanhoIcone} style={{ position: 'relative', left: '0px' }} />
+                            </button>
+                            <button onClick={() => handleAdicionarProduto(produto)} className={getQuantidadeNoCarrinho(produto?.id) === 0 ? 'botaoMenosR' : 'botaoMenosRA'} >
+                                <LuBadgePlus size={tamanhoIcone} style={{ position: 'relative', left: '0px' }} />
+                            </button>
+                        </div>
+
 
                     </div>
                     <div className='bgNomeValoresDescricao'>
@@ -85,7 +89,7 @@ const GaleriaDeProdutos: React.FC = () => {
                             </strong>
                             {getQuantidadeNoCarrinho(produto?.id) < 3 ?
                                 '' :
-                                <strong className='ValorRealMoeda' style={{color: '#cc7722', fontSize: '16px', letterSpacing: '3px', textDecoration: 'overline #ffd700 1px'}}><br /><br />Total: {(getQuantidadeNoCarrinho(produto?.id) * produto.valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong>}
+                                <strong className='ValorRealMoeda' style={{ color: '#cc7722', fontSize: '16px', letterSpacing: '3px', textDecoration: 'overline #ffd700 1px' }}><br /><br />Total: {(getQuantidadeNoCarrinho(produto?.id) * produto.valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong>}
 
                         </p>
                         <p className='bgDescricao'>{produto.descricao}</p>

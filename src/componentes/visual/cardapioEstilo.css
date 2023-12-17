@@ -11,68 +11,65 @@
   align-items: flex-end;
   list-style: none;
   width: 20%;
- 
+  cursor: pointer;
+  top: -26px;
 }
 .cardapio-container ul li {
-  padding: 10px 25px;
+  padding: 24px 25px;
   margin: 10px 0;
   border-top-left-radius: 25px;
   border-bottom-left-radius: 25px;
-  background-color: blueviolet;
+  background-color: var(--page-color-principal-bg-01);
   color: #fff;
   box-shadow: 1px 1px black;
   width: 80px;
   background-size: cover;
   position: relative;
-
-  transition: .9s;
+  transition: 0.9s;
 }
 .cardapio-container ul li h3 {
   background-color: #878787;
   position: relative;
-  top: -29px;
+  top: -43px;
   left: -25px;
-  padding: 0 30px;
+  padding: 7px 30px;
   width: 100px;
-  border-top-left-radius: 32px;
+  border-top-left-radius: 25px;
 }
 .conteudo-cardapio {
   position: relative;
   width: 70%;
-  background-color: blueviolet;
+  background-color: var(--page-color-principal-bg-01);
   border-top-left-radius: 25px;
   box-shadow: 1px 1px;
 }
 .item-selecionado-grupos,
-.item-selecionado-grupos-sqn{
-    transition: 1.9s;
+.item-selecionado-grupos-sqn {
+  transition: 1.9s;
 }
 
 .item-selecionado-grupos {
   left: 45px;
   filter: grayscale(75%) blur(0.51px) saturate(1);
-
-
 }
-.conteudo-cardapio h4{
-    width: 100%;
-    text-align: center;
-    background-color: #878787;
-    color: #8b14f9;
-    text-shadow: 1px 1px black;
-    padding: 10px 0;
-    border-top-left-radius: 25px;
-    position: relative;
-    top: -25px;
-    box-shadow: 1px 1px black;
+.conteudo-cardapio h4 {
+  width: 100%;
+  text-align: center;
+  background-color: #878787;
+  color: #fff;
+  text-shadow: 1px 1px black;
+  padding: 10px 0;
+  letter-spacing: 2px;
+  position: relative;
+  top: -25px;
+  
 }
 
-.conteudo-cardapio h5{
-    width: 250px;
-    padding: 20px;
-    background-color: #2c2c2c;
-    color: #ffffff;
-    font-size: xx-large;
-    font-family: 'Rubik Doodle Shadow';
-    text-align: center;
+.conteudo-cardapio h5 {
+  padding: 20px;
+  background-color: #2c2c2c;
+  color: #ffffff;
+  font-size: xx-large;
+  font-family: "Rubik Doodle Shadow";
+  text-align: center;
 }
