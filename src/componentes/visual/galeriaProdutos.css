@@ -4,44 +4,40 @@
   flex-wrap: wrap;
   justify-content: space-around;
   align-content: flex-start;
+  position: relative;
+  z-index: 700;
 }
 .galeria-produtos .produtosCatalogo {
-  width: 220px;
+  width: 150px;
   background-color: #8f8fbe;
   border: #707041 groove 1px;
   border-top-left-radius: 0px;
   box-shadow: 1px 1px;
-  padding: 5px;
   border-radius: 25px;
-  /* margin: -45px -39px;*/
+  margin: 8px;
 }
 .galeria-produtos .bgNomeValoresDescricao {
-  margin-top: -20px;
   position: relative;
-  top: -13px;
-  width: 287px;
+  width: 150px;
+  top: -40px;
+  z-index: 10;
 }
 
 .galeria-produtos .produtosCatalogo .bgImgProdutoNeutro img {
-  width: 98px;
-  height: 95px;
-  /* border-top-left-radius: 25px; */
-  /* border-top-right-radius: 25px; */
+  width: 145px;
+  height: 155px;
   position: relative;
   z-index: 999;
-  /* top: -4px; */
-  /* left: 44px; */
   transition: 0.9s;
-  border-radius: 50%;
+  border-radius: 20px;
+  border-bottom: red groove;
 
-  border-bottom: transparent groove;
+  margin-top: 2px;
 }
 .galeria-produtos .produtosCatalogo .bgImgProdutoNeutro .imgSelecionadoQtd {
-  width: 198px;
-  height: 225px;
-  margin: 10px 0;
-  border-radius: 5px;
-  border-bottom: red groove;
+  width: 145px;
+  height: 155px;
+  border-bottom: transparent groove;
 }
 .galeria-produtos .produtosCatalogo .bgImgProdutoNeutro {
   border-top-left-radius: 35px;
@@ -51,7 +47,7 @@
 .container-img-qtd {
   display: flex;
   justify-content: space-around;
-  width: 180px;
+  width: 145px;
   position: relative;
 }
 .container-img-qtd input {
@@ -76,9 +72,9 @@
   justify-content: flex-start;
   flex-direction: row;
   position: relative;
-
+  z-index: 800;
 }
-.bgImgProduto input{
+.bgImgProduto input {
   width: 50px;
   height: 39px;
   text-align: center;
@@ -104,16 +100,12 @@
   opacity: 1;
   transition: 0.9s;
   z-index: 999;
-
 }
 
 .inputQtdProduto {
   left: -55px;
   transition: 0.9s;
-
 }
-
-
 
 .botaoMenosR {
   position: relative;
@@ -123,7 +115,6 @@
   opacity: 0.5;
   background-color: #ffd700;
   /* border-bottom-right-radius: 20px;*/
-  
 }
 
 .botaoMenosRA {
@@ -131,36 +122,50 @@
   transition: 0.9s;
   height: 45px;
   width: 45px;
-  /* border-bottom-right-radius: 25px; */
-  /* border-top-right-radius: 25px; */
   z-index: 999;
   background-color: #ffeb3b;
 }
 
 .valor-produto-catalogo {
   margin-top: -55px;
-  font-size: x-large;
+  font-size: small;
   text-align: center;
   color: #fff;
   text-decoration: #ff9800;
   text-shadow: 0.5px 0.5px 0.5px #ff9800;
-  letter-spacing: 20px;
+  letter-spacing: 8px;
   background-color: #140d1f;
-  padding: 10px;
+  padding: 20px 0;
 }
 
 .galeria-produtos .bgDescricao {
-  height: 200px;
+  height: 125px;
+  width: 125px;
   background-color: #22094d;
   color: #fff;
   box-shadow: 1px 1px black;
-  padding: 15px;
-  font-size: large;
+  padding: 9px;
+  font-size: small;
   font-weight: 600;
   font-family: "Roboto Serif";
   transition: 0.9s;
   letter-spacing: 1px;
-  line-height: 35px;
+  line-height: 22px;
   overflow-y: auto;
-  margin-top: -25px;
+  border-radius: 20px;
+  top: -10px;
+  position: relative;
+}
+.ingredientes-container .ingredientes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.ingredientes-container .ingredientes input{
+  display: none;
+}
+.ingredientes-container .ingredientes label{
+  padding: 0 4px;
+  text-transform: uppercase;
+  font-size: small;
 }

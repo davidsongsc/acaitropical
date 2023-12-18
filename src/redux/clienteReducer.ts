@@ -59,51 +59,60 @@ const clienteReducer = (state: ClienteState = initialState, action: any) => {
                 clientes: action.payload,
             };
 
-        case ADICIONAR_PRODUTO_CARRINHO: {
-            const { carrinhoId, produto } = action.payload;
-            console.log(action);
-            const clienteIndex = state.clientes.findIndex((cliente) =>
-                cliente.pedido && cliente.pedido.carrinho && cliente.pedido.carrinho.some((carrinho) => carrinho.id === carrinhoId)
-            );
-
-            if (clienteIndex !== -1) {
-                const newState: ClienteState = JSON.parse(JSON.stringify(state));
-
-                newState.clientes[clienteIndex].pedido.carrinho = newState.clientes[clienteIndex].pedido.carrinho.map(
-                    (carrinho: Carrinho) => {
-                        if (carrinho.id === carrinhoId) {
-                            const produtoExistente = carrinho.produtos.find(
-                                (p: [Produto, number]) => p[0].id === produto.id
-                            );
-
-                            if (produtoExistente) {
-                                produtoExistente[1] += 1;
-                            } else {
-                                carrinho.produtos.push([produto, 1]);
-                            }
-                        }
-
-                        return carrinho;
-                    }
+            case ADICIONAR_PRODUTO_CARRINHO: {
+                const { carrinhoId, produto } = action.payload;
+                console.log(action);
+                const clienteIndex = state.clientes.findIndex((cliente) =>
+                  cliente.pedido &&
+                  cliente.pedido.carrinho &&
+                  cliente.pedido.carrinho.some((carrinho) => carrinho.id === carrinhoId)
                 );
-
-                const totalCarrinho = newState.clientes[clienteIndex].pedido.carrinho.reduce((total, carrinho) => {
+              
+                const MAX_QUANTIDADE = 10;
+              
+                if (clienteIndex !== -1) {
+                  const newState: ClienteState = JSON.parse(JSON.stringify(state));
+              
+                  newState.clientes[clienteIndex].pedido.carrinho = newState.clientes[clienteIndex].pedido.carrinho.map(
+                    (carrinho: Carrinho) => {
+                      if (carrinho.id === carrinhoId) {
+                        const produtoExistente = carrinho.produtos.find(
+                          (p: [Produto, number]) => p[0].id === produto.id
+                        );
+              
+                        if (produtoExistente) {
+                          if (produtoExistente[1] < MAX_QUANTIDADE) {
+                            produtoExistente[1] += 1;
+                          } else {
+                           console.log('Quantidade máxima atingida para este item.');
+                          }
+                        } else {
+                          carrinho.produtos.push([produto, 1]);
+                        }
+                      }
+              
+                      return carrinho;
+                    }
+                  );
+              
+                  const totalCarrinho = newState.clientes[clienteIndex].pedido.carrinho.reduce((total, carrinho) => {
                     return (
-                        total +
-                        carrinho.produtos.reduce((subtotal, [produto, quantidade]) => {
-                            return subtotal + produto.valor * quantidade;
-                        }, 0)
+                      total +
+                      carrinho.produtos.reduce((subtotal, [produto, quantidade]) => {
+                        return subtotal + produto.valor * quantidade;
+                      }, 0)
                     );
-                }, 0);
-
-                return {
+                  }, 0);
+              
+                  return {
                     ...newState,
                     totalCarrinho,
-                };
-            }
-
-            return state;
-        }
+                  };
+                }
+              
+                return state;
+              }
+              
 
         case REMOVER_PRODUTO_CARRINHO:
             const { carrinhoIdToRemove, produtoIdToRemove } = action.payload;

@@ -1,10 +1,12 @@
-import { Produto, TipoProduto, listaTodosProdutos } from "./types";
+import { Composicao, Produto, TipoProduto, listaTodosProdutos } from "./types";
+
 
 
 export const tipoProdutosTeste: TipoProduto[] = [
     {
         id: 0,
-        nome: 'Açai'
+        nome: 'Açai',
+
     },
     {
         id: 1,
@@ -19,7 +21,19 @@ export const tipoProdutosTeste: TipoProduto[] = [
         id: 4,
         nome: 'Bebidas'
     },
-]
+];
+
+export const composicaoProdutos: Composicao[] = [
+    {
+        tipo: tipoProdutosTeste[0],
+        ingredientes: [
+            'granola',
+            'amendoim',
+            'aveia',
+            'ninho'
+        ]
+    }
+];
 
 export const dadosProdutosTeste: Produto[] = [
     {
@@ -33,6 +47,7 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
+        composicaoBasica: composicaoProdutos,
     },
     {
         id: 1,
@@ -45,6 +60,7 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
+        composicaoBasica: composicaoProdutos,
     },
 
     {
@@ -58,6 +74,7 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
+        composicaoBasica: composicaoProdutos,
     },
     {
         id: 3,
@@ -70,6 +87,7 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
+        composicaoBasica: composicaoProdutos,
     },
     {
         id: 4,
@@ -82,6 +100,7 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
+        composicaoBasica: composicaoProdutos,
     },
 
     {
@@ -95,6 +114,7 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
+        composicaoBasica: composicaoProdutos,
     },
     {
         id: 6,
@@ -107,6 +127,7 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
+        composicaoBasica: composicaoProdutos,
     },
     {
         id: 7,
@@ -119,6 +140,7 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
+        composicaoBasica: composicaoProdutos,
     },
 
     {
@@ -132,6 +154,7 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
+        composicaoBasica: composicaoProdutos,
     },
     {
         id: 9,
@@ -144,6 +167,7 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
+        composicaoBasica: composicaoProdutos,
     },
     {
         id: 10,
@@ -156,6 +180,7 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
+        composicaoBasica: composicaoProdutos,
     },
     {
         id: 11,
@@ -168,6 +193,7 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
+        composicaoBasica: composicaoProdutos,
     },
     {
         id: 12,
@@ -180,6 +206,7 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
+        composicaoBasica: composicaoProdutos,
     },
     {
         id: 13,
@@ -192,6 +219,7 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
+        composicaoBasica: composicaoProdutos,
     },
     {
         id: 14,
@@ -204,6 +232,7 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
+        composicaoBasica: composicaoProdutos,
     },
     {
         id: 15,
@@ -216,6 +245,7 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
+        composicaoBasica: composicaoProdutos,
     },
     {
         id: 16,
@@ -228,6 +258,7 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
+        composicaoBasica: composicaoProdutos,
     },
     {
         id: 17,
@@ -240,6 +271,7 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
+        composicaoBasica: composicaoProdutos,
     },
     {
         id: 18,
@@ -252,6 +284,7 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
+        composicaoBasica: composicaoProdutos,
     },
     {
         id: 19,
@@ -264,6 +297,7 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
+        composicaoBasica: composicaoProdutos,
     },
     {
         id: 20,
@@ -276,6 +310,7 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
+        composicaoBasica: composicaoProdutos,
     },
     {
         id: 21,
@@ -288,6 +323,7 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
+        composicaoBasica: composicaoProdutos,
     },
     {
         id: 22,
@@ -300,6 +336,7 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
+        composicaoBasica: composicaoProdutos,
     },
     {
         id: 23,
@@ -312,6 +349,7 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
+        composicaoBasica: composicaoProdutos,
     },
     {
         id: 24,
@@ -324,6 +362,7 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
+        composicaoBasica: composicaoProdutos,
     },
     {
         id: 25,
@@ -336,6 +375,7 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
+        composicaoBasica: composicaoProdutos,
     },
     {
         id: 26,
@@ -348,6 +388,7 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
+        composicaoBasica: composicaoProdutos,
     },
     {
         id: 27,
@@ -360,6 +401,7 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
+        composicaoBasica: composicaoProdutos,
     },
 ]
 

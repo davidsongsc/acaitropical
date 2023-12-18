@@ -49,10 +49,10 @@ const PedidoTable: React.FC = () => {
           <img src={produto.img} alt={produto.nome} />
         </td>
         <td colSpan={4}>{produto.nome}</td>
-        <td colSpan={1} style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-          <button onClick={() => handleRemoverProduto(carrinho.id , produto.id)}>-</button>
+        <td colSpan={1} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <button onClick={() => handleRemoverProduto(carrinho.id, produto.id)}>-</button>
           <input type="text" value={quantidade} readOnly />
-          <button onClick={() => handleAdicionarProduto(carrinho.id , produto)}>+</button>
+          <button onClick={() => handleAdicionarProduto(carrinho.id, produto)}>+</button>
         </td>
         <td colSpan={1}>{(produto.valor * quantidade).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
       </tr>
@@ -78,10 +78,10 @@ const PedidoTable: React.FC = () => {
       <table>
         <thead>
           <tr>
-            <th colSpan={1} style={{width: '25px'}}>Img</th>
-            <th colSpan={4} style={{width: '125px'}}>Produto</th>
+            <th colSpan={1} style={{ width: '25px' }}>Img</th>
+            <th colSpan={4} style={{ width: '125px' }}>Produto</th>
             <th colSpan={1}>Qtd</th>
-            <th colSpan={1} style={{width: '25px'}}>Total</th>
+            <th colSpan={1} style={{ width: '25px' }}>Total</th>
           </tr>
         </thead>
         <tbody style={{ height: '200px', overflowY: 'scroll' }}>
@@ -90,10 +90,12 @@ const PedidoTable: React.FC = () => {
         <tfoot >
           <tr>
             <td >Taxa de entrega</td>
+
             <td colSpan={4}>{taxaEntregador.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
           </tr>
           <tr>
-            <td >Total</td>
+            <td colSpan={4} >Total</td>
+
             <td colSpan={4}>{totalCarrinho.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
           </tr>
         </tfoot>

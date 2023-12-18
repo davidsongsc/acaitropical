@@ -29,7 +29,10 @@ export interface Carrinho {
     produtos: [Produto, number][];
 
 }
-
+export interface Composicao {
+    tipo: TipoProduto;
+    ingredientes: string[],
+}
 export interface Produto {
     id: number;
     nome: string;
@@ -41,6 +44,7 @@ export interface Produto {
     disponibilidade: number;
     dataHoraCriacao: string;
     idCriadorProduto: number;
+    composicaoBasica: Composicao[],
 }
 
 export interface TipoProduto {

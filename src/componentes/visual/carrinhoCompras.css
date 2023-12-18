@@ -79,7 +79,7 @@
   height: 30px;
   border-radius: 8px;
 }
-.carrinho-pedidos-container .painel-carrinho td button:active{
+.carrinho-pedidos-container .painel-carrinho td button:active {
   background-color: black;
   color: #fff;
 }
@@ -125,4 +125,15 @@
   text-shadow: 1px 1px black;
   font-size: 30px;
   background-color: var(--page-color-principal-bg-03);
+}
+.carrinho h5 {
+  position: relative;
+  top: -55px;
+  right: -10px;
+  font-size: xx-small;
+  text-align: center;
+  background-color: red;
+  height: 10px;
+  width: 11px;
+  border-radius: 50%;
 }

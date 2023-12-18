@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import '../visual/galeriaProdutos.css';
 import { RootState } from '../../redux/store';
 import { retornarValorString } from '../extensoes/moduloScriptsAjuda';
-import { LuBadgeMinus, LuBadgePlus } from 'react-icons/lu';
+import { LuBadgeMinus, LuBadgePlus, LuArrowDownRightSquare, LuGitBranchPlus, LuGitMerge, LuListChecks, LuListTodo } from 'react-icons/lu';
 import { Cliente, Produto } from '../../redux/types';
 import { adicionarProdutoCarrinho, removerProdutoCarrinho } from '../../redux/clienteReducer';
 
@@ -14,8 +14,11 @@ const GaleriaDeProdutos: React.FC = () => {
     const produtos = useSelector((state: RootState) => state.galeriaProdutos.todosProdutos);
     const tipoSelecionado = useSelector((state: RootState) => state.tipoDesejado);
     const clientes = useSelector((state: RootState) => state.cliente.clientes);
+    const [imgOdescricao, setImgODescricao] = useState(false);
     const clienteZero: Cliente | undefined = clientes.find((cliente: Cliente) => cliente.id === 0);
     const produtosFiltrados = produtos.filter((produto) => produto.tipo[0].nome === tipoSelecionado);
+    const [ingredientesSelecionados, setIngredientesSelecionados] = useState<string[]>([]);
+
     const carrinhoID = 0;
 
     const getQuantidadeNoCarrinho = (produtoId: number): number => {
@@ -24,7 +27,9 @@ const GaleriaDeProdutos: React.FC = () => {
             .find(([produto]) => produto.id === produtoId);
         return produtoNoCarrinho ? produtoNoCarrinho[1] : 0;
     };
-
+    const handleImgagemOuDescricao = () => {
+        setImgODescricao(!imgOdescricao);
+    }
     const handleAdicionarProduto = (produto: Produto) => {
         console.log(produto);
         // Verificar se o cliente existe
@@ -41,7 +46,15 @@ const GaleriaDeProdutos: React.FC = () => {
             dispatch(adicionarProdutoCarrinho(novoCarrinho.id, produto));
         }
     };
-
+    const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>, ingrediente: string) => {
+        if (event.target.checked) {
+            // Adicionar ao array se estiver marcado
+            setIngredientesSelecionados([...ingredientesSelecionados, ingrediente]);
+        } else {
+            // Remover do array se estiver desmarcado
+            setIngredientesSelecionados(ingredientesSelecionados.filter((item) => item !== ingrediente));
+        }
+    };
     const handleRemoverProduto = (produtoId: number) => {
         // Verificar se o cliente existe
         if (clienteZero) {
@@ -58,7 +71,12 @@ const GaleriaDeProdutos: React.FC = () => {
                     <div className='container-img-qtd'>
 
                         <div className='bgImgProdutoNeutro'>
-                            <img onClick={() => handleAdicionarProduto(produto)} className={getQuantidadeNoCarrinho(produto?.id) === 0 ? 'imgSelecionadoQtd' : ''} src={produto.img} alt={produto.descricao} />
+                            <img onClick={() => handleImgagemOuDescricao()}
+                                className={getQuantidadeNoCarrinho(produto?.id) === 0 ? 'imgSelecionadoQtd' : ''} src={produto.img} alt={produto.descricao}
+                                style={{ display: imgOdescricao ? 'none' : 'block' }} />
+                            <p onClick={() => handleImgagemOuDescricao()}
+                                className='bgDescricao'
+                                style={{ display: imgOdescricao ? 'block' : 'none' }}>{produto.descricao}</p>
                         </div>
 
 
@@ -69,17 +87,18 @@ const GaleriaDeProdutos: React.FC = () => {
                         <button onClick={() => handleRemoverProduto(produto?.id)} className={getQuantidadeNoCarrinho(produto?.id) === 0 ? 'botaoMenosL' : 'botaoMenosLA'} disabled={getQuantidadeNoCarrinho(produto?.id) === 0}>
                             <LuBadgeMinus size={tamanhoIcone} style={{ position: 'relative', left: '0px' }} />
                         </button>
-                        <button onClick={() => handleAdicionarProduto(produto)} className={getQuantidadeNoCarrinho(produto?.id) === 0 ? 'botaoMenosR' : 'botaoMenosRA'} >
-                            <LuBadgePlus size={tamanhoIcone} style={{ position: 'relative', left: '0px' }} />
-                        </button>
+                        <div>
+                            <button onClick={() => handleAdicionarProduto(produto)} className={getQuantidadeNoCarrinho(produto?.id) === 0 ? 'botaoMenosR' : 'botaoMenosRA'} >
+                                <LuBadgePlus size={tamanhoIcone} style={{ position: 'relative', left: '0px' }} />
+                            </button>
+                        </div>
                     </div>
                     <div className='bgNomeValoresDescricao'>
                         <h5>{produto.nome}</h5>
                         <p className='valor-produto-catalogo'>
                             {(getQuantidadeNoCarrinho(produto?.id)) < 3 ?
-                                <strong className='ValorRealMoeda'>R$</strong> :
+                                <strong className='ValorRealMoeda'></strong> :
                                 <strong className='ValorRealMoeda'>{getQuantidadeNoCarrinho(produto?.id)}X</strong>}
-
                             <strong>
                                 {retornarValorString(produto.valor)[0]}
                                 {retornarValorString(produto.valor)[1]}
@@ -91,10 +110,38 @@ const GaleriaDeProdutos: React.FC = () => {
                             </strong>
                             {getQuantidadeNoCarrinho(produto?.id) < 3 ?
                                 '' :
-                                <strong className='ValorRealMoeda' style={{ color: '#cc7722', fontSize: '16px', letterSpacing: '3px', textDecoration: 'overline #ffd700 1px' }}><br /><br />Total: {(getQuantidadeNoCarrinho(produto?.id) * produto.valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong>}
+                                <strong className='ValorRealMoeda' style={{ color: '#cc7722', fontSize: '12px', letterSpacing: '3px', textDecoration: 'overline #ffd700 1px' }}><br /><br />Total: {(getQuantidadeNoCarrinho(produto?.id) * produto.valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong>}
+                        </p>
+
+                    </div>
+                    <div className='ingredientes-container' style={{ display: (getQuantidadeNoCarrinho(produto?.id)) === 0 ? 'none' : 'block' }}>
+                        <LuListChecks />
+                        {produto.composicaoBasica.map((composicao, index) => (
+                            <div key={index} className='ingredientes'>
+                                {composicao.ingredientes.map((ingrediente, i) => (
+                                    <div key={i}>
+                                        <input
+                                            type="checkbox"
+                                            id={`ingrediente-${index}-${i}`}
+                                            value={ingrediente}
+                                            checked={ingredientesSelecionados.includes(ingrediente)}
+                                            onChange={(e) => handleCheckboxChange(e, ingrediente)}
+                                        />
+                                        <label
+                                            htmlFor={`ingrediente-${index}-${i}`}
+                                            style={{ borderBottom: ingredientesSelecionados.includes(ingrediente) ? 'red groove 1px' : 'inherit' }}
+                                        >
+                                            {ingrediente}
+                                        </label>
+                                    </div>
+                                ))}
+                            </div>
+                        ))}
+                        <p>
+                            <LuListTodo />
+                            {ingredientesSelecionados.join(', ')}
 
                         </p>
-                        <p className='bgDescricao'>{produto.descricao}</p>
                     </div>
                 </div>
             ))}

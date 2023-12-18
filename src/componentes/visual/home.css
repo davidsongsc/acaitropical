@@ -1,0 +1,29 @@
+.principal-container .principal-anuncio {
+  width: 80%;
+  margin: 0 auto;
+  padding: 10px;
+  height: 380px;
+  background-color: brown;
+}
+
+.principal-container .principal-anuncio .cena {
+  background-color: white;
+  width: 90%;
+  margin: 0 auto;
+  padding: 10px;
+  height: 360px;
+  border-radius: 5px;
+}
+.propaganda{
+    height: 360px;
+    background-size: contain;
+    background-image: url('https://cdn.awsli.com.br/1625/1625135/arquivos/cartaz-de-oferta-z4.png');
+}
+
+.propaganda img{
+    width: 180px;
+    position: relative;
+    left: 40px;
+    top: 90px;
+    border-radius: 5px;
+}

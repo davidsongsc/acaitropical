@@ -1,66 +1,95 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../visual/navbarEstilo.css';
 import { FaFacebook, FaInstagram, FaTiktok } from 'react-icons/fa';
-import { LuHome, LuBookOpenCheck, LuStore, LuUsers2 } from "react-icons/lu";
+import { LuBookOpenCheck, LuStore, LuUsers2 } from 'react-icons/lu';
 
 const Navbar: React.FC = () => {
   const mediaSocialAtributos = [20, 'fff'];
   const visualIcone = { margin: '5px' };
   const tamanhoIcone = 40;
+  const [isFixed, setIsFixed] = useState(false);
+
+  const handleScroll = () => {
+    const scrollY = window.scrollY;
+    setIsFixed(scrollY > 0);
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <div className='geral-container-pagina'>
-      <div className='medias-sociais-container'>
-        <h2> Medias Sociais</h2>
-        <FaFacebook size={mediaSocialAtributos[0]} color={mediaSocialAtributos[1] as string} style={visualIcone} />
-
-        <FaInstagram size={mediaSocialAtributos[0]} color={mediaSocialAtributos[1] as string} style={visualIcone} />
-
-        <FaTiktok size={mediaSocialAtributos[0]} color={mediaSocialAtributos[1] as string} style={visualIcone} />
-
-      </div>
-      <div className='tituli-principal-container'>
-        <div>
-          <h1> Carioca Tropical</h1>
+    <div className="geral-container-pagina">
+      <div className={`sociais-container ${isFixed ? 'fixed' : ''}`}>
+        <img
+          src="https://static.vecteezy.com/system/resources/previews/016/548/277/original/watercolor-berry-acai-png.png"
+          alt="açai"
+          width={'50px'}
+        />
+        <div className='geral-container-pagina-pdiv'>
+          <ul className='listaSocialCliente'>
+            <li>
+              <Link to='/'>Inicio</Link>
+            </li>
+            <li>
+              <Link to='/'>Cardápio</Link>
+            </li>
+            <li>
+              <Link to='/'>Meu Pedido</Link>
+            </li>
+            <li>
+              <Link to='/'>Promoções</Link>
+            </li>
+          </ul>
 
         </div>
 
+        <h2> Area ara login!</h2>
+        <div className='redes-sociais-links'>
+          <FaFacebook size={mediaSocialAtributos[0]} color={mediaSocialAtributos[1] as string} style={visualIcone} />
+          <FaInstagram size={mediaSocialAtributos[0]} color={mediaSocialAtributos[1] as string} style={visualIcone} />
+          <FaTiktok size={mediaSocialAtributos[0]} color={mediaSocialAtributos[1] as string} style={visualIcone} />
 
+        </div>
       </div>
 
-
-
-      <nav>
-
+      <nav
+        style={{
+          marginTop: isFixed ? '75px' : '0',
+        }}
+      >
         <ul>
-          <Link to="/cardapio">
+          <Link to="/cardapio" onClick={scrollToTop}>
             <li>
               <LuBookOpenCheck size={tamanhoIcone} />
-              <strong>
-                Cardapio
-              </strong>
+              <strong>Cardapio</strong>
             </li>
           </Link>
-          <Link to="/">
+          <Link to="/" onClick={scrollToTop}>
             <li>
               <LuStore size={tamanhoIcone} />
-              <strong>
-                Pedidos
-              </strong>
+              <strong>Pedidos</strong>
             </li>
           </Link>
-          <Link to="/">
+          <Link to="/" onClick={scrollToTop}>
             <li>
               <LuUsers2 size={tamanhoIcone} />
-              <strong>
-                SAC
-              </strong>
+              <strong>SAC</strong>
             </li>
           </Link>
         </ul>
-
       </nav>
-
     </div>
   );
 };

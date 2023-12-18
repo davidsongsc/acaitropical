@@ -3,8 +3,8 @@
 :root {
   --font-principal: "Roboto", sans-serif;
   --page-color-principal-bg-01: #8f8fbe;
-  --page-color-principal-bg-02: #a0a0a0;
-  --page-color-principal-bg-03: #9370db;
+  --page-color-principal-bg-02: #fffafa;
+  --page-color-principal-bg-03: #111111;
   --page-itens-nav-border-radios: 10px;
   --page-itens-box-shadow-valores-01: 1px 1px 3px #9400d3;
   --page-itens-box-shadow-valores-02: 1px 1px 1px #9400d3;
@@ -18,7 +18,7 @@
   --time-transition-padrao: 0.8s;
 }
 html{
-  background-color: var(--page-color-principal-bg-01);
+  background-color: var(--page-color-principal-bg-02);
 }
 .geral-container-pagina {
   background-color: var(--page-color-principal-bg-01);
