@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Cliente, Carrinho, Produto } from '../../redux/types';
+import { Cliente, Carrinho, Produto, PromoTipo } from '../../redux/types';
 import { RootState } from '../../redux/store';
 import { adicionarProdutoCarrinho, removerProdutoCarrinho } from '../../redux/clienteReducer';
 
@@ -11,6 +11,31 @@ const PedidoTable: React.FC = () => {
   const [totalCarrinho, setTotalCarrinho] = useState<number>(0);
   const clienteFiltrado = clientes.find((cliente: Cliente) => cliente.id === 0);
 
+  const applyDiscount = (produto: Produto, promocoes: PromoTipo[] | undefined): number => {
+    let valorComDesconto = produto.valor;
+
+    if (promocoes) {
+      promocoes.forEach((promocao) => {
+        if (promocao.tipo === 'desconto especial') {
+          valorComDesconto -= promocao.valor;
+
+          if (promocao.porcentagem !== 0) {
+            const descontoPercentual = (promocao.porcentagem / 100) * produto.valor;
+            valorComDesconto -= descontoPercentual;
+          }
+        }
+      });
+    }
+
+    return Math.max(valorComDesconto, 0);
+  };
+
+  const handleAdicionarProduto = (carrinhoId: number, produto: Produto) => {
+    const promocoesProduto = produto.promo;
+    const valorComDesconto = applyDiscount(produto, promocoesProduto);
+
+    dispatch(adicionarProdutoCarrinho(carrinhoId, { ...produto, valor: valorComDesconto }));
+  };
 
   useEffect(() => {
     setTotalCarrinho((prevTotal) => {
@@ -18,7 +43,7 @@ const PedidoTable: React.FC = () => {
         return (
           total +
           carrinho.produtos.reduce((subtotal: number, [produto, quantidade]: [Produto, number]) => {
-            return subtotal + taxaEntregador + produto.valor * quantidade;
+            return subtotal - calcularTotalDescontos() + taxaEntregador + produto.valor * quantidade;
           }, 0)
         );
       }, 0) || 0;
@@ -27,20 +52,24 @@ const PedidoTable: React.FC = () => {
     });
   }, [clienteFiltrado]);
 
-  const handleAdicionarProduto = (carrinhoId: number, produto: Produto) => {
-    dispatch(adicionarProdutoCarrinho(carrinhoId, produto));
-  };
-
   const handleRemoverProduto = (carrinhoId: number, produtoId: number) => {
     dispatch(removerProdutoCarrinho(carrinhoId, produtoId));
   };
 
+  const calcularTotalDescontos = (): number => {
+    let totalDescontos = 0;
 
-  if (!clienteFiltrado) {
-    return <div>No data found for the specified client ID</div>;
-  }
+    clienteFiltrado?.pedido?.carrinho.forEach((carrinho: Carrinho) => {
+      carrinho.produtos.forEach(([produto, quantidade]: [Produto, number]) => {
+        const promocoesProduto = produto.promo;
+        const valorOriginal = produto.valor * quantidade;
+        const valorComDesconto = applyDiscount(produto, promocoesProduto) * quantidade;
+        totalDescontos += valorOriginal - valorComDesconto;
+      });
+    });
 
-
+    return totalDescontos;
+  };
 
   const renderProdutos = (carrinho: Carrinho, index: number) => {
     const produtosRenderizados = carrinho.produtos.map(([produto, quantidade]: [Produto, number], produtoIndex: number) => (
@@ -65,8 +94,6 @@ const PedidoTable: React.FC = () => {
     );
   };
 
-
-
   const renderCarrinho = () => {
     return clienteFiltrado.pedido.carrinho.map((carrinho: Carrinho, index: number) => {
       return renderProdutos(carrinho, index);
@@ -87,15 +114,17 @@ const PedidoTable: React.FC = () => {
         <tbody style={{ height: '200px', overflowY: 'scroll' }}>
           {renderCarrinho()}
         </tbody>
-        <tfoot >
+        <tfoot>
           <tr>
-            <td >Taxa de entrega</td>
-
+            <td colSpan={4}>Total de Descontos</td>
+            <td colSpan={4}>{calcularTotalDescontos().toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
+          </tr>
+          <tr>
+            <td>Taxa de entrega</td>
             <td colSpan={4}>{taxaEntregador.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
           </tr>
           <tr>
-            <td colSpan={4} >Total</td>
-
+            <td colSpan={4}>Total</td>
             <td colSpan={4}>{totalCarrinho.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
           </tr>
         </tfoot>

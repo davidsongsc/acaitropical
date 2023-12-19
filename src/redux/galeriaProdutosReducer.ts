@@ -1,4 +1,4 @@
-import { Composicao, Produto, TipoProduto, listaTodosProdutos } from "./types";
+import { Composicao, Produto, PromoTipo, TipoProduto, listaTodosProdutos } from "./types";
 
 
 
@@ -27,12 +27,26 @@ export const composicaoProdutos: Composicao[] = [
     {
         tipo: tipoProdutosTeste[0],
         ingredientes: [
+            'chocolate',
+            'morango',
+            'nutella',
+            'doce de leite'
+        ]
+    },
+    {
+        tipo: tipoProdutosTeste[0],
+        ingredientes: [
             'granola',
             'amendoim',
             'aveia',
             'ninho'
         ]
-    }
+    },
+];
+const listaDePromocoes: PromoTipo[] = [
+    { nome: 'Desconto Especial', tipo: 'desconto especial', valor: 2.95, porcentagem: 0 },
+    { nome: 'oferta', tipo: 'Desconto', valor: 0, porcentagem: 15 },
+    // Adicione mais promoções conforme necessário
 ];
 
 export const dadosProdutosTeste: Produto[] = [
@@ -47,7 +61,8 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
-        composicaoBasica: composicaoProdutos,
+        composicaoBasica: [composicaoProdutos],
+        promo: listaDePromocoes,
     },
     {
         id: 1,
@@ -60,7 +75,8 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
-        composicaoBasica: composicaoProdutos,
+        composicaoBasica: [composicaoProdutos,],
+        promo: [],
     },
 
     {
@@ -74,7 +90,8 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
-        composicaoBasica: composicaoProdutos,
+        composicaoBasica: [composicaoProdutos,],
+        promo: [],
     },
     {
         id: 3,
@@ -87,7 +104,8 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
-        composicaoBasica: composicaoProdutos,
+        composicaoBasica: [composicaoProdutos,],
+        promo: [],
     },
     {
         id: 4,
@@ -100,7 +118,8 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
-        composicaoBasica: composicaoProdutos,
+        composicaoBasica: [composicaoProdutos,],
+        promo: [],
     },
 
     {
@@ -114,7 +133,8 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
-        composicaoBasica: composicaoProdutos,
+        composicaoBasica: [composicaoProdutos,],
+        promo: [],
     },
     {
         id: 6,
@@ -127,7 +147,8 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
-        composicaoBasica: composicaoProdutos,
+        composicaoBasica: [composicaoProdutos,],
+        promo: [],
     },
     {
         id: 7,
@@ -140,7 +161,8 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
-        composicaoBasica: composicaoProdutos,
+        composicaoBasica: [composicaoProdutos,],
+        promo: [],
     },
 
     {
@@ -154,98 +176,106 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
-        composicaoBasica: composicaoProdutos,
+        composicaoBasica: [composicaoProdutos,],
+        promo: [],
     },
     {
         id: 9,
         nome: 'Piraquê Chocolate',
         descricao: 'Farinha de trigo enriquecida com ferro e ácido fólico, açúcar, gordura vegetal, maltodextrina, soro de leite em pó, açúcar invertido, extrato de malte, amido de milho*, sal, emulsificantes: lecitina de soja e estearoil lactilato de cálcio, aromatizantes, fermentos químicos: bicarbonato de sódio e fosfato monocálcico, antioxidante ácido cítrico e corante cúrcuma.',
         img: 'https://piraque.com.br/wp-content/uploads/2020/11/chocolate.png',
-        valor: 4.95,
+        valor: 7.95,
         quantidade: 2,
         tipo: [tipoProdutosTeste[1]],
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
-        composicaoBasica: composicaoProdutos,
+        composicaoBasica: [composicaoProdutos,],
+        promo: listaDePromocoes,
     },
     {
         id: 10,
         nome: 'Piraquê Morango',
         descricao: 'Farinha de trigo enriquecida com ferro e ácido fólico, açúcar, gordura vegetal, maltodextrina, soro de leite em pó, açúcar invertido, extrato de malte, amido de milho*, sal, emulsificantes: lecitina de soja e estearoil lactilato de cálcio, aromatizantes, fermentos químicos: bicarbonato de sódio e fosfato monocálcico, antioxidante ácido cítrico e corante cúrcuma.',
         img: 'https://piraque.com.br/wp-content/uploads/2020/11/morango.png',
-        valor: 4.95,
+        valor: 7.95,
         quantidade: 2,
         tipo: [tipoProdutosTeste[1]],
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
-        composicaoBasica: composicaoProdutos,
+        composicaoBasica: [composicaoProdutos,],
+        promo: [],
     },
     {
         id: 11,
         nome: 'Piraquê Limão',
         descricao: 'Farinha de trigo enriquecida com ferro e ácido fólico, açúcar, gordura vegetal, maltodextrina, soro de leite em pó, açúcar invertido, extrato de malte, amido de milho*, sal, emulsificantes: lecitina de soja e estearoil lactilato de cálcio, aromatizantes, fermentos químicos: bicarbonato de sódio e fosfato monocálcico, antioxidante ácido cítrico e corante cúrcuma.',
         img: 'https://cdn-cosmos.bluesoft.com.br/products/7896024760371',
-        valor: 4.95,
+        valor: 7.95,
         quantidade: 2,
         tipo: [tipoProdutosTeste[1]],
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
-        composicaoBasica: composicaoProdutos,
+        composicaoBasica: [composicaoProdutos,],
+        promo: [],
     },
     {
         id: 12,
         nome: 'Piraquê Brigadeiro',
         descricao: 'Farinha de trigo enriquecida com ferro e ácido fólico, açúcar, gordura vegetal, maltodextrina, soro de leite em pó, açúcar invertido, extrato de malte, amido de milho*, sal, emulsificantes: lecitina de soja e estearoil lactilato de cálcio, aromatizantes, fermentos químicos: bicarbonato de sódio e fosfato monocálcico, antioxidante ácido cítrico e corante cúrcuma.',
         img: 'https://piraque.com.br/wp-content/uploads/2020/11/brigadeir.png',
-        valor: 4.95,
+        valor: 7.95,
         quantidade: 2,
         tipo: [tipoProdutosTeste[1]],
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
-        composicaoBasica: composicaoProdutos,
+        composicaoBasica: [composicaoProdutos,],
+        promo: listaDePromocoes,
     },
     {
         id: 13,
         nome: 'Piraquê Coco',
         descricao: 'Farinha de trigo enriquecida com ferro e ácido fólico, açúcar, gordura vegetal, maltodextrina, soro de leite em pó, açúcar invertido, extrato de malte, amido de milho*, sal, emulsificantes: lecitina de soja e estearoil lactilato de cálcio, aromatizantes, fermentos químicos: bicarbonato de sódio e fosfato monocálcico, antioxidante ácido cítrico e corante cúrcuma.',
         img: 'https://piraque.com.br/wp-content/uploads/2020/11/Piraque-Biscoito-Recheado-Coco-Baunilha-160g.png',
-        valor: 4.95,
+        valor: 7.95,
         quantidade: 2,
         tipo: [tipoProdutosTeste[1]],
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
-        composicaoBasica: composicaoProdutos,
+        composicaoBasica: [composicaoProdutos,],
+        promo: [],
     },
     {
         id: 14,
         nome: 'Piraquê Pretty',
         descricao: 'Farinha de trigo enriquecida com ferro e ácido fólico, açúcar, gordura vegetal, maltodextrina, soro de leite em pó, açúcar invertido, extrato de malte, amido de milho*, sal, emulsificantes: lecitina de soja e estearoil lactilato de cálcio, aromatizantes, fermentos químicos: bicarbonato de sódio e fosfato monocálcico, antioxidante ácido cítrico e corante cúrcuma.',
         img: 'https://piraque.com.br/wp-content/uploads/2020/11/pretty.png',
-        valor: 4.95,
+        valor: 7.95,
         quantidade: 2,
         tipo: [tipoProdutosTeste[1]],
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
-        composicaoBasica: composicaoProdutos,
+        composicaoBasica: [composicaoProdutos,],
+        promo: [],
     },
     {
         id: 15,
         nome: 'Piraquê Abacaxi',
         descricao: 'Farinha de trigo enriquecida com ferro e ácido fólico, açúcar, gordura vegetal, maltodextrina, soro de leite em pó, açúcar invertido, extrato de malte, amido de milho*, sal, emulsificantes: lecitina de soja e estearoil lactilato de cálcio, aromatizantes, fermentos químicos: bicarbonato de sódio e fosfato monocálcico, antioxidante ácido cítrico e corante cúrcuma.',
         img: 'https://piraque.com.br/wp-content/uploads/2020/11/abacaxi.png',
-        valor: 4.95,
+        valor: 7.95,
         quantidade: 2,
         tipo: [tipoProdutosTeste[1]],
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
-        composicaoBasica: composicaoProdutos,
+        composicaoBasica: [composicaoProdutos,],
+        promo: [],
     },
     {
         id: 16,
@@ -258,7 +288,8 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
-        composicaoBasica: composicaoProdutos,
+        composicaoBasica: [composicaoProdutos,],
+        promo: [],
     },
     {
         id: 17,
@@ -271,7 +302,8 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
-        composicaoBasica: composicaoProdutos,
+        composicaoBasica: [composicaoProdutos,],
+        promo: [],
     },
     {
         id: 18,
@@ -284,7 +316,8 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
-        composicaoBasica: composicaoProdutos,
+        composicaoBasica: [composicaoProdutos,],
+        promo: [],
     },
     {
         id: 19,
@@ -297,7 +330,8 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
-        composicaoBasica: composicaoProdutos,
+        composicaoBasica: [composicaoProdutos,],
+        promo: [],
     },
     {
         id: 20,
@@ -310,7 +344,8 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
-        composicaoBasica: composicaoProdutos,
+        composicaoBasica: [composicaoProdutos,],
+        promo: [],
     },
     {
         id: 21,
@@ -323,7 +358,8 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
-        composicaoBasica: composicaoProdutos,
+        composicaoBasica: [composicaoProdutos,],
+        promo: [],
     },
     {
         id: 22,
@@ -336,7 +372,8 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
-        composicaoBasica: composicaoProdutos,
+        composicaoBasica: [composicaoProdutos,],
+        promo: [],
     },
     {
         id: 23,
@@ -349,7 +386,8 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
-        composicaoBasica: composicaoProdutos,
+        composicaoBasica: [composicaoProdutos,],
+        promo: [],
     },
     {
         id: 24,
@@ -362,7 +400,8 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
-        composicaoBasica: composicaoProdutos,
+        composicaoBasica: [composicaoProdutos,],
+        promo: [],
     },
     {
         id: 25,
@@ -375,33 +414,36 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
-        composicaoBasica: composicaoProdutos,
+        composicaoBasica: [composicaoProdutos,],
+        promo: [],
     },
     {
         id: 26,
         nome: 'Coca Cola Lt',
         descricao: 'Refrigerante',
         img: 'https://acdn.mitiendanube.com/stores/001/165/503/products/coca-normal11-2cb12d901c0ec9eb9716192140335257-1024-1024.png',
-        valor: 4.95,
+        valor: 7.95,
         quantidade: 2,
         tipo: [tipoProdutosTeste[4]],
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
-        composicaoBasica: composicaoProdutos,
+        composicaoBasica: [composicaoProdutos,],
+        promo: [],
     },
     {
         id: 27,
         nome: 'Coca Cola Lt',
         descricao: 'Refrigerante',
         img: 'https://acdn.mitiendanube.com/stores/001/165/503/products/coca-zero21-16e7cba0588363da7616192142363168-1024-1024.png',
-        valor: 4.95,
+        valor: 7.95,
         quantidade: 2,
         tipo: [tipoProdutosTeste[4]],
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
-        composicaoBasica: composicaoProdutos,
+        composicaoBasica: [composicaoProdutos,],
+        promo: [],
     },
 ]
 

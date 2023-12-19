@@ -1,29 +1,77 @@
 .principal-container .principal-anuncio {
-  width: 80%;
-  margin: 0 auto;
+  width: 90%;
+
   padding: 10px;
-  height: 380px;
-  background-color: brown;
 }
 
 .principal-container .principal-anuncio .cena {
   background-color: white;
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
   padding: 10px;
-  height: 360px;
+
   border-radius: 5px;
 }
-.propaganda{
-    height: 360px;
-    background-size: contain;
-    background-image: url('https://cdn.awsli.com.br/1625/1625135/arquivos/cartaz-de-oferta-z4.png');
+.propaganda {
+  background-size: contain;
+  color: black;
+  padding: 10px;
 }
 
-.propaganda img{
-    width: 180px;
-    position: relative;
-    left: 40px;
-    top: 90px;
-    border-radius: 5px;
+.propaganda img {
+  width: 180px;
+  position: relative;
+
+  border-radius: 5px;
+}
+
+.promo-oferta-conteudo-container ul,
+.promo-oferta-conteudo-container .h2-grupo {
+  background-color: #8f8fbe;
+  border-radius: 4px;
+  list-style: none;
+}
+.promo-oferta-conteudo-container .h2-grupo {
+  padding-left: 40px;
+  background-color: #3cb371;
+}
+
+.promo-oferta-conteudo-container ul li,
+.promo-oferta-conteudo-container h2 {
+  background-color: aliceblue;
+  margin: 5px 0;
+  color: black;
+  padding: 25px;
+  border-left: #8f8fbe groove;
+}
+.promo-oferta-conteudo-container h2 {
+  background-color: #191970;
+  color: aliceblue;
+  text-transform: uppercase;
+}
+.promo-oferta-conteudo-container ul li a {
+  text-decoration: none;
+  color: black;
+}
+.promo-oferta-conteudo-container p {
+  border-left: brown groove;
+  padding-left: 15px;
+}
+
+.promo-oferta-conteudo-container h3 {
+  margin: 8px 0;
+}
+.promocao-info {
+  position: absolute;
+  font-size: 10px;
+  font-family: "Roboto";
+  background-image: url("https://www.pngkey.com/png/full/497-4978887_faixa-promoo-png-placas-de-promoo-png.png");
+  background-size: 110px;
+  background-repeat: no-repeat;
+  height: 70px;
+  width: 110px;
+  z-index: 990;
+}
+.promocao-info h3 {
+  text-align: center;
 }

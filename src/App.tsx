@@ -16,8 +16,12 @@ const App: React.FC = () => {
             path="/"
             element={<Home />}
           />
-          <Route
+           <Route
             path="/cardapio"
+            element={<CardapioPrincipal />}
+          />
+          <Route
+            path="/cardapio/:tipo"
             element={<CardapioPrincipal />}
           />
       </Routes>

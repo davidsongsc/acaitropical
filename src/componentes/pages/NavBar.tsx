@@ -32,7 +32,7 @@ const Navbar: React.FC = () => {
   return (
     <div className="geral-container-pagina">
       <div className={`sociais-container ${isFixed ? 'fixed' : ''}`}>
-        <Link to='/'>Inicio
+        <Link to='/'>
           <img
             src="https://static.vecteezy.com/system/resources/previews/016/548/277/original/watercolor-berry-acai-png.png"
             alt="açai"

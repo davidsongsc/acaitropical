@@ -33,6 +33,13 @@ export interface Composicao {
     tipo: TipoProduto;
     ingredientes: string[],
 }
+export interface PromoTipo{
+    nome: string;
+    tipo: string;
+    valor: number;
+    porcentagem: number;
+}
+
 export interface Produto {
     id: number;
     nome: string;
@@ -44,7 +51,8 @@ export interface Produto {
     disponibilidade: number;
     dataHoraCriacao: string;
     idCriadorProduto: number;
-    composicaoBasica: Composicao[],
+    composicaoBasica: [Composicao[]],
+    promo: PromoTipo[],
 }
 
 export interface TipoProduto {

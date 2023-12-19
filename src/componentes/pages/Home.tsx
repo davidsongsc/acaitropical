@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { increment, decrement } from '../../redux/actions';
 import '../visual/home.css';
+import PromoImageGenerator from './PromoImagens';
 
 const Home: React.FC = () => {
     const count = useSelector((state: any) => state.count);
@@ -11,7 +12,7 @@ const Home: React.FC = () => {
             <div className="principal-anuncio">
                 <div className="cena">
                     <div className="propaganda">
-                        <img src="https://yumethesushiacai.ssapps.com.br/_core/_uploads/85/2023/03/1632250323d94c6jae8j.jpeg" alt="promo" />
+                        <PromoImageGenerator />
                     </div>
                 </div>
             </div>

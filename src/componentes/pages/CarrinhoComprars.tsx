@@ -32,7 +32,7 @@ const CarrinhoComprasLista: React.FC = () => {
         });
     }, [clienteFiltrado]);
     return (
-        <div className={`carrinho-pedidos-container `}>
+        <div className={`carrinho-pedidos-container `} style={{ display: totalCarrinho === 0 ? 'none' : '' }}>
             <div className="carrinho" onClick={handleCarrinhoClick} >
                 <FiShoppingCart />
                 <h5>
@@ -45,7 +45,7 @@ const CarrinhoComprasLista: React.FC = () => {
                 <h3>
                     <FiShoppingBag size={25} /> Conferência</h3>
                 <ClienteTable />
-                <button className='botao-fechar-carrinho' onClick={handleCarrinhoClick} style={{ display: showCarrinhoCompras ? 'block' : 'none' , position: 'fixed'}}><LuXOctagon size={'42px'} color='#fff'/></button>
+                <button className='botao-fechar-carrinho' onClick={handleCarrinhoClick} style={{ display: showCarrinhoCompras ? 'block' : 'none', position: 'fixed' }}><LuXOctagon size={'42px'} color='#fff' /></button>
             </div>
         </div >
     );
