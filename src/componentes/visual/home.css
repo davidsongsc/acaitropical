@@ -1,21 +1,16 @@
 .principal-container .principal-anuncio {
-  width: 90%;
-
-  padding: 10px;
 }
 
 .principal-container .principal-anuncio .cena {
   background-color: white;
-  width: 100%;
+  
   margin: 0 auto;
-  padding: 10px;
-
   border-radius: 5px;
 }
 .propaganda {
   background-size: contain;
   color: black;
-  padding: 10px;
+  padding: 1px;
 }
 
 .propaganda img {
@@ -29,8 +24,12 @@
 .promo-oferta-conteudo-container .h2-grupo {
   background-color: #8f8fbe;
   border-radius: 4px;
+  display: flex;
+  flex-wrap: wrap;
   list-style: none;
+
 }
+
 .promo-oferta-conteudo-container .h2-grupo {
   padding-left: 40px;
   background-color: #3cb371;
@@ -41,6 +40,7 @@
   background-color: aliceblue;
   margin: 5px 0;
   color: black;
+  width: 350px;
   padding: 25px;
   border-left: #8f8fbe groove;
 }
@@ -48,6 +48,7 @@
   background-color: #191970;
   color: aliceblue;
   text-transform: uppercase;
+  width: 100%;
 }
 .promo-oferta-conteudo-container ul li a {
   text-decoration: none;
@@ -65,10 +66,12 @@
   position: absolute;
   font-size: 10px;
   font-family: "Roboto";
-  background-image: url("https://www.pngkey.com/png/full/497-4978887_faixa-promoo-png-placas-de-promoo-png.png");
+  background-image: url(https://www.pngkey.com/png/full/497-4978887_faixa-promoo-png-placas-de-promoo-png.png);
   background-size: 110px;
   background-repeat: no-repeat;
-  height: 70px;
+  height: 41px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   width: 110px;
   z-index: 990;
 }

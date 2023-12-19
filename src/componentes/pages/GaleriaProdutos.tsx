@@ -44,9 +44,7 @@ const GaleriaDeProdutos: React.FC = () => {
         return quantidadeNoCarrinho || 0;
     };
 
-    const handleImgagemOuDescricao = () => {
-        setImgODescricao(!imgOdescricao);
-    }
+
     const handleAdicionarProduto = (produto: Produto) => {
         console.log(produto);
         // Verificar se o cliente existe
@@ -164,10 +162,14 @@ const GaleriaDeProdutos: React.FC = () => {
                                 </p>
                             </div>
                         </div>
+                        {promocao && (
+                            <div className="promocao-info" style={{ display: descricaoVisivel === produto.id ? 'none' : '' }}>
 
+                            </div>
+                        )}
                         <div className='ingredientes-container' style={{ display: (getQuantidadeNoCarrinho(produto?.id)) === 0 ? 'none' : 'block' }}>
                             <h6>
-                                <LuListChecks /> Escolha:
+                                <LuListChecks />
                                 {[...Array(quantidadeNoCarrinho)].map((_, cartItemIndex) => (
                                     <div key={cartItemIndex}>
                                         {produto.composicaoBasica && produto.composicaoBasica[cartItemIndex] && (
@@ -265,11 +267,7 @@ const GaleriaDeProdutos: React.FC = () => {
                         </p>
                     </div>
                     */}
-                        {promocao && (
-                            <div className="promocao-info">
 
-                            </div>
-                        )}
                     </div>
                 )
             })}

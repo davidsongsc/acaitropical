@@ -10,20 +10,20 @@ const App: React.FC = () => {
 
     <Router>
       <Navbar />
-
+     
       <Routes>
-          <Route
-            path="/"
-            element={<Home />}
-          />
-           <Route
-            path="/cardapio"
-            element={<CardapioPrincipal />}
-          />
-          <Route
-            path="/cardapio/:tipo"
-            element={<CardapioPrincipal />}
-          />
+        <Route
+          path="/"
+          element={<Home />}
+        />
+        <Route
+          path="/cardapio"
+          element={<CardapioPrincipal />}
+        />
+        <Route
+          path="/cardapio/:tipo"
+          element={<CardapioPrincipal />}
+        />
       </Routes>
 
       <CarrinhoComprasLista />

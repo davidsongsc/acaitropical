@@ -111,3 +111,6 @@ nav ul li {
 nav ul li strong {
   font-size: large;
 }
+.login-visual-container{
+  transition: 1.5s;
+}

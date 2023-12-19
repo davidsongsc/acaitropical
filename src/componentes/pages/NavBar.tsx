@@ -3,13 +3,20 @@ import { Link } from 'react-router-dom';
 import '../visual/navbarEstilo.css';
 import { FaFacebook, FaInstagram, FaTiktok } from 'react-icons/fa';
 import { LuBookOpenCheck, LuStore, LuUsers2 } from 'react-icons/lu';
+import Login from './Login';
 
 const Navbar: React.FC = () => {
   const mediaSocialAtributos = [20, 'fff'];
   const visualIcone = { margin: '5px' };
   const tamanhoIcone = 40;
+  const [loginVisivel, setLoginVisivel] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
 
+  const handleLoginStatus = () => {
+    setLoginVisivel(!loginVisivel);
+    scrollToTop();
+
+  }
   const handleScroll = () => {
     const scrollY = window.scrollY;
     setIsFixed(scrollY > 0);
@@ -47,17 +54,13 @@ const Navbar: React.FC = () => {
             <li>
               <Link to='/cardapio'>Cardápio</Link>
             </li>
-            <li>
-              <Link to='/'>Meu Pedido</Link>
-            </li>
-            <li>
-              <Link to='/'>Promoções</Link>
-            </li>
+
+
           </ul>
 
         </div>
 
-        <h2> Area ara login!</h2>
+        <h2><button onClick={() => handleLoginStatus()} style={{backgroundColor: loginVisivel? 'gray': 'white'}}> Entrar</button></h2>
         <div className='redes-sociais-links'>
           <FaFacebook size={mediaSocialAtributos[0]} color={mediaSocialAtributos[1] as string} style={visualIcone} />
           <FaInstagram size={mediaSocialAtributos[0]} color={mediaSocialAtributos[1] as string} style={visualIcone} />
@@ -92,6 +95,9 @@ const Navbar: React.FC = () => {
           </Link>
         </ul>
       </nav>
+      <div className='login-visual-container' style={{marginTop: loginVisivel? '0px': '-210px'}}>
+        <Login />
+      </div>
     </div>
   );
 };
