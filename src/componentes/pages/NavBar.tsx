@@ -32,18 +32,20 @@ const Navbar: React.FC = () => {
   return (
     <div className="geral-container-pagina">
       <div className={`sociais-container ${isFixed ? 'fixed' : ''}`}>
-        <img
-          src="https://static.vecteezy.com/system/resources/previews/016/548/277/original/watercolor-berry-acai-png.png"
-          alt="açai"
-          width={'50px'}
-        />
+        <Link to='/'>Inicio
+          <img
+            src="https://static.vecteezy.com/system/resources/previews/016/548/277/original/watercolor-berry-acai-png.png"
+            alt="açai"
+            width={'50px'}
+          />
+        </Link>
         <div className='geral-container-pagina-pdiv'>
           <ul className='listaSocialCliente'>
             <li>
               <Link to='/'>Inicio</Link>
             </li>
             <li>
-              <Link to='/'>Cardápio</Link>
+              <Link to='/cardapio'>Cardápio</Link>
             </li>
             <li>
               <Link to='/'>Meu Pedido</Link>
@@ -66,8 +68,8 @@ const Navbar: React.FC = () => {
 
       <nav
         style={{
-          marginTop: isFixed ? '75px' : '0',
-        }}
+          marginTop: isFixed ? '-30px' : '-106px',  // LOGIN STATUS, USUARIO LOGADO DEVE MOSTRAR O CONTEUDO 
+        }}                                         // USUARIO
       >
         <ul>
           <Link to="/cardapio" onClick={scrollToTop}>

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import '../visual/galeriaProdutos.css';
 import { RootState } from '../../redux/store';
 import { retornarValorString } from '../extensoes/moduloScriptsAjuda';
-import { LuBadgeMinus, LuBadgePlus, LuArrowDownRightSquare, LuGitBranchPlus, LuGitMerge, LuListChecks, LuListTodo } from 'react-icons/lu';
+import { LuBadgeMinus, LuBadgePlus, LuListChecks } from 'react-icons/lu';
 import { Cliente, Produto } from '../../redux/types';
 import { adicionarProdutoCarrinho, removerProdutoCarrinho } from '../../redux/clienteReducer';
 
@@ -17,16 +17,20 @@ const GaleriaDeProdutos: React.FC = () => {
     const [imgOdescricao, setImgODescricao] = useState(false);
     const clienteZero: Cliente | undefined = clientes.find((cliente: Cliente) => cliente.id === 0);
     const produtosFiltrados = produtos.filter((produto) => produto.tipo[0].nome === tipoSelecionado);
-    const [ingredientesSelecionados, setIngredientesSelecionados] = useState<string[]>([]);
+    const [ingredientesSelecionadosPorProduto, setIngredientesSelecionadosPorProduto] = useState<Record<number, Array<Array<{ nome: string, quantidade: number }>>>>({});
 
     const carrinhoID = 0;
 
+
     const getQuantidadeNoCarrinho = (produtoId: number): number => {
-        const produtoNoCarrinho = clienteZero?.pedido?.carrinho
+        const quantidadeNoCarrinho = clienteZero?.pedido?.carrinho
             ?.flatMap((carrinho) => carrinho.produtos)
-            .find(([produto]) => produto.id === produtoId);
-        return produtoNoCarrinho ? produtoNoCarrinho[1] : 0;
+            .filter(([produto]) => produto.id === produtoId)
+            .reduce((total, [, quantidade]) => total + quantidade, 0);
+
+        return quantidadeNoCarrinho || 0;
     };
+
     const handleImgagemOuDescricao = () => {
         setImgODescricao(!imgOdescricao);
     }
@@ -46,15 +50,71 @@ const GaleriaDeProdutos: React.FC = () => {
             dispatch(adicionarProdutoCarrinho(novoCarrinho.id, produto));
         }
     };
-    const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>, ingrediente: string) => {
-        if (event.target.checked) {
-            // Adicionar ao array se estiver marcado
-            setIngredientesSelecionados([...ingredientesSelecionados, ingrediente]);
-        } else {
-            // Remover do array se estiver desmarcado
-            setIngredientesSelecionados(ingredientesSelecionados.filter((item) => item !== ingrediente));
-        }
+
+    const handleCheckboxChange = (
+        event: React.ChangeEvent<HTMLInputElement>,
+        produtoId: number,
+        cartItemIndex: number,
+        ingrediente: string
+    ) => {
+        setIngredientesSelecionadosPorProduto((prevIngredientes) => {
+            const updatedIngredientes = { ...prevIngredientes };
+
+            // Ensure the product entry exists
+            if (!updatedIngredientes[produtoId]) {
+                updatedIngredientes[produtoId] = [];
+            }
+
+            // Ensure the unit entry exists
+            if (!updatedIngredientes[produtoId][cartItemIndex]) {
+                updatedIngredientes[produtoId][cartItemIndex] = [];
+            }
+
+            const ingredientesSelecionadosAtual = updatedIngredientes[produtoId][cartItemIndex];
+            const existingIngredienteIndex = ingredientesSelecionadosAtual.findIndex((item) => item.nome === ingrediente);
+            const existingIngrediente = existingIngredienteIndex !== -1 ? ingredientesSelecionadosAtual[existingIngredienteIndex] : null;
+
+            console.log('Existing Ingrediente:', existingIngrediente);
+
+            if (event.target.checked) {
+                // Add to the array if checked
+                if (existingIngrediente) {
+                    // If the ingrediente is already selected, increment the quantity, up to a maximum of 5
+                    if (existingIngrediente.quantidade < 5) {
+                        existingIngrediente.quantidade += 1;
+                    }
+                } else {
+                    // If the ingrediente is not selected, add it with a quantity of 1, up to a maximum of 5
+                    if (ingredientesSelecionadosAtual.length < 5) {
+                        updatedIngredientes[produtoId][cartItemIndex].push({ nome: ingrediente, quantidade: 1 });
+                    }
+                }
+            } else {
+                // Remove from the array if unchecked
+                if (existingIngrediente) {
+                    // If the ingrediente is already selected, decrement the quantity, and remove if it reaches 0
+                    existingIngrediente.quantidade = Math.max(
+                        existingIngrediente.quantidade - 1,
+                        0
+                    );
+                    if (existingIngrediente.quantidade === 0) {
+                        updatedIngredientes[produtoId][cartItemIndex] = updatedIngredientes[produtoId][cartItemIndex].filter(
+                            (item) => item.nome !== ingrediente
+                        );
+                    }
+                }
+            }
+
+            console.log('Updated Ingredientes:', updatedIngredientes);
+
+            return updatedIngredientes;
+        });
     };
+
+
+
+
+
     const handleRemoverProduto = (produtoId: number) => {
         // Verificar se o cliente existe
         if (clienteZero) {
@@ -66,85 +126,121 @@ const GaleriaDeProdutos: React.FC = () => {
     };
     return (
         <div className='galeria-produtos'>
-            {produtosFiltrados.map((produto) => (
-                <div key={produto.id} className='produtosCatalogo'>
-                    <div className='container-img-qtd'>
+            {produtosFiltrados.map((produto) => {
+                const quantidadeNoCarrinho = getQuantidadeNoCarrinho(produto?.id);
+                return (
+                    <div key={produto.id} className='produtosCatalogo'>
+                        <div className='container-img-qtd'>
 
-                        <div className='bgImgProdutoNeutro'>
-                            <img onClick={() => handleImgagemOuDescricao()}
-                                className={getQuantidadeNoCarrinho(produto?.id) === 0 ? 'imgSelecionadoQtd' : ''} src={produto.img} alt={produto.descricao}
-                                style={{ display: imgOdescricao ? 'none' : 'block' }} />
-                            <p onClick={() => handleImgagemOuDescricao()}
-                                className='bgDescricao'
-                                style={{ display: imgOdescricao ? 'block' : 'none' }}>{produto.descricao}</p>
+                            <div className='bgImgProdutoNeutro'>
+                                <img onClick={() => handleImgagemOuDescricao()}
+                                    className={getQuantidadeNoCarrinho(produto?.id) === 0 ? 'imgSelecionadoQtd' : ''} src={produto.img} alt={produto.descricao}
+                                    style={{ display: imgOdescricao ? 'none' : 'block' }} />
+                                <p onClick={() => handleImgagemOuDescricao()}
+                                    className='bgDescricao'
+                                    style={{ display: imgOdescricao ? 'block' : 'none' }}>{produto.descricao}</p>
+                            </div>
                         </div>
 
+                        <div className='ingredientes-container' style={{ display: (getQuantidadeNoCarrinho(produto?.id)) === 0 ? 'none' : 'block' }}>
+                            <h6>
+                                <LuListChecks /> Escolha:
+                                {[...Array(quantidadeNoCarrinho)].map((_, cartItemIndex) => (
+                                    <div key={cartItemIndex}>
+                                        {produto.composicaoBasica.map((composicao, index) => (
+                                            <div key={index} className='ingredientes'>
+                                                {composicao.ingredientes.map((ingrediente, i) => {
+                                                    const ingredienteSelecionado = ingredientesSelecionadosPorProduto[produto.id]?.[cartItemIndex]?.find((item) => item.nome === ingrediente) || {
+                                                        nome: ingrediente,
+                                                        quantidade: 0,
+                                                    };
 
+                                                    const checkboxId = `ingrediente-${produto.id}-${cartItemIndex}-${index}-${i}`;
 
-                    </div>
-                    <div className='bgImgProduto'>
-                        <input type='text' className={getQuantidadeNoCarrinho(produto?.id) === 0 ? 'inputQtdProduto inputopc' : 'inputQtdProdutoLA'} value={getQuantidadeNoCarrinho(produto?.id)} readOnly />
-                        <button onClick={() => handleRemoverProduto(produto?.id)} className={getQuantidadeNoCarrinho(produto?.id) === 0 ? 'botaoMenosL' : 'botaoMenosLA'} disabled={getQuantidadeNoCarrinho(produto?.id) === 0}>
-                            <LuBadgeMinus size={tamanhoIcone} style={{ position: 'relative', left: '0px' }} />
-                        </button>
-                        <div>
-                            <button onClick={() => handleAdicionarProduto(produto)} className={getQuantidadeNoCarrinho(produto?.id) === 0 ? 'botaoMenosR' : 'botaoMenosRA'} >
-                                <LuBadgePlus size={tamanhoIcone} style={{ position: 'relative', left: '0px' }} />
-                            </button>
-                        </div>
-                    </div>
-                    <div className='bgNomeValoresDescricao'>
-                        <h5>{produto.nome}</h5>
-                        <p className='valor-produto-catalogo'>
-                            {(getQuantidadeNoCarrinho(produto?.id)) < 3 ?
-                                <strong className='ValorRealMoeda'></strong> :
-                                <strong className='ValorRealMoeda'>{getQuantidadeNoCarrinho(produto?.id)}X</strong>}
-                            <strong>
-                                {retornarValorString(produto.valor)[0]}
-                                {retornarValorString(produto.valor)[1]}
-                            </strong>
-                            <strong>
-                                {retornarValorString(produto.valor)[2]}
-                                {retornarValorString(produto.valor)[3]}
-                                {retornarValorString(produto.valor)[4]}
-                            </strong>
-                            {getQuantidadeNoCarrinho(produto?.id) < 3 ?
-                                '' :
-                                <strong className='ValorRealMoeda' style={{ color: '#cc7722', fontSize: '12px', letterSpacing: '3px', textDecoration: 'overline #ffd700 1px' }}><br /><br />Total: {(getQuantidadeNoCarrinho(produto?.id) * produto.valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong>}
-                        </p>
-
-                    </div>
-                    <div className='ingredientes-container' style={{ display: (getQuantidadeNoCarrinho(produto?.id)) === 0 ? 'none' : 'block' }}>
-                        <LuListChecks />
-                        {produto.composicaoBasica.map((composicao, index) => (
-                            <div key={index} className='ingredientes'>
-                                {composicao.ingredientes.map((ingrediente, i) => (
-                                    <div key={i}>
-                                        <input
-                                            type="checkbox"
-                                            id={`ingrediente-${index}-${i}`}
-                                            value={ingrediente}
-                                            checked={ingredientesSelecionados.includes(ingrediente)}
-                                            onChange={(e) => handleCheckboxChange(e, ingrediente)}
-                                        />
-                                        <label
-                                            htmlFor={`ingrediente-${index}-${i}`}
-                                            style={{ borderBottom: ingredientesSelecionados.includes(ingrediente) ? 'red groove 1px' : 'inherit' }}
-                                        >
-                                            {ingrediente}
-                                        </label>
+                                                    return (
+                                                        <div key={i}>
+                                                            <input
+                                                                type="checkbox"
+                                                                id={checkboxId}
+                                                                value={ingrediente}
+                                                                checked={ingredienteSelecionado.quantidade > 0}
+                                                                onChange={(e) => handleCheckboxChange(e, produto.id, cartItemIndex, ingrediente)}
+                                                            />
+                                                            <label
+                                                                htmlFor={checkboxId}
+                                                                style={{
+                                                                    borderBottom: ingredienteSelecionado.quantidade > 0 ? 'red groove 1px' : 'inherit',
+                                                                    color: ingredienteSelecionado.quantidade > 0 ? 'gold' : 'white',
+                                                                }}
+                                                                onClick={(e) => {
+                                                                    e.preventDefault();
+                                                                    handleCheckboxChange(
+                                                                        { target: { checked: !ingredienteSelecionado.quantidade } } as React.ChangeEvent<HTMLInputElement>,
+                                                                        produto.id,
+                                                                        cartItemIndex,
+                                                                        ingrediente
+                                                                    );
+                                                                }}
+                                                            >
+                                                                {ingrediente} {ingredienteSelecionado.quantidade > 0 ? `x${ingredienteSelecionado.quantidade}` : ''}
+                                                            </label>
+                                                        </div>
+                                                    );
+                                                })}
+                                            </div>
+                                        ))}
                                     </div>
                                 ))}
+                            </h6>
+
+
+
+                        </div>
+
+                        <div className='bgImgProduto'>
+                            <button onClick={() => handleRemoverProduto(produto?.id)} className={getQuantidadeNoCarrinho(produto?.id) === 0 ? 'botaoMenosL' : 'botaoMenosLA'} disabled={getQuantidadeNoCarrinho(produto?.id) === 0}>
+                                <LuBadgeMinus size={tamanhoIcone} style={{ position: 'relative', left: '0px' }} />
+                            </button>
+                            <input type='text' className={getQuantidadeNoCarrinho(produto?.id) === 0 ? 'inputQtdProduto inputopc' : 'inputQtdProdutoLA'} value={getQuantidadeNoCarrinho(produto?.id)} readOnly />
+                            <div>
+                                <button onClick={() => handleAdicionarProduto(produto)} className={getQuantidadeNoCarrinho(produto?.id) === 0 ? 'botaoMenosR' : 'botaoMenosRA'} >
+                                    <LuBadgePlus size={tamanhoIcone} style={{ position: 'relative', left: '0px' }} />
+                                </button>
                             </div>
-                        ))}
+                        </div>
+                        <div className='bgNomeValoresDescricao'>
+                            <h5>{produto.nome}</h5>
+                            <p className='valor-produto-catalogo'>
+                                {(getQuantidadeNoCarrinho(produto?.id)) < 3 ?
+                                    <strong className='ValorRealMoeda'></strong> :
+                                    <strong className='ValorRealMoeda'>{getQuantidadeNoCarrinho(produto?.id)}X</strong>}
+                                <strong>
+                                    {retornarValorString(produto.valor)[0]}
+                                    {retornarValorString(produto.valor)[1]}
+                                </strong>
+                                <strong>
+                                    {retornarValorString(produto.valor)[2]}
+                                    {retornarValorString(produto.valor)[3]}
+                                    {retornarValorString(produto.valor)[4]}
+                                </strong>
+                                {getQuantidadeNoCarrinho(produto?.id) < 3 ?
+                                    '' :
+                                    <strong className='ValorRealMoeda' style={{ color: '#cc7722', fontSize: '12px', letterSpacing: '3px', textDecoration: 'overline #ffd700 1px' }}><br /><br />Total: {(getQuantidadeNoCarrinho(produto?.id) * produto.valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong>}
+                            </p>
+
+                        </div>
+                        {/* 
+                    <div className="ingredientes-container">
                         <p>
-                            <LuListTodo />
-                            {ingredientesSelecionados.join(', ')}
+                            <h5><LuListTodo />  {ingredientesSelecionados.join(', ')}</h5>
+
 
                         </p>
                     </div>
-                </div>
-            ))}
+                    */}
+                    </div>
+                )
+            })}
         </div>
     );
 };

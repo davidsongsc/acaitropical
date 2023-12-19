@@ -8,18 +8,18 @@
   z-index: 700;
 }
 .galeria-produtos .produtosCatalogo {
-  width: 150px;
+  width: 146px;
   background-color: #8f8fbe;
   border: #707041 groove 1px;
   border-top-left-radius: 0px;
-  box-shadow: 1px 1px;
+  box-shadow: 1px 1px 14px;
   border-radius: 25px;
-  margin: 8px;
+  margin: 1px;
 }
 .galeria-produtos .bgNomeValoresDescricao {
   position: relative;
   width: 150px;
-  top: -40px;
+  /*top: -40px;*/
   z-index: 10;
 }
 
@@ -67,23 +67,28 @@
   opacity: 0;
 }
 .bgImgProduto {
+  width: 100%;
   display: flex;
-  align-items: flex-end;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
   flex-direction: row;
   position: relative;
   z-index: 800;
+  margin-bottom: -41px;
+  
+  background-color: #22094d;
 }
 .bgImgProduto input {
-  width: 50px;
-  height: 39px;
+  width: 36px;
+  height: 36px;
+  margin: 2px;
   text-align: center;
 }
 
 .botaoMenosL {
   position: relative;
-  height: 45px;
-  width: 45px;
+  height: 40px;
+  width: 40px;
   transition: 0.9s;
   opacity: 0;
   background-color: #accd79;
@@ -92,8 +97,8 @@
 
 .botaoMenosLA {
   position: relative;
-  height: 45px;
-  width: 45px;
+  height: 40px;
+  width: 40px;
   transition: 0.9s;
   background-color: #00bcd4;
   z-index: 10;
@@ -110,9 +115,11 @@
 .botaoMenosR {
   position: relative;
   transition: 0.9s;
-  height: 45px;
-  width: 45px;
+  height: 34px;
+  width: 36px;
+  border-radius: 50%;
   opacity: 0.5;
+  /* margin-top: -12px; */
   background-color: #ffd700;
   /* border-bottom-right-radius: 20px;*/
 }
@@ -120,8 +127,8 @@
 .botaoMenosRA {
   position: relative;
   transition: 0.9s;
-  height: 45px;
-  width: 45px;
+  height: 40px;
+  width: 40px;
   z-index: 999;
   background-color: #ffeb3b;
 }
@@ -161,10 +168,10 @@
   flex-wrap: wrap;
   justify-content: space-around;
 }
-.ingredientes-container .ingredientes input{
+.ingredientes-container .ingredientes input {
   display: none;
 }
-.ingredientes-container .ingredientes label{
+.ingredientes-container .ingredientes label {
   padding: 0 4px;
   text-transform: uppercase;
   font-size: small;
