@@ -44,8 +44,8 @@ export const composicaoProdutos: Composicao[] = [
     },
 ];
 const listaDePromocoes: PromoTipo[] = [
-    { nome: 'Desconto Especial', tipo: 'desconto especial', valor: 2.95, porcentagem: 0 },
-    { nome: 'oferta', tipo: 'Desconto', valor: 0, porcentagem: 15 },
+    { nome: 'Desconto Especial', tipo: 'desconto especial', valor: 0, porcentagem: 15 },
+    { nome: 'oferta', tipo: 'desconto', valor: 0, porcentagem: 15 },
     // Adicione mais promoções conforme necessário
 ];
 

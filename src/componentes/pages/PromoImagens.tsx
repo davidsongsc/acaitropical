@@ -29,15 +29,11 @@ const PromoComponent: React.FC = () => {
     const applyDiscount = (produto: Produto, promocao: PromoTipo) => {
         let valorComDesconto = produto.valor;
 
-        if (promocao.tipo === 'desconto especial') {
-            // Se for uma promoção de desconto, subtrai o valor fixo
-            valorComDesconto -= promocao.valor;
+        valorComDesconto -= promocao.valor;
 
-            // Se a porcentagem for diferente de zero, aplica o desconto percentual
-            if (promocao.porcentagem !== 0) {
-                const descontoPercentual = (promocao.porcentagem / 100) * produto.valor;
-                valorComDesconto -= descontoPercentual;
-            }
+        if (promocao.porcentagem !== 0) {
+            const descontoPercentual = (promocao.porcentagem / 100) * produto.valor;
+            valorComDesconto -= descontoPercentual;
         }
 
         // Garante que o valor não seja negativo
@@ -74,8 +70,11 @@ const PromoComponent: React.FC = () => {
                                         {promocao && (
                                             <>
                                                 <p style={{ borderBottom: '1px solid #000', paddingBottom: '10px' }}>
-                                                    Por: <strong style={{fontSize: 'xx-large'}}> R$ {valorComDesconto.toFixed(2)}</strong> <br /><strong>Desconto:</strong> - R$ {promocao.valor.toFixed(2)} ({promocao.porcentagem}%)
+                                                    Por: <strong style={{ fontSize: 'xx-large' }}> R$ {valorComDesconto.toFixed(2)}</strong> <br /><strong>Desconto:</strong> - R$ {promocao.valor.toFixed(2)}
+                                                    <br />
+                                                    <strong style={{ fontSize: 'large', color: 'brown' }}>-R${(produto.valor * promocao.porcentagem / 100).toFixed(2)} </strong>({promocao.porcentagem}%)
                                                 </p>
+
                                             </>
                                         )}
                                         <p>{produto.descricao}</p>
