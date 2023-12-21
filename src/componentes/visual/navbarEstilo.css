@@ -1,8 +1,9 @@
-.sociais-container h2{
+.sociais-container h2 {
   padding: 0 30px;
 }
- .redes-sociais-links{
+.redes-sociais-links {
   display: flex;
+  margin-left: 45px;
 }
 .geral-container-pagina h1 {
   font-size: x-large;
@@ -40,7 +41,9 @@
   background-color: #75d41d;
 }
 .sociais-container {
+  background-image: url(https://i.pinimg.com/originals/2e/06/12/2e0612e3ab8917c0207833bf4e0d9943.jpg);
   overflow-x: auto;
+  background-size: 87px;
   position: relative;
   top: 0px;
   left: 0px;
@@ -60,6 +63,10 @@
   list-style: none;
   display: flex;
   align-items: flex-end;
+  background-color: white;
+  padding: 10px;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
 }
 .sociais-container .listaSocialCliente li {
   width: 50px;
@@ -68,11 +75,30 @@
   padding: 0 10px;
 }
 .sociais-container .listaSocialCliente li a {
-  color: white;
+  color: black;
   text-decoration: none;
   padding: 0 10px;
+  font-weight: 500;
+  font-family: "Roboto";
+  transition: 0.7s;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
 }
-
+.sociais-container .listaSocialCliente li a svg {
+  position: relative;
+  top: 8px;
+}
+.sociais-container .listaSocialCliente li a:hover,
+.ativo-nav-menu {
+  background-color: black;
+  color: white;
+  padding-bottom: 11px;
+  padding-top: 5px;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
 .sociais-container.fixed {
   position: fixed;
 }
@@ -113,6 +139,6 @@ nav ul li {
 nav ul li strong {
   font-size: large;
 }
-.login-visual-container{
+.login-visual-container {
   transition: 1.5s;
 }

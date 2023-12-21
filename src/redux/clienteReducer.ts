@@ -17,6 +17,7 @@ const exemploDadosCliente: DadosCliente = {
     cadastroPessoaFisica: '123.456.789-01',
     telefone1: 1122334455,
     telefone2: 5544332211,
+    email: 'adebarbb@gmail.com'
 };
 
 const clientes: Cliente[] = [

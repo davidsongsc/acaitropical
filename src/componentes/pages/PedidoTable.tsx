@@ -97,16 +97,16 @@ const PedidoTable: React.FC = () => {
   const renderProdutos = (carrinho: Carrinho, index: number) => {
     const produtosRenderizados = carrinho.produtos.map(([produto, quantidade]: [Produto, number], produtoIndex: number) => (
       <tr key={produtoIndex}>
-        <td colSpan={1}>
+        <td colSpan={1} className='td-img'>
           <img src={produto.img} alt={produto.nome} />
         </td>
-        <td colSpan={4}>{produto.nome}</td>
-        <td colSpan={1} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <td colSpan={4} className='td-nome'>{produto.nome}</td>
+        <td colSpan={1}  className='td-qtd'>
           <button onClick={() => handleRemoverProduto(carrinho.id, produto.id)}>-</button>
           <input type="text" value={quantidade} readOnly />
           <button onClick={() => handleAdicionarProduto(carrinho.id, produto)}>+</button>
         </td>
-        <td colSpan={1}>{(produto.valor * quantidade).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
+        <td className='td-vtotal' colSpan={1}>{(produto.valor * quantidade).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
       </tr>
     ));
 
@@ -128,10 +128,10 @@ const PedidoTable: React.FC = () => {
       <table>
         <thead>
           <tr>
-            <th colSpan={1} style={{ width: '25px' }}>Img</th>
-            <th colSpan={4} style={{ width: '125px' }}>Produto</th>
-            <th colSpan={1}>Qtd</th>
-            <th colSpan={1} style={{ width: '25px' }}>Total</th>
+            <th colSpan={1} className='th-img' style={{ width: '25px' }}>Img</th>
+            <th colSpan={4} className='th-nome' style={{ width: '125px' }}>Produto</th>
+            <th colSpan={1} className='th-qtd'>Qtd</th>
+            <th colSpan={1} className='th-vtotal' style={{ width: '25px' }}>Total</th>
           </tr>
         </thead>
         <tbody style={{ height: '200px', overflowY: 'scroll' }}>

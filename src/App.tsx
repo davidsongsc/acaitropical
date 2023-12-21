@@ -4,7 +4,8 @@ import Navbar from './componentes/pages/NavBar';
 import CardapioPrincipal from './componentes/pages/Cardapio';
 import CarrinhoComprasLista from './componentes/pages/CarrinhoComprars';
 import './componentes/visual/baseFonts.css'
-import Home from './componentes/pages/Home';
+import Conta from './componentes/pages/Conta';
+import CatalogoCompomente from './componentes/pages/Catalogo';
 const App: React.FC = () => {
   return (
 
@@ -13,12 +14,16 @@ const App: React.FC = () => {
      
       <Routes>
         <Route
-          path="/"
-          element={<Home />}
+          path="/catalogo"
+          element={<CatalogoCompomente />}
         />
         <Route
           path="/delivery"
           element={<CardapioPrincipal />}
+        />
+         <Route
+          path="/conta"
+          element={<Conta />}
         />
         <Route
           path="/cardapio/:tipo"

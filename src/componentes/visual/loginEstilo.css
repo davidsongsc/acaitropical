@@ -1,6 +1,7 @@
-.login-container {
-  background-color: blueviolet;
-
+.login-container,
+.display-desfoco {
+  background-color: #57365772;
+  transition: 0.9s;
   list-style: none;
   padding: 10px;
   position: fixed;
@@ -11,6 +12,15 @@
   top: 38px;
 }
 
+.login-usuario {
+  width: 50%;
+  margin: 0 auto;
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  z-index: 1009;
+  transition: .9s;
+}
 .login-container form {
   width: 80%;
   display: flex;
@@ -29,4 +39,55 @@
   color: black;
   padding: 10px;
   font-size: large;
+}
+
+.usuario-configuracoes {
+  background-image: radial-gradient(circle at left, goldenrod, yellow);
+}
+.usuario-configuracoes main {
+  width: 80%;
+  margin: 0 auto;
+  background-image: url(https://images.unsplash.com/photo-1631615535272-1106aa1b3854?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+  background-size: cover;
+}
+.usuario-configuracoes section {
+  filter: blur(0px);
+  background-color: #f2f2f2;
+}
+.historico-pedidos-container img {
+  width: 40px;
+}
+
+.historico-pedidos-container .td-qtd button {
+  display: none;
+}
+.historico-pedidos-container .td-qtd input {
+  width: 20px;
+  border: none;
+}
+.historico-pedidos-container table {
+  border-collapse: collapse;
+  background-color: white;
+  color: black;
+  width: 100%;
+}
+
+.historico-pedidos-container th,
+.historico-pedidos-container td {
+  border: 1px solid #000;
+  padding: 8px;
+  text-align: left;
+}
+
+.historico-pedidos-container th {
+  background-color: #000;
+  color: #fff;
+}
+
+.historico-pedidos-container tr:nth-child(even) {
+  background-color: #f2f2f2;
+  color: black;
+}
+.historico-pedidos-container select {
+  display: none;
 }

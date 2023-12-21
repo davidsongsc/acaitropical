@@ -4,7 +4,7 @@ import { increment, decrement } from '../../redux/actions';
 import '../visual/home.css';
 import PromoImageGenerator from './PromoImagens';
 
-const Home: React.FC = () => {
+const CatalogoCompomente: React.FC = () => {
     const count = useSelector((state: any) => state.count);
     const dispatch = useDispatch();
     return (
@@ -21,4 +21,4 @@ const Home: React.FC = () => {
     );
 };
 
-export default Home;
+export default CatalogoCompomente;

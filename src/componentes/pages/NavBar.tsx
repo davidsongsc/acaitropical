@@ -72,35 +72,38 @@ const Navbar: React.FC = () => {
         <div className='geral-container-pagina-pdiv'>
           <ul className='listaSocialCliente'>
             <li style={{ display: loginVisivel ? 'none' : '' }}>
-              <Link to='/'>Inicio</Link>
-            </li>
-            <li style={{ display: loginVisivel ? 'none' : '' }}>
               <Link to='/delivery'>Delivery</Link>
             </li>
 
             <li style={{ display: loginVisivel ? 'none' : '' }}>
-              <Link to='/'>Conta</Link>
+              <Link to='/catalogo'>Catalogo</Link>
             </li>
+
+
             <li style={{ display: loginVisivel ? 'none' : '' }}>
               <Link to='/'>
-           
+
                 <>
-                <FiShoppingCart />
-                   {totalCarrinho}
+                  conta
                 </>
 
               </Link>
             </li>
             <li onClick={() => handleLoginStatus()} style={{ textDecoration: loginVisivel ? 'underline overline' : 'none' }}>
               <Link to='/'>
-           
+
                 <>
-               
-                 Login
+
+                  Login
                 </>
 
               </Link>
             </li>
+            <li style={{ display: loginVisivel ? 'none' : '' }}>
+              <Link to='/conta'><FiShoppingCart size={22} />
+                {totalCarrinho}</Link>
+            </li>
+
           </ul>
 
         </div>
@@ -113,7 +116,7 @@ const Navbar: React.FC = () => {
 
         </div>
       </div>
-      
+
       <div className='login-visual-container' style={{ display: loginVisivel ? '' : 'none' }}>
         <Login />
       </div>

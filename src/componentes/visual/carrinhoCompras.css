@@ -6,12 +6,13 @@
   padding: 15px;
   border-radius: 50%;
   color: var(--texto-color-principal);
-  box-shadow: 1px 1px 2px black;
+  box-shadow: 1px 1px 4px black;
   font-size: 25px;
   width: 25px;
   height: 25px;
   cursor: pointer;
   z-index: 90;
+  
 }
 
 .carrinho-pedidos-container .painel-carrinho {
@@ -21,7 +22,7 @@
   border: #a07fe1 5px groove;
   position: fixed;
   bottom: 0;
-  top: 37px;
+  top: 82px;
   right: 0;
   background-color: var(--texto-color-principal);
   z-index: 999;
@@ -75,8 +76,9 @@
 }
 
 .carrinho-pedidos-container .painel-carrinho td button {
-  width: 50px;
-  height: 30px;
+  width: 27px;
+  height: 27px;
+  border: none;
   border-radius: 8px;
 }
 .carrinho-pedidos-container .painel-carrinho td button:active {
@@ -84,9 +86,9 @@
   color: #fff;
 }
 .carrinho-pedidos-container .painel-carrinho td input {
-  width: 32px;
+  width: 25px;
   margin: 2px 0;
-  height: 22px;
+  height: 20px;
   border-radius: 4px;
 }
 .carrinho-pedidos-container .painel-carrinho td img {
@@ -105,7 +107,12 @@
 .carrinho-pedidos-container .painel-carrinho tbody tr:hover {
   background-color: #f0f0f0;
 }
-
+.td-qtd{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
 .carrinho-pedidos-container .carrinho-ativo-sqn {
   right: -550px;
   transition: 0.9s;
@@ -114,7 +121,7 @@
 
 .carrinho-pedidos-container .botao-fechar-carrinho {
   position: relative;
-  top: 55px;
+  top: 102px;
   right: 20px;
   display: flex;
   padding: 10px;

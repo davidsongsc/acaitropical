@@ -136,7 +136,7 @@ const GaleriaDeProdutos: React.FC = () => {
                 const promocao = produto.promo?.[0];
 
                 return (
-                    <div key={produto.id} className='produtosCatalogo' style={{ border: promocao && 'gold groove' }}>
+                    <div key={produto.id} className='produtosCatalogo' style={{ border: promocao && 'gold groove' , backgroundImage: `url('${produto.imgbg}')`}}>
                         <div className='container-img-qtd'>
                             <div className='bgImgProdutoNeutro'>
                                 {/* Adicione um onClick para cada produto */}

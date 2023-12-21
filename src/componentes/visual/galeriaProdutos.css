@@ -1,3 +1,6 @@
+.galeria-produtos{
+  
+}
 .galeria-produtos,
 .galeria-produtos .produtosCatalogo {
   display: flex;
@@ -10,7 +13,7 @@
 }
 .galeria-produtos .produtosCatalogo {
   width: 115px;
-  background-color: #8f8fbe;
+  background-color: #8f8fbe78;
   border: #707041 groove 1px;
   border-top-left-radius: 0px;
   box-shadow: 1px 1px 14px;
@@ -21,22 +24,23 @@
   position: relative;
   /*top: -40px;*/
   z-index: 10;
+  width: 100%;
 }
 
 .galeria-produtos .produtosCatalogo .bgImgProdutoNeutro img {
-  width: 121px;
-  height: 155px;
+  width: 111px;
+  height: 117px;
   position: relative;
   z-index: 999;
   transition: 0.9s;
   border-radius: 20px;
   border-bottom: red groove;
-
+top: 5px;
   margin-top: 2px;
 }
 .galeria-produtos .produtosCatalogo .bgImgProdutoNeutro .imgSelecionadoQtd {
-  width: 121px;
-  height: 155px;
+  width: 111px;
+  height: 117px;
   border-bottom: transparent groove;
 }
 .galeria-produtos .produtosCatalogo .bgImgProdutoNeutro {
@@ -147,7 +151,7 @@
 }
 
 .galeria-produtos .bgDescricao {
-  height: 125px;
+  height: 100px;
   background-color: #22094d;
   color: #fff;
   box-shadow: 1px 1px black;
@@ -159,7 +163,8 @@
   line-height: 15px;
   overflow-y: auto;
   border-radius: 20px;
-  top: -10px;
+  top: -8px;
+  margin-bottom: -9px;
   position: relative;
 }
 .ingredientes-container .ingredientes {

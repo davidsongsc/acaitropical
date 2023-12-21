@@ -13,6 +13,7 @@ export interface DadosCliente{
     cadastroPessoaFisica: string;
     telefone1: number;
     telefone2: number;
+    email: string;
 }
 export interface Cliente {
     id: number;

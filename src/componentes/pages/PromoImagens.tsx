@@ -1,11 +1,17 @@
 import React, { useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+
 import { RootState } from '../../redux/store';
-import { Produto, PromoTipo } from '../../redux/types';
+import { Cliente, Produto, PromoTipo } from '../../redux/types';
+import { adicionarProdutoCarrinho } from '../../redux/clienteReducer';
 
 const PromoComponent: React.FC = () => {
+    const dispatch = useDispatch();
     const todosProdutos = useSelector((state: RootState) => state.galeriaProdutos.todosProdutos);
+    const clientes = useSelector((state: RootState) => state.cliente.clientes);
+    const clienteZero: Cliente | undefined = clientes.find((cliente: Cliente) => cliente.id === 0);
+    const carrinhoID = 0;
     const scrollToAnchor = (anchorId: string) => {
         const element = document.getElementById(anchorId);
 
@@ -13,6 +19,20 @@ const PromoComponent: React.FC = () => {
             element.scrollIntoView({ behavior: 'smooth' });
         }
     };
+    const handleAdicionarProduto = (produto: Produto) => {
+        console.log(produto);
+        if (clienteZero) {
+            const carrinhoDoClienteZero = clienteZero.pedido?.carrinho?.[carrinhoID];
+            dispatch(adicionarProdutoCarrinho(carrinhoDoClienteZero?.id || 1, produto));
+        } else {
+            const novoCarrinho = {
+                id: carrinhoID,
+                produtos: [[produto, 1]],
+            };
+            dispatch(adicionarProdutoCarrinho(novoCarrinho.id, produto));
+        }
+    };
+
     const groupByPromotion = (produtos: Produto[]): Record<string, Produto[]> => {
         const grupos: Record<string, Produto[]> = {};
 
@@ -48,20 +68,20 @@ const PromoComponent: React.FC = () => {
     const promoGroups = groupByPromotion(todosProdutos);
 
     return (
-        <div className='promo-oferta-conteudo-container'>
-            {Object.entries(promoGroups).map(([grupo, produtos]) => (
-                <div key={grupo}>
+        <div  className='promo-oferta-conteudo-container'>
+            <div id='home-inicio-navegacao' className='lista-grupos'>
+                <div  className='h2-grupo'  >
+                    {Object.entries(promoGroups).map(([grupo, produtos]) => (
+                        <div key={grupo} id={`grupo-af${grupo.length}${grupo[grupo.length - 1]}`}>
 
+                            <h2 onClick={() => scrollToAnchor(`grupo-af${grupo.length}${grupo[grupo.length - 1]}`)}>{grupo} </h2>
 
-                    <ul>
-                        <div className='h2-grupo'  >
-                            <h2>{grupo} </h2>
                             <>
                                 {produtos.map((produto) => (
-                                    <li onClick={() => scrollToAnchor(`produto-${produto.id}`)} key={produto.id}>
+                                    <li onClick={() => scrollToAnchor(`produto-${produto.id}`)} key={produto.id} className='lista-li-produto'>
                                         <img src={produto.img} alt={produto.nome}
                                             style={{ maxWidth: '30px', maxHeight: '30px', transform: 'rotate(-90deg)' }} />
-                                        {produto.nome}
+                                        <br />{produto.nome}
 
                                     </li>
 
@@ -69,7 +89,16 @@ const PromoComponent: React.FC = () => {
                                 ))}
                             </>
 
+
                         </div>
+                    ))}
+                </div>
+            </div>
+
+            {Object.entries(promoGroups).map(([grupo, produtos]) => (
+                <div key={grupo}>
+
+                    <ul className='lista-produto-conteudo'>
 
                         {produtos.map((produto) => {
                             const promocao = produto.promo?.find((p) => p.nome === grupo);
@@ -84,7 +113,7 @@ const PromoComponent: React.FC = () => {
                                         backgroundImage: `url(${produto.imgbg[0]})`
 
                                     }}>
-                                        
+
 
                                         <img src={produto.img} alt={produto.nome}
                                             style={{ maxWidth: '200px', maxHeight: '200px' }} />
@@ -129,7 +158,7 @@ const PromoComponent: React.FC = () => {
                                                         :
                                                         <strong className='precoTotalComDesconto'> R$ {valorComDesconto.toFixed(2)}</strong>
                                                     }
-                                                    <button>Comprar</button>
+                                                    <button onClick={() => handleAdicionarProduto(produto)} >Comprar</button>
                                                 </div>
                                             )}
 
@@ -139,8 +168,10 @@ const PromoComponent: React.FC = () => {
                             );
                         })}
                     </ul>
+
                 </div>
-            ))}
+            ))} 
+            
         </div>
     );
 };
