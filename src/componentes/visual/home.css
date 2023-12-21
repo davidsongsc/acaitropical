@@ -17,7 +17,6 @@
   width: 220px;
   position: relative;
   border-radius: 5px;
-  
 }
 
 .promo-oferta-conteudo-container ul,
@@ -57,11 +56,18 @@
   box-shadow: 1px 1px 7px;
   margin: 5px;
   border-left: #8f8fbe groove;
+  transition: 0.9s;
   background-size: 355px;
   background-attachment: local;
   background-repeat: no-repeat;
-  animation: aumentarBackground 5s alternate ease-in-out;
-
+  animation: aumentarBackground 1.9s alternate ease-in-out;
+}
+.promo-oferta-conteudo-container li {
+  cursor: pointer;
+}
+.promo-oferta-conteudo-container ul li:hover,
+.promo-oferta-conteudo-container ul li:active {
+  background-color: goldenrod;
 }
 
 @keyframes aumentarBackground {
@@ -78,7 +84,7 @@
   text-transform: capitalize;
   font-weight: 100;
   width: 206px;
-  height: 40px
+  height: 40px;
 }
 
 .promo-oferta-conteudo-container button {

@@ -54,6 +54,7 @@
   z-index: 1000;
   flex-direction: row;
   box-shadow: 1px 2px 22px black;
+  margin-bottom: -17px;
 }
 .sociais-container .listaSocialCliente {
   list-style: none;

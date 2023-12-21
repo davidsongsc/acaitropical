@@ -6,7 +6,6 @@ export const tipoProdutosTeste: TipoProduto[] = [
     {
         id: 0,
         nome: 'Açai',
-
     },
     {
         id: 1,
@@ -49,7 +48,7 @@ export const composicaoProdutos2: Composicao[] = [
 const listaDePromocoes: PromoTipo[] = [];
 const novoPromo: PromoTipo[] = [
     {
-        nome: 'Novo',
+        nome: 'Favoritos',
         tipo: 'desconto',
         valor: 0,
         porcentagem: 0,
@@ -60,7 +59,7 @@ const novoPromo: PromoTipo[] = [
 ];
 const OfertasPromo: PromoTipo[] = [
     {
-        nome: 'Ofertas',
+        nome: 'Sobremesas',
         tipo: 'desconto',
         valor: 0,
         porcentagem: 0,
@@ -94,7 +93,7 @@ export const dadosProdutosTeste: Produto[] = [
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
-        composicaoBasica: [composicaoProdutos2],
+        composicaoBasica: [composicaoProdutos],
         promo:
             []
         ,

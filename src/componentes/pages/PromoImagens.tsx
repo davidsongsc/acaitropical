@@ -84,7 +84,7 @@ const PromoComponent: React.FC = () => {
                                         backgroundImage: `url(${produto.imgbg[0]})`
 
                                     }}>
-                                        {/* Adicionar um Link para o ID do produto no cardápio */}
+                                        
 
                                         <img src={produto.img} alt={produto.nome}
                                             style={{ maxWidth: '200px', maxHeight: '200px' }} />
@@ -93,7 +93,7 @@ const PromoComponent: React.FC = () => {
                                                 {produto.nome}
                                             </strong>
                                             <br />
-                                            <p style={{maxHeight: '200px', overflowY: 'auto'}}>
+                                            <p style={{ maxHeight: '200px', overflowY: 'auto' }}>
                                                 {produto.descricao}
                                             </p>
 
@@ -127,7 +127,7 @@ const PromoComponent: React.FC = () => {
 
                                                         </p>
                                                         :
-                                                        ''
+                                                        <strong className='precoTotalComDesconto'> R$ {valorComDesconto.toFixed(2)}</strong>
                                                     }
                                                     <button>Comprar</button>
                                                 </div>

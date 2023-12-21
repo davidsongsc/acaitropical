@@ -35,7 +35,7 @@ const CardapioPrincipal: React.FC = () => {
 
   const handleScroll = () => {
     const scrollY = window.scrollY;
-    setIsFixed(scrollY > 122);
+    setIsFixed(scrollY > 1);
   };
 
   const scrollToTop = () => {

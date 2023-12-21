@@ -9,13 +9,13 @@
   top: -25px;
 }
 .galeria-produtos .produtosCatalogo {
-  width: 125px;
+  width: 115px;
   background-color: #8f8fbe;
   border: #707041 groove 1px;
   border-top-left-radius: 0px;
   box-shadow: 1px 1px 14px;
   border-radius: 25px;
-  margin: 11px 3px;
+  margin: 11px 1px;
 }
 .galeria-produtos .bgNomeValoresDescricao {
   position: relative;
@@ -49,6 +49,7 @@
   justify-content: space-around;
   width: 145px;
   position: relative;
+  top: -5px;
 }
 .container-img-qtd input {
   width: 40px;

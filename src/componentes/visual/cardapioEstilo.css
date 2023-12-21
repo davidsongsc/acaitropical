@@ -85,7 +85,7 @@
 
 .ulClass.fixed {
   position: fixed;
-  top: 34px;
+  top: 22px;
   z-index: 900;
   overflow-y: auto;
   display: flex;

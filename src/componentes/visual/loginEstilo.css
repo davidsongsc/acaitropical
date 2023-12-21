@@ -1,9 +1,14 @@
 .login-container {
-  background-color: #8f8fbe;
-  border-radius: 4px;
+  background-color: blueviolet;
+
   list-style: none;
   padding: 10px;
-
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 38px;
 }
 
 .login-container form {
@@ -14,13 +19,14 @@
   margin: 5px auto;
   color: black;
   padding: 25px;
-  border-left: #8f8fbe groove;
+  border-left: brown groove 5px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px black;
 }
 
 .login-container form button,
-.login-container form input{
-
-    color: black;
-    padding: 10px;
-    font-size: large;
+.login-container form input {
+  color: black;
+  padding: 10px;
+  font-size: large;
 }

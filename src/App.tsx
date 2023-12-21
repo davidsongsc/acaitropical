@@ -17,7 +17,7 @@ const App: React.FC = () => {
           element={<Home />}
         />
         <Route
-          path="/cardapio"
+          path="/delivery"
           element={<CardapioPrincipal />}
         />
         <Route

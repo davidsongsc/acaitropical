@@ -71,17 +71,17 @@ const Navbar: React.FC = () => {
         </Link>
         <div className='geral-container-pagina-pdiv'>
           <ul className='listaSocialCliente'>
-            <li>
+            <li style={{ display: loginVisivel ? 'none' : '' }}>
               <Link to='/'>Inicio</Link>
             </li>
-            <li>
-              <Link to='/cardapio'>Cardápio</Link>
+            <li style={{ display: loginVisivel ? 'none' : '' }}>
+              <Link to='/delivery'>Delivery</Link>
             </li>
 
-            <li>
+            <li style={{ display: loginVisivel ? 'none' : '' }}>
               <Link to='/'>Conta</Link>
             </li>
-            <li>
+            <li style={{ display: loginVisivel ? 'none' : '' }}>
               <Link to='/'>
            
                 <>
@@ -91,11 +91,21 @@ const Navbar: React.FC = () => {
 
               </Link>
             </li>
+            <li onClick={() => handleLoginStatus()} style={{ textDecoration: loginVisivel ? 'underline overline' : 'none' }}>
+              <Link to='/'>
+           
+                <>
+               
+                 Login
+                </>
+
+              </Link>
+            </li>
           </ul>
 
         </div>
 
-        <h2><button onClick={() => handleLoginStatus()} style={{ backgroundColor: loginVisivel ? 'gray' : 'white' }}> Entrar</button></h2>
+
         <div className='redes-sociais-links'>
           <FaFacebook size={mediaSocialAtributos[0]} color={mediaSocialAtributos[1] as string} style={visualIcone} />
           <FaInstagram size={mediaSocialAtributos[0]} color={mediaSocialAtributos[1] as string} style={visualIcone} />
@@ -103,34 +113,8 @@ const Navbar: React.FC = () => {
 
         </div>
       </div>
-
-      <nav
-        style={{
-          marginTop: isFixed ? '-30px' : '-106px',  // LOGIN STATUS, USUARIO LOGADO DEVE MOSTRAR O CONTEUDO 
-        }}                                         // USUARIO
-      >
-        <ul>
-          <Link to="/cardapio" onClick={scrollToTop}>
-            <li>
-              <LuBookOpenCheck size={tamanhoIcone} />
-              <strong>Cardapio</strong>
-            </li>
-          </Link>
-          <Link to="/" onClick={scrollToTop}>
-            <li>
-              <LuStore size={tamanhoIcone} />
-              <strong>Pedidos</strong>
-            </li>
-          </Link>
-          <Link to="/" onClick={scrollToTop}>
-            <li>
-              <LuUsers2 size={tamanhoIcone} />
-              <strong>SAC</strong>
-            </li>
-          </Link>
-        </ul>
-      </nav>
-      <div className='login-visual-container' style={{ marginTop: loginVisivel ? '0px' : '-210px' }}>
+      
+      <div className='login-visual-container' style={{ display: loginVisivel ? '' : 'none' }}>
         <Login />
       </div>
     </div>
