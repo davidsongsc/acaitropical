@@ -26,11 +26,11 @@ const PedidoTable: React.FC = () => {
       promocoes.forEach((promocao) => {
         if (promocao.tipo === 'desconto') {
           valorComDesconto -= promocao.valor;
-
+}
           if (promocao.porcentagem !== 0) {
             const descontoPercentual = (promocao.porcentagem / 100) * produto.valor;
             valorComDesconto -= descontoPercentual;
-          }
+          
         }
       });
     }
