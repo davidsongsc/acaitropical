@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { RootState } from '../../redux/store';
@@ -6,8 +6,13 @@ import { Produto, PromoTipo } from '../../redux/types';
 
 const PromoComponent: React.FC = () => {
     const todosProdutos = useSelector((state: RootState) => state.galeriaProdutos.todosProdutos);
+    const scrollToAnchor = (anchorId: string) => {
+        const element = document.getElementById(anchorId);
 
-    // Função para agrupar produtos por promoção
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
     const groupByPromotion = (produtos: Produto[]): Record<string, Produto[]> => {
         const grupos: Record<string, Produto[]> = {};
 
@@ -46,40 +51,91 @@ const PromoComponent: React.FC = () => {
         <div className='promo-oferta-conteudo-container'>
             {Object.entries(promoGroups).map(([grupo, produtos]) => (
                 <div key={grupo}>
-                    <div className='h2-grupo'>
-                        <h2>{grupo}</h2>
-                    </div>
+
 
                     <ul>
+                        <div className='h2-grupo'  >
+                            <h2>{grupo} </h2>
+                            <>
+                                {produtos.map((produto) => (
+                                    <li onClick={() => scrollToAnchor(`produto-${produto.id}`)} key={produto.id}>
+                                        <img src={produto.img} alt={produto.nome}
+                                            style={{ maxWidth: '30px', maxHeight: '30px', transform: 'rotate(-90deg)' }} />
+                                        {produto.nome}
+
+                                    </li>
+
+
+                                ))}
+                            </>
+
+                        </div>
+
                         {produtos.map((produto) => {
                             const promocao = produto.promo?.find((p) => p.nome === grupo);
                             const valorComDesconto = promocao ? applyDiscount(produto, promocao) : produto.valor;
 
                             return (
-                                <li key={produto.id}>
-                                    {/* Adicionar um Link para o ID do produto no cardápio */}
-                                    <Link to={`/cardapio/${produto.id}`}>
-                                        <img src={produto.img} alt={produto.nome} style={{ maxWidth: '200px', maxHeight: '200px' }} />
-                                        <h1>{produto.nome}</h1>
-                                        <h3>
-                                            {valorComDesconto.toFixed(2) !== '0' ?
-                                                <> De:<s> R$  {produto.valor} </s></>
-                                                :
-                                                <> {produto.valor}</>}
-                                        </h3>
-                                        {promocao && (
-                                            <>
-                                                <p style={{ borderBottom: '1px solid #000', paddingBottom: '10px' }}>
-                                                    Por: <strong style={{ fontSize: 'xx-large' }}> R$ {valorComDesconto.toFixed(2)}</strong> <br /><strong>Desconto:</strong> - R$ {promocao.valor.toFixed(2)}
-                                                    <br />
-                                                    <strong style={{ fontSize: 'large', color: 'brown' }}>-R${(produto.valor * promocao.porcentagem / 100).toFixed(2)} </strong>({promocao.porcentagem}%)
-                                                </p>
+                                <div id={`produto-${produto.id}`} >
+                                    <li key={produto.id} style={{
+                                        backgroundColor: produto.promo[0].corf,
+                                        color: produto.promo[0].cort,
+                                        fontFamily: produto.promo[0].font,
+                                        backgroundImage: `url(${produto.imgbg[0]})`
 
-                                            </>
-                                        )}
-                                        <p>{produto.descricao}</p>
-                                    </Link>
-                                </li>
+                                    }}>
+                                        {/* Adicionar um Link para o ID do produto no cardápio */}
+
+                                        <img src={produto.img} alt={produto.nome}
+                                            style={{ maxWidth: '200px', maxHeight: '200px' }} />
+                                        <div className='conteudo-promorcional-texto-valores'>
+                                            <strong>
+                                                {produto.nome}
+                                            </strong>
+                                            <br />
+                                            <p style={{maxHeight: '200px', overflowY: 'auto'}}>
+                                                {produto.descricao}
+                                            </p>
+
+                                            {promocao && (
+                                                <div className='principal-comercio-padrao'>
+                                                    {valorComDesconto !== produto.valor ?
+                                                        <p style={{ borderBottom: '1px solid #000', paddingBottom: '10px' }}>
+                                                            {(produto.valor * promocao.porcentagem / 100) !== 0 ?
+                                                                <>
+                                                                    <br />
+                                                                    <strong style={{ fontSize: 'large', color: 'brown' }}>-R${(produto.valor * promocao.porcentagem / 100).toFixed(2)}
+                                                                    </strong>({promocao.porcentagem}%)
+                                                                </> :
+                                                                ''
+                                                            }
+                                                            {promocao.valor !== 0 ?
+                                                                <>
+                                                                    <br />
+                                                                    <strong>Desconto:</strong> - R$ {promocao.valor.toFixed(2)}
+                                                                </>
+                                                                :
+                                                                ''
+                                                            }
+                                                            <h3>
+                                                                {valorComDesconto !== produto.valor ?
+                                                                    <> <s style={{ color: 'gray' }}> R$  {produto.valor} </s></>
+                                                                    :
+                                                                    <strong className='precoTotalComDesconto'> R$ {produto.valor}</strong>}
+                                                            </h3>
+                                                            <strong className='precoTotalComDesconto'> R$ {valorComDesconto.toFixed(2)}</strong>
+
+                                                        </p>
+                                                        :
+                                                        ''
+                                                    }
+                                                    <button>Comprar</button>
+                                                </div>
+                                            )}
+
+                                        </div>
+                                    </li>
+                                </div>
                             );
                         })}
                     </ul>

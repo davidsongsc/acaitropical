@@ -24,6 +24,9 @@ export const tipoProdutosTeste: TipoProduto[] = [
 ];
 
 export const composicaoProdutos: Composicao[] = [
+
+];
+export const composicaoProdutos2: Composicao[] = [
     {
         tipo: tipoProdutosTeste[0],
         ingredientes: [
@@ -43,26 +46,59 @@ export const composicaoProdutos: Composicao[] = [
         ]
     },
 ];
-const listaDePromocoes: PromoTipo[] = [
-    { nome: 'Desconto Especial', tipo: 'desconto especial', valor: 0, porcentagem: 15 },
-    { nome: 'oferta', tipo: 'desconto', valor: 0, porcentagem: 15 },
-    // Adicione mais promoções conforme necessário
+const listaDePromocoes: PromoTipo[] = [];
+const novoPromo: PromoTipo[] = [
+    {
+        nome: 'Novo',
+        tipo: 'desconto',
+        valor: 0,
+        porcentagem: 0,
+        cort: 'black',
+        corf: '#fff',
+        font: 'Roboto'
+    }
+];
+const OfertasPromo: PromoTipo[] = [
+    {
+        nome: 'Ofertas',
+        tipo: 'desconto',
+        valor: 0,
+        porcentagem: 0,
+        cort: 'black',
+        corf: '#fff',
+        font: 'Roboto'
+    }
 ];
 
+const D30off: PromoTipo[] = [
+    {
+        nome: '30% off',
+        tipo: 'desconto',
+        valor: 0,
+        porcentagem: 15,
+        cort: 'black',
+        corf: '#fff',
+        font: 'Roboto'
+    }
+];
 export const dadosProdutosTeste: Produto[] = [
     {
         id: 0,
         nome: 'Açai B. 300ml',
         descricao: 'Açai especial, batido com banana.',
         img: 'https://st2.depositphotos.com/17524768/45085/i/450/depositphotos_450859886-stock-photo-brazilian-frozen-plastic-cup-condensed.jpg',
+        imgbg: [],
         valor: 7.95,
         quantidade: 10,
         tipo: [tipoProdutosTeste[0]],
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
-        composicaoBasica: [composicaoProdutos],
-        promo: listaDePromocoes,
+        composicaoBasica: [composicaoProdutos2],
+        promo:
+            []
+        ,
+        volume: ['ml', 300],
     },
     {
         id: 1,
@@ -70,6 +106,7 @@ export const dadosProdutosTeste: Produto[] = [
         descricao: 'Açai especial, batido com banana.',
         img: 'https://yumethesushiacai.ssapps.com.br/_core/_uploads/85/2023/03/1632250323d94c6jae8j.jpeg',
         valor: 9.95,
+        imgbg: [],
         quantidade: 2,
         tipo: [tipoProdutosTeste[0]],
         disponibilidade: 10,
@@ -77,6 +114,7 @@ export const dadosProdutosTeste: Produto[] = [
         idCriadorProduto: 1,
         composicaoBasica: [composicaoProdutos,],
         promo: [],
+        volume: ['ml', 500],
     },
 
     {
@@ -85,6 +123,7 @@ export const dadosProdutosTeste: Produto[] = [
         descricao: 'Açai especial, batido com banana.',
         img: 'https://yumethesushiacai.ssapps.com.br/_core/_uploads/85/2023/03/1632250323d94c6jae8j.jpeg',
         valor: 11.95,
+        imgbg: [],
         quantidade: 2,
         tipo: [tipoProdutosTeste[0]],
         disponibilidade: 10,
@@ -92,6 +131,7 @@ export const dadosProdutosTeste: Produto[] = [
         idCriadorProduto: 1,
         composicaoBasica: [composicaoProdutos,],
         promo: [],
+        volume: ['ml', 700],
     },
     {
         id: 3,
@@ -99,6 +139,7 @@ export const dadosProdutosTeste: Produto[] = [
         descricao: 'Açai especial, batido com morango.',
         img: 'https://st2.depositphotos.com/17524768/45085/i/450/depositphotos_450859886-stock-photo-brazilian-frozen-plastic-cup-condensed.jpg',
         valor: 7.95,
+        imgbg: [],
         quantidade: 2,
         tipo: [tipoProdutosTeste[0]],
         disponibilidade: 10,
@@ -106,6 +147,7 @@ export const dadosProdutosTeste: Produto[] = [
         idCriadorProduto: 1,
         composicaoBasica: [composicaoProdutos,],
         promo: [],
+        volume: ['ml', 300],
     },
     {
         id: 4,
@@ -113,6 +155,7 @@ export const dadosProdutosTeste: Produto[] = [
         descricao: 'Açai especial, batido com morango.',
         img: 'https://yumethesushiacai.ssapps.com.br/_core/_uploads/85/2023/03/1632250323d94c6jae8j.jpeg',
         valor: 9.95,
+        imgbg: [],
         quantidade: 2,
         tipo: [tipoProdutosTeste[0]],
         disponibilidade: 10,
@@ -120,6 +163,7 @@ export const dadosProdutosTeste: Produto[] = [
         idCriadorProduto: 1,
         composicaoBasica: [composicaoProdutos,],
         promo: [],
+        volume: ['ml', 500],
     },
 
     {
@@ -128,6 +172,7 @@ export const dadosProdutosTeste: Produto[] = [
         descricao: 'Açai especial, batido com morango.',
         img: 'https://yumethesushiacai.ssapps.com.br/_core/_uploads/85/2023/03/1632250323d94c6jae8j.jpeg',
         valor: 11.95,
+        imgbg: [],
         quantidade: 2,
         tipo: [tipoProdutosTeste[0]],
         disponibilidade: 10,
@@ -135,6 +180,7 @@ export const dadosProdutosTeste: Produto[] = [
         idCriadorProduto: 1,
         composicaoBasica: [composicaoProdutos,],
         promo: [],
+        volume: ['ml', 700],
     },
     {
         id: 6,
@@ -142,6 +188,7 @@ export const dadosProdutosTeste: Produto[] = [
         descricao: 'Açai especial, batido com mamão, banana e morango.',
         img: 'https://st2.depositphotos.com/17524768/45085/i/450/depositphotos_450859886-stock-photo-brazilian-frozen-plastic-cup-condensed.jpg',
         valor: 7.95,
+        imgbg: [],
         quantidade: 2,
         tipo: [tipoProdutosTeste[0]],
         disponibilidade: 10,
@@ -149,6 +196,7 @@ export const dadosProdutosTeste: Produto[] = [
         idCriadorProduto: 1,
         composicaoBasica: [composicaoProdutos,],
         promo: [],
+        volume: ['ml', 300],
     },
     {
         id: 7,
@@ -156,6 +204,7 @@ export const dadosProdutosTeste: Produto[] = [
         descricao: 'Açai especial, batido com mamão, banana e morango.',
         img: 'https://yumethesushiacai.ssapps.com.br/_core/_uploads/85/2023/03/1632250323d94c6jae8j.jpeg',
         valor: 9.95,
+        imgbg: [],
         quantidade: 2,
         tipo: [tipoProdutosTeste[0]],
         disponibilidade: 10,
@@ -163,6 +212,7 @@ export const dadosProdutosTeste: Produto[] = [
         idCriadorProduto: 1,
         composicaoBasica: [composicaoProdutos,],
         promo: [],
+        volume: ['ml', 500],
     },
 
     {
@@ -171,6 +221,7 @@ export const dadosProdutosTeste: Produto[] = [
         descricao: 'Açai especial, batido com mamão, banana e morango.',
         img: 'https://yumethesushiacai.ssapps.com.br/_core/_uploads/85/2023/03/1632250323d94c6jae8j.jpeg',
         valor: 11.95,
+        imgbg: [],
         quantidade: 2,
         tipo: [tipoProdutosTeste[0]],
         disponibilidade: 10,
@@ -178,6 +229,7 @@ export const dadosProdutosTeste: Produto[] = [
         idCriadorProduto: 1,
         composicaoBasica: [composicaoProdutos,],
         promo: [],
+        volume: ['ml', 700],
     },
     {
         id: 9,
@@ -185,13 +237,15 @@ export const dadosProdutosTeste: Produto[] = [
         descricao: 'Farinha de trigo enriquecida com ferro e ácido fólico, açúcar, gordura vegetal, maltodextrina, soro de leite em pó, açúcar invertido, extrato de malte, amido de milho*, sal, emulsificantes: lecitina de soja e estearoil lactilato de cálcio, aromatizantes, fermentos químicos: bicarbonato de sódio e fosfato monocálcico, antioxidante ácido cítrico e corante cúrcuma.',
         img: 'https://piraque.com.br/wp-content/uploads/2020/11/chocolate.png',
         valor: 7.95,
+        imgbg: ['https://piraque.com.br/wp-content/uploads/2020/11/Recheado_Chocolate.png'],
         quantidade: 2,
         tipo: [tipoProdutosTeste[1]],
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
         composicaoBasica: [composicaoProdutos,],
-        promo: listaDePromocoes,
+        promo: novoPromo,
+        volume: ['g', 160],
     },
     {
         id: 10,
@@ -199,13 +253,15 @@ export const dadosProdutosTeste: Produto[] = [
         descricao: 'Farinha de trigo enriquecida com ferro e ácido fólico, açúcar, gordura vegetal, maltodextrina, soro de leite em pó, açúcar invertido, extrato de malte, amido de milho*, sal, emulsificantes: lecitina de soja e estearoil lactilato de cálcio, aromatizantes, fermentos químicos: bicarbonato de sódio e fosfato monocálcico, antioxidante ácido cítrico e corante cúrcuma.',
         img: 'https://piraque.com.br/wp-content/uploads/2020/11/morango.png',
         valor: 7.95,
+        imgbg: ['https://piraque.com.br/wp-content/uploads/2020/11/Recheado-Morango.png'],
         quantidade: 2,
         tipo: [tipoProdutosTeste[1]],
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
         composicaoBasica: [composicaoProdutos,],
-        promo: [],
+        promo: novoPromo,
+        volume: ['g', 160],
     },
     {
         id: 11,
@@ -213,13 +269,15 @@ export const dadosProdutosTeste: Produto[] = [
         descricao: 'Farinha de trigo enriquecida com ferro e ácido fólico, açúcar, gordura vegetal, maltodextrina, soro de leite em pó, açúcar invertido, extrato de malte, amido de milho*, sal, emulsificantes: lecitina de soja e estearoil lactilato de cálcio, aromatizantes, fermentos químicos: bicarbonato de sódio e fosfato monocálcico, antioxidante ácido cítrico e corante cúrcuma.',
         img: 'https://cdn-cosmos.bluesoft.com.br/products/7896024760371',
         valor: 7.95,
+        imgbg: ['https://piraque.com.br/wp-content/uploads/2020/11/Recheado-Limao.png'],
         quantidade: 2,
         tipo: [tipoProdutosTeste[1]],
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
         composicaoBasica: [composicaoProdutos,],
-        promo: [],
+        promo: novoPromo,
+        volume: ['g', 160],
     },
     {
         id: 12,
@@ -227,27 +285,31 @@ export const dadosProdutosTeste: Produto[] = [
         descricao: 'Farinha de trigo enriquecida com ferro e ácido fólico, açúcar, gordura vegetal, maltodextrina, soro de leite em pó, açúcar invertido, extrato de malte, amido de milho*, sal, emulsificantes: lecitina de soja e estearoil lactilato de cálcio, aromatizantes, fermentos químicos: bicarbonato de sódio e fosfato monocálcico, antioxidante ácido cítrico e corante cúrcuma.',
         img: 'https://piraque.com.br/wp-content/uploads/2020/11/brigadeir.png',
         valor: 7.95,
+        imgbg: ['https://piraque.com.br/wp-content/uploads/2020/11/Recheado-Brigadeiro.png'],
         quantidade: 2,
         tipo: [tipoProdutosTeste[1]],
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
         composicaoBasica: [composicaoProdutos,],
-        promo: listaDePromocoes,
+        promo: novoPromo,
+        volume: ['g', 160],
     },
     {
         id: 13,
         nome: 'Piraquê Coco',
         descricao: 'Farinha de trigo enriquecida com ferro e ácido fólico, açúcar, gordura vegetal, maltodextrina, soro de leite em pó, açúcar invertido, extrato de malte, amido de milho*, sal, emulsificantes: lecitina de soja e estearoil lactilato de cálcio, aromatizantes, fermentos químicos: bicarbonato de sódio e fosfato monocálcico, antioxidante ácido cítrico e corante cúrcuma.',
-        img: 'https://piraque.com.br/wp-content/uploads/2020/11/Piraque-Biscoito-Recheado-Coco-Baunilha-160g.png',
+        img: 'https://piraque.com.br/wp-content/uploads/2020/11/coco-2-1.png',
         valor: 7.95,
+        imgbg: ['https://piraque.com.br/wp-content/uploads/2020/11/Recheado_Coco.png'],
         quantidade: 2,
         tipo: [tipoProdutosTeste[1]],
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
         composicaoBasica: [composicaoProdutos,],
-        promo: [],
+        promo: novoPromo,
+        volume: ['g', 160],
     },
     {
         id: 14,
@@ -255,13 +317,15 @@ export const dadosProdutosTeste: Produto[] = [
         descricao: 'Farinha de trigo enriquecida com ferro e ácido fólico, açúcar, gordura vegetal, maltodextrina, soro de leite em pó, açúcar invertido, extrato de malte, amido de milho*, sal, emulsificantes: lecitina de soja e estearoil lactilato de cálcio, aromatizantes, fermentos químicos: bicarbonato de sódio e fosfato monocálcico, antioxidante ácido cítrico e corante cúrcuma.',
         img: 'https://piraque.com.br/wp-content/uploads/2020/11/pretty.png',
         valor: 7.95,
+        imgbg: ['https://piraque.com.br/wp-content/uploads/2020/11/Recheado-Pretty.png'],
         quantidade: 2,
         tipo: [tipoProdutosTeste[1]],
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
         composicaoBasica: [composicaoProdutos,],
-        promo: [],
+        promo: novoPromo,
+        volume: ['g', 160],
     },
     {
         id: 15,
@@ -269,13 +333,15 @@ export const dadosProdutosTeste: Produto[] = [
         descricao: 'Farinha de trigo enriquecida com ferro e ácido fólico, açúcar, gordura vegetal, maltodextrina, soro de leite em pó, açúcar invertido, extrato de malte, amido de milho*, sal, emulsificantes: lecitina de soja e estearoil lactilato de cálcio, aromatizantes, fermentos químicos: bicarbonato de sódio e fosfato monocálcico, antioxidante ácido cítrico e corante cúrcuma.',
         img: 'https://piraque.com.br/wp-content/uploads/2020/11/abacaxi.png',
         valor: 7.95,
+        imgbg: ['https://piraque.com.br/wp-content/uploads/2020/11/Recheado-Abacaxi.png'],
         quantidade: 2,
         tipo: [tipoProdutosTeste[1]],
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
         composicaoBasica: [composicaoProdutos,],
-        promo: [],
+        promo: novoPromo,
+        volume: ['g', 160],
     },
     {
         id: 16,
@@ -283,13 +349,15 @@ export const dadosProdutosTeste: Produto[] = [
         descricao: '5 Unidades pastel Queijo.',
         img: 'https://i.pinimg.com/originals/cb/16/be/cb16be0c94c4dfdda75c47bcecdeff8d.png',
         valor: 25.95,
+        imgbg: [],
         quantidade: 2,
         tipo: [tipoProdutosTeste[3]],
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
         composicaoBasica: [composicaoProdutos,],
-        promo: [],
+        promo: D30off,
+        volume: ['g', 160],
     },
     {
         id: 17,
@@ -297,6 +365,7 @@ export const dadosProdutosTeste: Produto[] = [
         descricao: '8 Unidades pastel Carne.',
         img: 'https://i.pinimg.com/originals/cb/16/be/cb16be0c94c4dfdda75c47bcecdeff8d.png',
         valor: 35.95,
+        imgbg: [],
         quantidade: 2,
         tipo: [tipoProdutosTeste[3]],
         disponibilidade: 10,
@@ -304,6 +373,7 @@ export const dadosProdutosTeste: Produto[] = [
         idCriadorProduto: 1,
         composicaoBasica: [composicaoProdutos,],
         promo: [],
+        volume: ['g', 160],
     },
     {
         id: 18,
@@ -311,6 +381,7 @@ export const dadosProdutosTeste: Produto[] = [
         descricao: '12 Unidades pastel Frango.',
         img: 'https://i.pinimg.com/originals/cb/16/be/cb16be0c94c4dfdda75c47bcecdeff8d.png',
         valor: 49.95,
+        imgbg: [],
         quantidade: 2,
         tipo: [tipoProdutosTeste[3]],
         disponibilidade: 10,
@@ -318,6 +389,7 @@ export const dadosProdutosTeste: Produto[] = [
         idCriadorProduto: 1,
         composicaoBasica: [composicaoProdutos,],
         promo: [],
+        volume: ['g', 160],
     },
     {
         id: 19,
@@ -325,6 +397,7 @@ export const dadosProdutosTeste: Produto[] = [
         descricao: '10 Unidades salgadinho coxinha (sabor) a escolha.',
         img: 'https://cdn.2rscms.com.br/uploads/749/layout/conx.png',
         valor: 19.95,
+        imgbg: [],
         quantidade: 2,
         tipo: [tipoProdutosTeste[3]],
         disponibilidade: 10,
@@ -332,6 +405,7 @@ export const dadosProdutosTeste: Produto[] = [
         idCriadorProduto: 1,
         composicaoBasica: [composicaoProdutos,],
         promo: [],
+        volume: ['g', 160],
     },
     {
         id: 20,
@@ -339,6 +413,7 @@ export const dadosProdutosTeste: Produto[] = [
         descricao: '20 Unidades salgadinho coxinha (sabor) a escolha.',
         img: 'https://cdn.2rscms.com.br/uploads/749/layout/conx.png',
         valor: 33.95,
+        imgbg: [],
         quantidade: 2,
         tipo: [tipoProdutosTeste[3]],
         disponibilidade: 10,
@@ -346,6 +421,7 @@ export const dadosProdutosTeste: Produto[] = [
         idCriadorProduto: 1,
         composicaoBasica: [composicaoProdutos,],
         promo: [],
+        volume: ['g', 160],
     },
     {
         id: 21,
@@ -353,6 +429,7 @@ export const dadosProdutosTeste: Produto[] = [
         descricao: '30 Unidades salgadinho coxinha (sabor) a escolha.',
         img: 'https://cdn.2rscms.com.br/uploads/749/layout/conx.png',
         valor: 45.95,
+        imgbg: [],
         quantidade: 2,
         tipo: [tipoProdutosTeste[3]],
         disponibilidade: 10,
@@ -360,6 +437,7 @@ export const dadosProdutosTeste: Produto[] = [
         idCriadorProduto: 1,
         composicaoBasica: [composicaoProdutos,],
         promo: [],
+        volume: ['und', 30],
     },
     {
         id: 22,
@@ -367,6 +445,7 @@ export const dadosProdutosTeste: Produto[] = [
         descricao: '10 Unidades salgadinho (sabor) a escolha.',
         img: 'https://lh5.googleusercontent.com/p/AF1QipMoCZwduhw-ngGlbu-sp0tMnglqRC6Hf2rbtNq6=w1440-h893-k-no',
         valor: 9.95,
+        imgbg: [],
         quantidade: 2,
         tipo: [tipoProdutosTeste[3]],
         disponibilidade: 10,
@@ -374,6 +453,7 @@ export const dadosProdutosTeste: Produto[] = [
         idCriadorProduto: 1,
         composicaoBasica: [composicaoProdutos,],
         promo: [],
+        volume: ['und', 10],
     },
     {
         id: 23,
@@ -381,6 +461,7 @@ export const dadosProdutosTeste: Produto[] = [
         descricao: '20 Unidades salgadinho (sabor) a escolha.',
         img: 'https://lh5.googleusercontent.com/p/AF1QipMoCZwduhw-ngGlbu-sp0tMnglqRC6Hf2rbtNq6=w1440-h893-k-no',
         valor: 9.95,
+        imgbg: [],
         quantidade: 2,
         tipo: [tipoProdutosTeste[3]],
         disponibilidade: 10,
@@ -388,6 +469,7 @@ export const dadosProdutosTeste: Produto[] = [
         idCriadorProduto: 1,
         composicaoBasica: [composicaoProdutos,],
         promo: [],
+        volume: ['und', 20],
     },
     {
         id: 24,
@@ -395,6 +477,7 @@ export const dadosProdutosTeste: Produto[] = [
         descricao: '30 Unidades salgadinho (sabor) a escolha.',
         img: 'https://lh5.googleusercontent.com/p/AF1QipMoCZwduhw-ngGlbu-sp0tMnglqRC6Hf2rbtNq6=w1440-h893-k-no',
         valor: 9.95,
+        imgbg: [],
         quantidade: 2,
         tipo: [tipoProdutosTeste[3]],
         disponibilidade: 10,
@@ -402,6 +485,7 @@ export const dadosProdutosTeste: Produto[] = [
         idCriadorProduto: 1,
         composicaoBasica: [composicaoProdutos,],
         promo: [],
+        volume: ['und', 30],
     },
     {
         id: 25,
@@ -409,13 +493,15 @@ export const dadosProdutosTeste: Produto[] = [
         descricao: 'Brownei',
         img: 'https://www.cozinhadamarcia.com.br/wp-content/uploads/2015/02/F_BlSufle_1.jpg',
         valor: 9.95,
+        imgbg: [],
         quantidade: 2,
         tipo: [tipoProdutosTeste[2]],
         disponibilidade: 10,
         dataHoraCriacao: '2023-01-01T00:00:00',
         idCriadorProduto: 1,
         composicaoBasica: [composicaoProdutos,],
-        promo: [],
+        promo: OfertasPromo,
+        volume: ['und', 1],
     },
     {
         id: 26,
@@ -423,6 +509,7 @@ export const dadosProdutosTeste: Produto[] = [
         descricao: 'Refrigerante',
         img: 'https://acdn.mitiendanube.com/stores/001/165/503/products/coca-normal11-2cb12d901c0ec9eb9716192140335257-1024-1024.png',
         valor: 7.95,
+        imgbg: [],
         quantidade: 2,
         tipo: [tipoProdutosTeste[4]],
         disponibilidade: 10,
@@ -430,12 +517,14 @@ export const dadosProdutosTeste: Produto[] = [
         idCriadorProduto: 1,
         composicaoBasica: [composicaoProdutos,],
         promo: [],
+        volume: ['und', 1],
     },
     {
         id: 27,
         nome: 'Coca Cola Lt',
         descricao: 'Refrigerante',
         img: 'https://acdn.mitiendanube.com/stores/001/165/503/products/coca-zero21-16e7cba0588363da7616192142363168-1024-1024.png',
+        imgbg: [],
         valor: 7.95,
         quantidade: 2,
         tipo: [tipoProdutosTeste[4]],
@@ -444,6 +533,7 @@ export const dadosProdutosTeste: Produto[] = [
         idCriadorProduto: 1,
         composicaoBasica: [composicaoProdutos,],
         promo: [],
+        volume: ['und', 1],
     },
 ]
 

@@ -3,20 +3,28 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Cliente, Carrinho, Produto, PromoTipo } from '../../redux/types';
 import { RootState } from '../../redux/store';
 import { adicionarProdutoCarrinho, removerProdutoCarrinho } from '../../redux/clienteReducer';
+import { retornarValorTaxaEntrega } from '../extensoes/moduloScriptsAjuda';
 
 const PedidoTable: React.FC = () => {
   const dispatch = useDispatch();
   const clientes = useSelector((state: RootState) => state.cliente.clientes);
   const [taxaEntregador, setTaxaEntregador] = useState<number>(4);
+  const [totalCarrinhoPuro, setTotalCarrinhoPuro] = useState<number>(0);
   const [totalCarrinho, setTotalCarrinho] = useState<number>(0);
   const clienteFiltrado = clientes.find((cliente: Cliente) => cliente.id === 0);
+  const distancia = 1;
+  const [selecionarTipoEntrega, setSelecionarTipoEntrega] = useState('');
+
+  const handleSelecionarEntregador = (valor: string) => {
+    setSelecionarTipoEntrega(valor);
+  }
 
   const applyDiscount = (produto: Produto, promocoes: PromoTipo[] | undefined): number => {
     let valorComDesconto = produto.valor;
 
     if (promocoes) {
       promocoes.forEach((promocao) => {
-        if (promocao.tipo === 'desconto especial') {
+        if (promocao.tipo === 'desconto') {
           valorComDesconto -= promocao.valor;
 
           if (promocao.porcentagem !== 0) {
@@ -38,19 +46,34 @@ const PedidoTable: React.FC = () => {
   };
 
   useEffect(() => {
+    setTaxaEntregador(retornarValorTaxaEntrega(distancia, selecionarTipoEntrega));
+
     setTotalCarrinho((prevTotal) => {
       const newTotal = clienteFiltrado?.pedido?.carrinho.reduce((total: number, carrinho: Carrinho) => {
         return (
           total +
           carrinho.produtos.reduce((subtotal: number, [produto, quantidade]: [Produto, number]) => {
-            return subtotal - calcularTotalDescontos() + taxaEntregador + produto.valor * quantidade;
+            return subtotal - calcularTotalDescontos() + retornarValorTaxaEntrega(distancia, selecionarTipoEntrega) + produto.valor * quantidade;
           }, 0)
         );
       }, 0) || 0;
 
       return newTotal;
     });
-  }, [clienteFiltrado]);
+
+    setTotalCarrinhoPuro((prevTotal) => {
+      const newTotal = clienteFiltrado?.pedido?.carrinho.reduce((total: number, carrinho: Carrinho) => {
+        return (
+          total +
+          carrinho.produtos.reduce((subtotal: number, [produto, quantidade]: [Produto, number]) => {
+            return subtotal + produto.valor * quantidade;
+          }, 0)
+        );
+      }, 0) || 0;
+
+      return newTotal;
+    });
+  }, [clienteFiltrado, selecionarTipoEntrega]);
 
   const handleRemoverProduto = (carrinhoId: number, produtoId: number) => {
     dispatch(removerProdutoCarrinho(carrinhoId, produtoId));
@@ -101,7 +124,7 @@ const PedidoTable: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className='totais-conferencia'>
       <table>
         <thead>
           <tr>
@@ -115,16 +138,43 @@ const PedidoTable: React.FC = () => {
           {renderCarrinho()}
         </tbody>
         <tfoot>
-          <tr>
-            <td colSpan={4}>Total de Descontos</td>
-            <td colSpan={4}>{calcularTotalDescontos().toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
+          <tr className='total'>
+            <td colSpan={4}>Totalidade</td>
+            <td colSpan={4}>{totalCarrinhoPuro.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
           </tr>
-          <tr>
-            <td>Taxa de entrega</td>
-            <td colSpan={4}>{taxaEntregador.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
+          <tr className='descontos'>
+            <td colSpan={4}>Descontos</td>
+            <td colSpan={4}>{calcularTotalDescontos() === 0 ? '' : '-'}{calcularTotalDescontos().toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
           </tr>
-          <tr>
-            <td colSpan={4}>Total</td>
+          <tr className='taxa'>
+            <td colSpan={4}>
+              Taxa:
+              <select
+                name="tipoEntregador"
+                id=""
+                value={selecionarTipoEntrega}
+                onChange={(e) => {
+                  const novoTipoEntrega = e.target.value;
+                  handleSelecionarEntregador(novoTipoEntrega);
+                }}
+              >
+                <option key={0} value={''} >
+                  Retirar Local
+                </option>
+
+                <option key={1} value={'moto'}>
+                  Motoboy
+                </option>
+                
+                <option key={2} value={'bike'}>
+                  Bike
+                </option>
+              </select>
+            </td>
+            <td colSpan={4}>{taxaEntregador === 0 ? '' : '+'}{taxaEntregador.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
+          </tr>
+          <tr className='total-conta'>
+            <td colSpan={4}>Custo Total</td>
             <td colSpan={4}>{totalCarrinho.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
           </tr>
         </tfoot>

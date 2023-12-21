@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import '../visual/galeriaProdutos.css';
 import { RootState } from '../../redux/store';
-import { retornarValorString } from '../extensoes/moduloScriptsAjuda';
+import { retornaVolumeProduto, retornarValorString } from '../extensoes/moduloScriptsAjuda';
 import { LuBadgeMinus, LuBadgePlus, LuListChecks } from 'react-icons/lu';
 import { Cliente, Produto } from '../../redux/types';
 import { adicionarProdutoCarrinho, removerProdutoCarrinho } from '../../redux/clienteReducer';
@@ -15,23 +15,20 @@ const GaleriaDeProdutos: React.FC = () => {
     const produtos = useSelector((state: RootState) => state.galeriaProdutos.todosProdutos);
     const tipoSelecionado = useSelector((state: RootState) => state.tipoDesejado);
     const clientes = useSelector((state: RootState) => state.cliente.clientes);
-    const [imgOdescricao, setImgODescricao] = useState(false);
     const [descricaoVisivel, setDescricaoVisivel] = useState<number | null>(null);
-
     const clienteZero: Cliente | undefined = clientes.find((cliente: Cliente) => cliente.id === 0);
     const produtosFiltrados = produtos.filter((produto) => produto.tipo[0].nome === tipoSelecionado);
     const [ingredientesSelecionadosPorProduto, setIngredientesSelecionadosPorProduto] = useState<Record<number, Array<Array<{ nome: string, quantidade: number }>>>>({});
     const carrinhoID = 0;
     const { tipo } = useParams();
-    console.log(produtosFiltrados)
+
     useEffect(() => {
-        // Filtrar os produtos com base no tipo selecionado ou no parâmetro da URL
+        // UseNavegate para Link /
         const produtosFiltrados = produtos.filter((produto) => produto.tipo[0].nome === (tipo || tipoSelecionado?.toLocaleLowerCase));
         console.log(produtosFiltrados)
         console.log(tipo)
         console.log(tipoSelecionado)
-        // Restante do código...
-        // Por exemplo, você pode utilizar produtosFiltrados para renderizar a lista de produtos.
+
     }, [produtos, tipo, tipoSelecionado]);
 
 
@@ -47,15 +44,12 @@ const GaleriaDeProdutos: React.FC = () => {
 
     const handleAdicionarProduto = (produto: Produto) => {
         console.log(produto);
-        // Verificar se o cliente existe
         if (clienteZero) {
-            const carrinhoDoClienteZero = clienteZero.pedido?.carrinho?.[carrinhoID]; // Supondo que o cliente Zero só tem um carrinho
-            // Cliente existe, adicionar produto ao carrinho
+            const carrinhoDoClienteZero = clienteZero.pedido?.carrinho?.[carrinhoID];
             dispatch(adicionarProdutoCarrinho(carrinhoDoClienteZero?.id || 1, produto));
         } else {
-            // Cliente não existe, criar novo carrinho e adicionar produto
             const novoCarrinho = {
-                id: carrinhoID, // Substitua pelo ID apropriado do carrinho
+                id: carrinhoID,
                 produtos: [[produto, 1]],
             };
             dispatch(adicionarProdutoCarrinho(novoCarrinho.id, produto));
@@ -162,12 +156,8 @@ const GaleriaDeProdutos: React.FC = () => {
                                 </p>
                             </div>
                         </div>
-                        {promocao && (
-                            <div className="promocao-info" style={{ display: descricaoVisivel === produto.id ? 'none' : '' }}>
 
-                            </div>
-                        )}
-                        <div className='ingredientes-container' style={{ display: (getQuantidadeNoCarrinho(produto?.id)) === 0 ? 'none' : 'block' }}>
+                        <div className='ingredientes-container' style={{ display: (getQuantidadeNoCarrinho(produto?.id)) === 0 || produto.composicaoBasica[0].length === 0 ? 'none' : 'block' }}>
                             <h6>
                                 <LuListChecks />
                                 {[...Array(quantidadeNoCarrinho)].map((_, cartItemIndex) => (
@@ -254,7 +244,14 @@ const GaleriaDeProdutos: React.FC = () => {
                                 </strong>
                                 {getQuantidadeNoCarrinho(produto?.id) < 3 ?
                                     '' :
-                                    <strong className='ValorRealMoeda' style={{ color: '#cc7722', fontSize: '12px', letterSpacing: '3px', textDecoration: 'overline #ffd700 1px' }}><br /><br />Total: {(getQuantidadeNoCarrinho(produto?.id) * produto.valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong>}
+                                    <strong className='ValorRealMoeda'
+                                        style={{ color: '#cc7722', fontSize: '12px', letterSpacing: '3px', textDecoration: 'overline #ffd700 1px' }}>
+                                        <br />
+                                        <br />
+                                        Total: {(getQuantidadeNoCarrinho(produto?.id) * produto.valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+                                        <br />
+                                        {retornaVolumeProduto(produto, getQuantidadeNoCarrinho(produto?.id))}
+                                    </strong>}
                             </p>
 
                         </div>
@@ -267,7 +264,11 @@ const GaleriaDeProdutos: React.FC = () => {
                         </p>
                     </div>
                     */}
-
+                        {promocao && (
+                            <div className="promocao-info" style={{ display: descricaoVisivel === produto.id ? 'none' : '' }}>
+                                <h2>{promocao.nome}</h2>
+                            </div>
+                        )}
                     </div>
                 )
             })}

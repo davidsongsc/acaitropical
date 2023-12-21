@@ -3,7 +3,7 @@
 
 .principal-container .principal-anuncio .cena {
   background-color: white;
-  
+
   margin: 0 auto;
   border-radius: 5px;
 }
@@ -14,41 +14,81 @@
 }
 
 .propaganda img {
-  width: 180px;
+  width: 220px;
   position: relative;
-
   border-radius: 5px;
+  
 }
 
 .promo-oferta-conteudo-container ul,
 .promo-oferta-conteudo-container .h2-grupo {
-  background-color: #8f8fbe;
-  border-radius: 4px;
+  /* border-radius: 4px; */
   display: flex;
-  flex-wrap: wrap;
   list-style: none;
+  flex-direction: row;
 
+  position: relative;
 }
-
+.promo-oferta-conteudo-container ul {
+  overflow-x: auto;
+  background-image: radial-gradient(circle at left, goldenrod, yellow);
+}
 .promo-oferta-conteudo-container .h2-grupo {
-  padding-left: 40px;
-  background-color: #3cb371;
+  padding-left: 10px;
+  background-image: radial-gradient(circle at left, #8a2be2c2, #a52a2a59);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.promo-oferta-conteudo-container .h2-grupo ol {
+  list-style: none;
 }
 
 .promo-oferta-conteudo-container ul li,
-.promo-oferta-conteudo-container h2 {
-  background-color: aliceblue;
+.promo-oferta-conteudo-container h2,
+.promo-oferta-conteudo-container button {
+  background-color: rgba(240, 248, 255, 0.729);
   margin: 5px 0;
   color: black;
-  width: 350px;
-  padding: 25px;
+  width: 207px;
+  padding: 8px;
+  border-radius: 6px;
+  box-shadow: 1px 1px 7px;
+  margin: 5px;
   border-left: #8f8fbe groove;
+  background-size: 355px;
+  background-attachment: local;
+  background-repeat: no-repeat;
+  animation: aumentarBackground 5s alternate ease-in-out;
+
+}
+
+@keyframes aumentarBackground {
+  from {
+    background-size: 655px; /* tamanho inicial */
+  }
+  to {
+    background-size: 355px; /* tamanho final, ajuste conforme necessário */
+  }
 }
 .promo-oferta-conteudo-container h2 {
-  background-color: #191970;
+  background-color: #f6f6f6;
+  color: rgb(0, 0, 0);
+  text-transform: capitalize;
+  font-weight: 100;
+  width: 206px;
+  height: 40px
+}
+
+.promo-oferta-conteudo-container button {
+  background-color: transparent;
   color: aliceblue;
-  text-transform: uppercase;
-  width: 100%;
+  border: none;
+  box-shadow: 0;
+  text-transform: capitalize;
+  font-weight: 100;
+  width: 157px;
 }
 .promo-oferta-conteudo-container ul li a {
   text-decoration: none;
@@ -62,19 +102,51 @@
 .promo-oferta-conteudo-container h3 {
   margin: 8px 0;
 }
+.conteudo-promorcional-texto-valores {
+  background-color: #fff;
+  padding: 10px;
+}
 .promocao-info {
-  position: absolute;
+  position: relative;
   font-size: 10px;
   font-family: "Roboto";
-  background-image: url(https://www.pngkey.com/png/full/497-4978887_faixa-promoo-png-placas-de-promoo-png.png);
   background-size: 110px;
   background-repeat: no-repeat;
-  height: 41px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  background-color: brown;
+  color: white;
+  text-align: center;
+  border: groove goldenrod;
+  border-radius: 13px;
+  opacity: 0.7;
   width: 110px;
+  top: -9px;
   z-index: 990;
+}
+.promocao-info h2 {
+  font-size: small;
+  position: relative;
 }
 .promocao-info h3 {
   text-align: center;
+}
+
+.precoTotalComDesconto {
+  font-size: xx-large;
+  color: #4cb9fa;
+}
+
+.principal-comercio-padrao button {
+  background-color: #4cb9fa;
+  color: white;
+  font-size: large;
+  font-weight: 800;
+  border: none;
+  border-radius: 9px;
+  padding: 10px;
+  width: 100%;
+  cursor: pointer;
+  transition: 0.9s;
+}
+.principal-comercio-padrao button:hover {
+  background-color: #3cb371;
 }

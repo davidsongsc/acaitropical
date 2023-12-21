@@ -21,7 +21,7 @@
   border: #a07fe1 5px groove;
   position: fixed;
   bottom: 0;
-  top: 0;
+  top: 50px;
   right: 0;
   background-color: var(--texto-color-principal);
   z-index: 999;
@@ -113,20 +113,24 @@
 }
 
 .carrinho-pedidos-container .botao-fechar-carrinho {
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
+  position: relative;
+  top: 55px;
+  right: 20px;
+  display: flex;
+  padding: 10px;
 }
+
 .carrinho-pedidos-container button {
-  height: 60px;
-  width: 60px;
+  height: 65px;
+  width: 65px;
   border-radius: 50%;
   color: #ddd;
   text-shadow: 1px 1px black;
   font-size: 30px;
   background-color: var(--page-color-principal-bg-03);
 }
-.carrinho h5 {
+.carrinho h5,
+.listaSocialCliente h5 {
   position: relative;
   top: -55px;
   right: -10px;
@@ -136,4 +140,54 @@
   height: 10px;
   width: 11px;
   border-radius: 50%;
+}
+.cliente-carrinho-container div ul {
+font-weight: 800;
+font-family: 'Roboto';
+font-size: x-large;
+}
+.area-endereco-container {
+  line-height: 9px;
+  padding: 10px;
+}
+.area-endereco-container label {
+  display: none;
+}
+.area-endereco-container select,
+.totais-conferencia select {
+  background-color: white;
+  color: black;
+  width: 100%;
+  text-indent: 20px;
+  height: 65px;
+  font-size: xx-large;
+  border: groove black;
+  border-radius: 5px;
+}
+
+.totais-conferencia select{
+  text-indent: 2px;
+  height: 45px;
+  font-size: small;
+}
+.area-endereco-container option{
+  background-color: white;
+  color: black;
+}
+
+.totais-conferencia tfoot tr {
+  font-weight: 800;
+  font-family: "Roboto";
+}
+
+.totais-conferencia .total,
+.totais-conferencia .taxa {
+  color: black;
+}
+.totais-conferencia .descontos {
+  color: brown;
+}
+.total-conta {
+  background-color: black;
+  color: white;
 }

@@ -1,9 +1,26 @@
+export interface Logradouro {
+    cep: number;
+    estado: string;
+    cidade: string;
+    bairro: string;
+    rua: string;
+    numero: number;
+    bloco: string;
+    ap: string;
+    obs: string;
+}
+export interface DadosCliente{
+    cadastroPessoaFisica: string;
+    telefone1: number;
+    telefone2: number;
+}
 export interface Cliente {
     id: number;
     nome: string;
     contato: string;
     pedido: Pedido;
-
+    localEntrega: Logradouro[];
+    info: DadosCliente;
 }
 
 
@@ -33,11 +50,14 @@ export interface Composicao {
     tipo: TipoProduto;
     ingredientes: string[],
 }
-export interface PromoTipo{
+export interface PromoTipo {
     nome: string;
     tipo: string;
     valor: number;
     porcentagem: number;
+    cort: string;
+    corf: string;
+    font: string;
 }
 
 export interface Produto {
@@ -45,6 +65,7 @@ export interface Produto {
     nome: string;
     descricao: string;
     img: string;
+    imgbg: string[];
     valor: number;
     quantidade: number;
     tipo: TipoProduto[];
@@ -53,6 +74,7 @@ export interface Produto {
     idCriadorProduto: number;
     composicaoBasica: [Composicao[]],
     promo: PromoTipo[],
+    volume: [string, number],
 }
 
 export interface TipoProduto {

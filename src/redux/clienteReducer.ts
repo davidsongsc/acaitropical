@@ -1,5 +1,23 @@
-import { ADICIONAR_PRODUTO_CARRINHO, Carrinho, Cliente, Pedido, Produto, REMOVER_PRODUTO_CARRINHO, SET_CLIENTES } from './types';
+import { ADICIONAR_PRODUTO_CARRINHO, Carrinho, Cliente, Logradouro, Pedido, Produto, REMOVER_PRODUTO_CARRINHO, SET_CLIENTES, DadosCliente } from './types';
 import { initialState as produtosInitialState } from './galeriaProdutosReducer';
+
+const exemploLogradouro: Logradouro = {
+    cep: 12345678,
+    estado: 'São Paulo',
+    cidade: 'São Paulo',
+    bairro: 'Centro',
+    rua: 'Rua Principal',
+    numero: 123,
+    bloco: 'A',
+    ap: '101',
+    obs: 'Próximo à estação de metrô',
+};
+
+const exemploDadosCliente: DadosCliente = {
+    cadastroPessoaFisica: '123.456.789-01',
+    telefone1: 1122334455,
+    telefone2: 5544332211,
+};
 
 const clientes: Cliente[] = [
     {
@@ -15,13 +33,18 @@ const clientes: Cliente[] = [
             dataHoraCriacaoCarrinho: '2023-01-01T10:00:00',
             dataHoraPedidoCarrinho: '2023-01-01T12:00:00',
         },
+        localEntrega: [exemploLogradouro],
+        info: exemploDadosCliente,
     },
     {
         id: 1,
         nome: 'Cliente 2',
         contato: '987-654-3210',
         pedido: {} as Pedido,
+        localEntrega: [exemploLogradouro],
+        info: exemploDadosCliente,
     },
+
 ];
 
 export const adicionarProdutoCarrinho = (carrinhoId: number, produto: Produto): any => ({

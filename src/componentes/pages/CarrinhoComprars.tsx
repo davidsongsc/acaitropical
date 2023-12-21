@@ -37,7 +37,9 @@ const CarrinhoComprasLista: React.FC = () => {
                 <FiShoppingCart />
                 <h5>
                     {totalCarrinho}
+                    
                 </h5>
+                
             </div>
             <div className={`painel-carrinho ${showCarrinhoCompras ? 'carrinho-ativo' : 'carrinho-ativo-sqn'}`} >
 

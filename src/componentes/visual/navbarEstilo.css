@@ -58,6 +58,7 @@
 .sociais-container .listaSocialCliente {
   list-style: none;
   display: flex;
+  align-items: flex-end;
 }
 .sociais-container .listaSocialCliente li {
   width: 50px;
