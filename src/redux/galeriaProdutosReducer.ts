@@ -48,9 +48,9 @@ export const composicaoProdutos2: Composicao[] = [
 const listaDePromocoes: PromoTipo[] = [];
 const novoPromo: PromoTipo[] = [
     {
-        nome: 'Favoritos',
+        nome: 'Oferta',
         tipo: 'desconto',
-        valor: 0,
+        valor: 2.95,
         porcentagem: 0,
         cort: 'black',
         corf: '#fff',
